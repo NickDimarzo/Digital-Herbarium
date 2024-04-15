@@ -9,6 +9,7 @@ import {
 } from "firebase/auth";
 
 import { auth } from "./firebase";
+import { createUserPlantsCollection } from "../_services/DbServices";
 
  
 const AuthContext = createContext();
@@ -17,14 +18,24 @@ const AuthContext = createContext();
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
  
-  const createUser = (email, password) => {
+  const [loading, setLoading] = useState(false);
+
+  const createUser = (email, password, setLoading) => {
+    setLoading(true); // Start loading
     return createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed up 
         const user = userCredential.user;
-        // ...
+    
+        // Create the user's plant collection
+        return createUserPlantsCollection(user.uid);
+      })
+      .then(() => {
+        setLoading(false); // Stop loading
+        alert('Data insertion complete!');
       })
       .catch((error) => {
+        setLoading(false); // Stop loading
         const errorCode = error.code;
         const errorMessage = error.message;
         // ..

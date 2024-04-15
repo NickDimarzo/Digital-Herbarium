@@ -7,20 +7,23 @@ import Link from "next/link";
 export default function Page() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false); // Add this line
   const { user, createUser, emailSignIn } = useUserAuth();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createUser(email, password);
+    createUser(email, password, setLoading);
   };
 
   return (
     <div>
-      {user ? (
+      {loading ? (
+        <div>Loading...</div> // Show loading message
+      ) : user ? (
         <div>
           <h1>Thanks for creating an Account</h1>
           <p>you are logged in as {user.email}</p>
-          <Link href="/src">back to home page</Link>
+          <Link href="src/collection">See your collection</Link>
         </div>
       ) : (
         <div>

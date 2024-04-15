@@ -23,6 +23,7 @@ export default function Page() {
           <button onClick={firebaseSignOut} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             Sign Out
           </button>
+          <Link href="src/collection">See your collection</Link>
         </div>
       ) : (
         <div>
