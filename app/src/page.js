@@ -41,16 +41,15 @@ export default function Page() {
                 <div className="flex justify-center py-2">
                   <button
                     onClick={firebaseSignOut}
-                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                    className=" text-white font-bold py-2 px-4 rounded"
                   >
                     Sign Out
                   </button>
                 </div>
                 <div className="flex justify-center">
-                <button className="bg-velvet text-brick px-10  font-mono m-8 py-4 rounded-full hover:bg-dark shadow-2xl shadow-dark transition duration-500 hover:-translate-y-1 hover:scale-110">
-
-                  <Link href="src/collection">My Collection</Link>
-                </button>
+                  <button className="bg-velvet text-brick px-10  font-mono m-8 py-4 rounded-full hover:bg-dark shadow-2xl shadow-dark transition duration-500 hover:-translate-y-1 hover:scale-110">
+                    <Link href="src/collection">My Collection</Link>
+                  </button>
                 </div>
               </div>
             ) : (
@@ -59,7 +58,9 @@ export default function Page() {
                   <h1>Welcome to account sign in</h1>
                 </div>
                 <div className="flex justify-center w-full">
-                  <p className="px-8 pt-10">Please sign in with your email and password</p>
+                  <p className="px-8 pt-10">
+                    Please sign in with your email and password
+                  </p>
                 </div>
                 <div className="flex-col justify-center px-12 pt-10">
                   <form onSubmit={handleSubmit}>
@@ -70,7 +71,7 @@ export default function Page() {
                           type="email"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
-                          className=" text-black"
+                          className=" text-black m-2"
                         />
                       </label>
                     </div>
@@ -81,7 +82,7 @@ export default function Page() {
                           type="password"
                           value={password}
                           onChange={(e) => setPassword(e.target.value)}
-                          className=" text-black"
+                          className=" text-black m-2"
                         />
                       </label>
                     </div>
@@ -97,9 +98,16 @@ export default function Page() {
                   </form>
                 </div>
                 <div className="flex justify-center px-8 pt-10">
-                <Link href="src/signup">Dont have an account? Sign up</Link>
+                  <p>Don't have an account? </p>
                 </div>
-                
+                <div className="flex justify-center">
+                  <Link
+                    className="underline hover:text-brick"
+                    href="src/signup"
+                  >
+                    Sign up
+                  </Link>
+                </div>
               </div>
             )}
           </div>

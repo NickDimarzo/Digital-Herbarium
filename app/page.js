@@ -26,7 +26,7 @@ export default function Page() {
           </div>
 
           <div className="flex justify-center">
-            <button className="bg-velvet text-brick px-10 text-2xl font-mono m-8 py-4 rounded-full hover:bg-dark shadow-2xl shadow-dark transition duration-500 hover:-translate-y-1 hover:scale-110">
+            <button className="bg-velvet text-brick px-10 text-4xl font-mono m-8 py-4 rounded-full hover:bg-dark shadow-2xl shadow-dark transition duration-500 hover:-translate-y-1 hover:scale-110">
               <Link href="src">Login page</Link>
             </button>
           </div>
