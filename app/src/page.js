@@ -97,7 +97,7 @@ export default function Page() {
                   </form>
                 </div>
                 <div className="flex justify-center px-8 pt-10">
-                <Link href="src/signup">Don't have an account? Sign up</Link>
+                <Link href="src/signup">Dont have an account? Sign up</Link>
                 </div>
                 
               </div>
