@@ -5,44 +5,77 @@ import { fetchUserPlants } from "../_services/DbServices";
 import { useUserAuth } from "../_utils/auth-context";
 import NavBar from "../components/nav-bar";
 import Link from "next/link";
+import plantsData from "../assets/new-herbarium.json";
 
 export default function Page() {
-  const [plants, setPlants] = useState([]);
-  const [filter, setFilter] = useState("");
+  const [userPlants, setUserPlants] = useState([]);
+  const [systemPlants, setSystemPlants] = useState(plantsData)
+  const [familyFilter, setFamilyFilter] = useState("");
+  const [genusFilter, setGenusFilter] = useState("");
+  const [speciesFilter, setSpeciesFilter] = useState("");
   const { user, createUser, emailSignIn } = useUserAuth();
 
   useEffect(() => {
     if (user) {
-      const unsubscribe = fetchUserPlants(user.uid, setPlants);
+      const unsubscribe = fetchUserPlants(user.uid, setUserPlants);
 
       // Clean up subscription on unmount
       return () => unsubscribe();
     }
   }, [user]); // Add user as a dependency
 
-  const handleFilterChange = (event) => {
-    setFilter(event.target.value);
+  const handleFilterChange = (event, filterType) => {
+    switch(filterType) {
+      case 'family':
+        setFamilyFilter(event.target.value);
+        break;
+      case 'genus':
+        setGenusFilter(event.target.value);
+        break;
+      case 'species':
+        setSpeciesFilter(event.target.value);
+        break;
+      default:
+        break;
+    }
   };
 
-  const filteredAndSortedPlants = plants
-    .filter(
-      (plant) =>
-        !filter || plant.family.toLowerCase().includes(filter.toLowerCase())
-    )
-    .sort((a, b) => a.family.localeCompare(b.family));
+  const filteredAndSortedPlants = systemPlants
+  .filter(
+    (plant) =>
+      (!familyFilter || plant.family.toLowerCase().includes(familyFilter.toLowerCase())) &&
+      (!genusFilter || plant.genus.toLowerCase().includes(genusFilter.toLowerCase())) &&
+      (!speciesFilter || plant.species.toLowerCase().includes(speciesFilter.toLowerCase()))
+  )
+  .sort((a, b) => {
+    if (a.family !== b.family) return a.family.localeCompare(b.family);
+    if (a.genus !== b.genus) return a.genus.localeCompare(b.genus);
+    return a.species.localeCompare(b.species);
+  });
+
+  // map through userPlants to see if plant with same id exists
+  const statusUpdate = (id) => {
+    const plant = userPlants.find((plant) => plant.id === id);
+    if (plant) {
+      return "collected";
+    } else {
+      return "not collected";
+    }
+  }
 
   return (
     <>
       {user ? (
-        <main className="font-mono flex flex-col">
+        <main className="font-mono flex flex-col h-screen border-b-8 border-dark shadow-xl shadow-dark" style={{backgroundPosition: 'center', backgroundImage: "url('https://images.unsplash.com/photo-1591113574684-35f608ff0772?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')", backgroundSize: 'cover'}}>
           <header>
             <NavBar />
           </header>
           <div className="flex justify-center mt-10">
             <div className=" w-3/4 justify-center flex flex-col">
-              <div className=" bg-gray-100 m-2">
-                <div className="text-5xl p-2">
-                  <h1>My Collection</h1>
+              <div className="p-2 m-2 bg-moss border-4 border-dark rounded-xl shadow-2xl shadow-dark">
+              <div className=" bg-sand rounded-xl m-2 p-2">
+                <div className="text-5xl p-2 border-b-2 border-dark">
+                  <h1 className="">My Collection</h1>
                 </div>
                 <div className="p-2">
                   <p>
@@ -69,55 +102,63 @@ export default function Page() {
                   </p>
                 </div>
               </div>
-              <div className=" bg-gray-100 m-2">
-                <div className="text-3xl p-2">
+              </div>
+              <div className="p-2 m-2 bg-moss border-4 border-dark rounded-xl shadow-2xl shadow-dark text-2xl">
+              <div className=" bg-sand m-2">
+                <div className="text-3xl p-2 m-2">
                   <h1>Filter</h1>
                 </div>
                 <div className="flex justify-between">
-                  <div>
+                  <div className="p-2 m-2">
                     <label>
                       Family:
                       <input
                         type="text"
-                        className=""
-                        onChange={handleFilterChange}
+                        className="bg-sand border-b-2 border-dark"
+                        onChange={(event) => handleFilterChange(event, 'family')}
                       />
                     </label>
                   </div>
-                  <div>
+                  <div className="p-2 m-2 ">
                     <label>
                       Genus:
                       <input
                         type="text"
-                        className=""
-                        onChange={handleFilterChange}
+                        className="bg-sand border-b-2 border-dark"
+                        onChange={(event) => handleFilterChange(event, 'genus')}
                       />
                     </label>
                   </div>
-                  <div>
+                  <div className="p-2 m-2">
                     <label>
                       Species:
                       <input
                         type="text"
-                        className=""
-                        onChange={handleFilterChange}
+                        className="bg-sand border-b-2 border-dark"
+                        onChange={(event) => handleFilterChange(event, 'species')}
                       />
                     </label>
                   </div>
                 </div>
               </div>
-              <ul className=" bg-gray-100 m-2">
+              </div>
+              <div className="p-2 m-2 bg-moss border-4 border-dark rounded-xl shadow-2xl shadow-dark">
+              <ul className=" bg-sand m-2 p-2">
                 {filteredAndSortedPlants.map((plant) => (
-                  <li key={plant.id} className="p-2 m-2 bg-brick">
-                    <p>
-                      <span>{plant.family}</span> |
-                      <span>{plant.genus} </span> |
-                      <span>{plant.species}</span> |
-                    </p>
-                    {/* Add more plant details here */}
+                  <li key={plant.id} className="p-2 m-2 bg-sand flex border-b-2 border-dark">
+                    <div className="w-3/4 flex justify-between">
+                      <span className="w-1/3">{plant.family}</span> |
+                      <span className="w-1/3">{plant.genus} </span> |
+                      <span className="w-1/3">{plant.species}</span> |
+                    </div>
+                    <div>
+                      <span>{statusUpdate(plant.elCode)}</span>
+                    </div>
+                    {}
                   </li>
                 ))}
               </ul>
+              </div>
             </div>
           </div>
         </main>
