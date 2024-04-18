@@ -38,14 +38,6 @@ export default function Page() {
                 <div className="flex justify-center py-2">
                   <p>{user.email}</p>
                 </div>
-                <div className="flex justify-center py-2">
-                  <button
-                    onClick={firebaseSignOut}
-                    className=" text-white font-bold py-2 px-4 rounded"
-                  >
-                    Sign Out
-                  </button>
-                </div>
                 <div className="flex justify-center">
                   <button className="bg-velvet text-brick px-10  font-mono m-8 py-4 rounded-full hover:bg-dark shadow-2xl shadow-dark transition duration-500 hover:-translate-y-1 hover:scale-110">
                     <Link href="src/collection">My Collection</Link>
