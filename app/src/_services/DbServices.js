@@ -1,10 +1,9 @@
 import { db } from "../_utils/firebase";
 import { doc, setDoc, collection, onSnapshot, query, addDoc } from "firebase/firestore";
-import plantsData from "../assets/new-herbarium.json";
 
 export const createUserPlantsCollection = async (userId) => {
   try {
-    await addDoc(collection(db, "users", id, "plants"));
+    await addDoc(collection(db, "users", userId, "plants"), {});
   } catch (error) {
     console.error("Error adding user", error);
   }
@@ -19,9 +18,9 @@ export function fetchUserPlants(userId, setUserPlants) {
   return unsubscribe;
 }
 
-export const addUserPlant = async (plant, id) => {
+export const addUserPlant = async (plant, userId) => {
   try{
-    const docRef = await addDoc (collection(db, "users", id, "plants"),
+    const docRef = await addDoc (collection(db, "users", userId, "plants"),
     {
         elCode: plant.elCode,
         family: plant.family,
