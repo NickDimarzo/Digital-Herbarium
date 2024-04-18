@@ -1,6 +1,5 @@
-import Image from "next/image";
+
 import Link from "next/link";
-import { Card } from "flowbite-react";
 
 export default function Page() {
   return (
@@ -22,7 +21,7 @@ export default function Page() {
               This is a platform for botany enthusiasts and horticulturalists to store and
               share their plant identification collections.
             </p>
-            {/* eslint-disable-next-line react/no-unescaped-entities */}
+          
             <p className="px-8 pt-10">Please login to access your account.</p>
           </div>
           <div className="flex justify-center">

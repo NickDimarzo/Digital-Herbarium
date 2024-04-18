@@ -98,7 +98,7 @@ export default function Page() {
                   </form>
                 </div>
                 <div className="flex justify-center px-8 pt-10">
-                  <p>Don't have an account? </p>
+                  <p>Dont have an account? </p>
                 </div>
                 <div className="flex justify-center">
                   <Link
