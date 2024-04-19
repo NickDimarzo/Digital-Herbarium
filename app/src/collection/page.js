@@ -58,7 +58,7 @@ export default function Page() {
 
   // map through userPlants to see if plant with same id exists
   const statusUpdate = (id) => {
-    const plant = userPlants.find((plant) => plant.id === id);
+    const plant = userPlants.find((plant) => plant.elCode === id);
     if (plant) {
       return "collected";
     } else {
