@@ -7,10 +7,17 @@ export default function NavBar() {
   const { user, gitHubSignIn, firebaseSignOut } = useUserAuth();
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-moss border-4 border-dark text-2xl shadow-dark">
+    <nav className="navbar navbar-expand-lg navbar-light bg-moss border-4 border-dark xl:text-2xl shadow-dark">
       <div className="flex justify-between">
-        <div className="bg-dark text-brick font-mono w-max m-2 px-4 rounded-lg shadow-dark">
+        <div className="flex justify-center">
+        <div className="bg-dark text-brick font-mono m-2 px-4 rounded-lg shadow-dark">
           <h1 className="m-2">Digital Herbarium</h1>
+        </div>
+        <div className="bg-dark text-brick font-mono w-max m-2 px-4 rounded-lg hover:bg-velvet transition duration-500 hover:scale-110">
+          <button className="flex justify-center p-2">
+            <Link href="collection">My Collection</Link>
+          </button>
+        </div>
         </div>
         <div className="flex justify-center">
           <div className="bg-dark text-brick font-mono w-max m-2 px-4 rounded-lg hover:bg-velvet transition duration-500 hover:scale-110">

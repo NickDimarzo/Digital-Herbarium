@@ -18,6 +18,7 @@ module.exports = {
       transparent: 'transparent',
       current: 'currentColor',
       'moss': '#c9cba3',
+      'green': '#15803d',
       'sand': '#ffe1a8',
       'brick': '#e26d5c',
       'velvet': '#723d46',

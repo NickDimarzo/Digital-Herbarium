@@ -16,7 +16,7 @@ export default function Page({ params }) {
   const [userPlants, setUserPlants] = useState([]);
   const [systemPlants, setSystemPlants] = useState(plantsData);
   const [plant, setPlant] = useState({});
-  const [notes, setNotes] = useState("none yet!!");
+  const [notes, setNotes] = useState("Add your notes here!");
   const [textAreaValue, setTextAreaValue] = useState("");
 
   const [userImages, setUserImages] = useState([]);
@@ -29,26 +29,20 @@ export default function Page({ params }) {
           setUserImages(images);
         });
       });
-      plant.notes = notes;
+      plant.notes = textAreaValue;
       addUserPlant(plant, user.uid);
     } else {
       alert("You must be signed in to upload images");
     }
   };
 
-
   const fetchImages = () => {
     if (user) {
       fetchPlantImages(user.uid, plant.elCode).then((images) => {
         setUserImages(images);
-    });
+      });
     }
   };
-
-  useEffect(() => {
-    fetchImages();
-  }
-  , [user, plant, userPlants]);
 
   const handleTextAreaChange = (event) => {
     setTextAreaValue(event.target.value);
@@ -59,18 +53,15 @@ export default function Page({ params }) {
     event.preventDefault();
     if (user) {
       addUserPlant(plant, user.uid);
-      
     }
   };
 
   useEffect(() => {
     if (user) {
       const unsubscribe = fetchUserPlants(user.uid, setUserPlants);
-
-      // Clean up subscription on unmount
       return () => unsubscribe();
     }
-  }, [user]); // Add user as a dependency
+  }, [user]);
 
   useEffect(() => {
     if (userPlants.length > 0) {
@@ -92,11 +83,15 @@ export default function Page({ params }) {
     }
   }, [userPlants]);
 
+  useEffect(() => {
+    fetchImages();
+  }, [user, plant, userPlants, userImages]);
+
   return (
     <>
       {user ? (
         <main
-          className="w-screen h-full flex-col justify-center font-mono text-2xl"
+          className="h-full flex-col justify-center font-mono xl:text-2xl text-lg"
           style={{
             backgroundPosition: "center",
             backgroundImage:
@@ -111,14 +106,23 @@ export default function Page({ params }) {
             <div className=" w-3/4 justify-center flex flex-col">
               <div className="p-2 m-2 bg-moss border-4 border-dark rounded-xl shadow-2xl shadow-dark">
                 <div className=" bg-sand rounded-xl m-2 p-2">
+                  <div className="flex justify-center">
+                    <h1 className="w-max border-b-4 xl:text-3xl text-xl border-dark">
+                      Plant Information
+                    </h1>
+                  </div>
                   <div>
                     <p>Family: {plant.family}</p>
                   </div>
                   <div>
-                    <p>Genus: {plant.genus}</p>
+                    <p>
+                      Genus: <span className="italic">{plant.genus}</span>
+                    </p>
                   </div>
                   <div>
-                    <p>Species: {plant.species}</p>
+                    <p>
+                      Species: <span className="italic">{plant.species}</span>
+                    </p>
                   </div>
                   <div>
                     <p>Common Name: {plant.commonName}</p>
@@ -131,37 +135,83 @@ export default function Page({ params }) {
               {/*PHOTO UPLOADS*/}
               <div className="p-2 m-2 bg-moss border-4 border-dark rounded-xl shadow-2xl shadow-dark">
                 <div className=" bg-sand rounded-xl m-2 p-2">
-                  <h1>Plant Page</h1>
-                  <p>PHOTOS</p>
-                  <div className="grid grid-flow-row grid-cols-2 justify-center">
-                    {userImages.map((image) => (
-                      <div className="flex p-2 justify-center" >
-                        <Link href={image}>
-                       <img className="border-4 border-dark rounded-xl shadow-2xl shadow-dark"  src={image}/>
-                        </Link>
-                      </div>
-                    ))}
+                  <div className="flex justify-center w-full p-2 m-2">
+                    <h1 className="w-max border-b-4 xl:text-3xl text-xl border-dark">
+                      {" "}
+                      My Photos
+                    </h1>
                   </div>
-                  <input type="file" multiple onChange={(e) => {setImageUpload(Array.from(e.target.files))}} />
-                  <button onClick = {uploadImage}>Upload Image</button>
+                  <div className="grid grid-flow-row grid-cols-3 justify-center">
+                    {userImages && userImages.length > 0 ? (
+                      userImages.map((image) => (
+                        <div className="flex p-2 justify-center">
+                          <Link href={image}>
+                            <img
+                              className="border-4 border-dark rounded-xl shadow-2xl shadow-dark"
+                              src={image}
+                            />
+                          </Link>
+                        </div>
+                      ))
+                    ) : (
+                      <div className="flex justify-center w-full col-span-3 m-2 p-2">
+                      <div className="flex flex-col items-center">
+                        <p>Click the Choose Files button below to get started</p>
+                        <p>Images will be displayed here</p>
+                        <p>once they have been uploaded!</p>
+                      </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+                <div>
+                  <div className="flex-col justify-between bg-sand rounded-xl m-2 mt-4 p-2 ">
+                    <div className="flex justify-center p-4 ">
+                      <input
+                        type="file"
+                        className=" bg-sand w-max"
+                        multiple
+                        onChange={(e) => {
+                          setImageUpload(Array.from(e.target.files));
+                        }}
+                      />
+                    </div>
+                    <div className="flex justify-center">
+                      <button
+                        className="bg-velvet text-brick px-10 font-mono py-2 m-2 h-max rounded-xl hover:bg-dark shadow-2xl shadow-dark transition duration-500 hover:scale-110 "
+                        onClick={uploadImage}
+                      >
+                        Upload
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
+
               <div className="p-2 m-2 bg-moss border-4 border-dark rounded-xl shadow-2xl shadow-dark">
                 <div className=" bg-sand rounded-xl m-2 p-2">
-                  <form className="text-black">
-                    <label>
-                      Notes:
+                  <form className="text-black flex-col">
+                    <div className="flex justify-center">
+                      <h1 className="w-max border-b-4 xl:text-3xl text-xl border-dark">
+                        Notes
+                      </h1>
+                    </div>
+                    <div className="flex justify-center h-96 ">
                       <textarea
                         type="text"
                         value={textAreaValue}
                         onChange={handleTextAreaChange}
-                        className="text-black"
+                        className="text-black bg-sand border-4 border-dark rounded-xl shadow-2xl shadow-dark p-2 w-full m-2 max-h-full"
                       />
-                    </label>
-                    <button
-                      className="bg-velvet text-brick px-10  font-mono m-8 py-4 rounded-full hover:bg-dark shadow-2xl shadow-dark transition duration-500 hover:-translate-y-1 hover:scale-110"
-                      onClick={handleSubmit}
-                    ></button>
+                    </div>
+                    <div className="flex justify-center">
+                      <button
+                        className="bg-velvet text-brick px-10 font-mono py-2 m-2 h-max rounded-xl hover:bg-dark shadow-2xl shadow-dark transition duration-500 hover:scale-110 "
+                        onClick={handleSubmit}
+                      >
+                        Submit
+                      </button>
+                    </div>
                   </form>
                 </div>
               </div>

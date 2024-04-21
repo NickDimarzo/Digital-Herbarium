@@ -26,9 +26,9 @@ export default function Page() {
     >
       <div className="w-screen h-screen flex justify-center">
         <div className="w-2/5 bg-moss flex-col h-max rounded-3xl justify-center border-8 border-dark mt-64 ">
-          <div className="flex-col justify-center m-8 text-4xl font-mono bg-sand p-5 rounded-3xl shadow-2xl">
+          <div className="flex-col justify-center m-8 xl:text-4xl font-mono bg-sand p-5 rounded-3xl shadow-2xl text-2xl ">
             {user ? (
-              <div>
+              <div className="">
                 <div className="flex justify-center py-2">
                   <h1>Welcome</h1>
                 </div>
@@ -45,36 +45,39 @@ export default function Page() {
                 </div>
               </div>
             ) : (
-              <div>
-                <div className="flex justify-center">
-                  <h1>Welcome to account sign in</h1>
+              <div className="flex-col items-center ">
+                <div className="flex justify-center w-full items-center">
+                  <h1>Welcome to account</h1>
+                </div>
+                <div className="flex justify-center w-full items-center">
+                  <h1>Sign in!</h1>
                 </div>
                 <div className="flex justify-center w-full">
                   <p className="px-8 pt-10">
                     Please sign in with your email and password
                   </p>
                 </div>
-                <div className="flex-col justify-center px-12 pt-10">
+                <div className="flex-col justify-center items-center px-12 pt-10">
                   <form onSubmit={handleSubmit}>
                     <div className="flex justify-end">
-                      <label>
+                      <label className="w-full">
                         Email:
                         <input
                           type="email"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
-                          className=" text-black m-2"
+                          className=" text-black m-2 w-full"
                         />
                       </label>
                     </div>
                     <div className="flex justify-end">
-                      <label>
+                      <label className="w-full">
                         Password:
                         <input
                           type="password"
                           value={password}
                           onChange={(e) => setPassword(e.target.value)}
-                          className=" text-black m-2"
+                          className=" text-black m-2 w-full"
                         />
                       </label>
                     </div>
@@ -82,9 +85,9 @@ export default function Page() {
                       <button
                         type="submit"
                         onSubmit={handleSubmit}
-                        className="bg-velvet text-brick px-10 font-mono m-8 py-4 rounded-full hover:bg-dark shadow-2xl shadow-dark transition duration-500 hover:-translate-y-1 hover:scale-110"
+                        className="bg-velvet text-brick px-10 font-mono m-8 py-4 rounded-full hover:bg-dark shadow-2xl shadow-dark transition duration-500 hover:-translate-y-1 hover:scale-110 w-max"
                       >
-                        Sign In
+                        <span className="flex w-max">Sign In</span>
                       </button>
                     </div>
                   </form>

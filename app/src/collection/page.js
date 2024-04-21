@@ -60,9 +60,9 @@ export default function Page() {
   const statusUpdate = (id) => {
     const plant = userPlants.find((plant) => plant.elCode === id);
     if (plant) {
-      return "collected";
+      return <span className="text-green ">collected</span>;
     } else {
-      return "not collected";
+      return <span className="text-brick ">not collected</span>;
     }
   };
 
@@ -85,39 +85,28 @@ export default function Page() {
             <div className=" w-3/4 justify-center flex flex-col">
               <div className="p-2 m-2 bg-moss border-4 border-dark rounded-xl shadow-2xl shadow-dark">
                 <div className=" bg-sand rounded-xl m-2 p-2">
-                  <div className="text-5xl p-2 border-b-2 border-dark">
-                    <h1 className="">My Collection</h1>
+                  <div className="flex justify-center">
+                    <h1 className="w-max border-b-4 xl:text-5xl text-3xl border-dark pb-2">
+                      My Collection
+                    </h1>
                   </div>
-                  <div className="p-2">
+                  <div className="p-4 xl:text-xl text-md">
                     <p>
-                      Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                      Non quos, iure optio mollitia earum hic officia debitis
-                      sapiente cum iste doloremque nulla, harum beatae quisquam
-                      consectetur saepe rem blanditiis. Qui? Provident esse
-                      doloribus velit recusandae dolor illum blanditiis repellat
-                      iure? Nihil id blanditiis corrupti porro ipsam ut
-                      voluptates ducimus doloremque expedita maiores
-                      consequuntur, quis dolorum in, officia reprehenderit sequi
-                      eum. Corrupti assumenda nobis natus, similique incidunt
-                      vero hic, deleniti iusto recusandae sit rerum modi magnam.
-                      Repudiandae earum incidunt sit, vero totam ad recusandae
-                      sequi aliquam, ex accusantium veniam voluptates dolor.
-                      Facilis eaque nulla, sapiente inventore ad debitis
-                      mollitia architecto itaque asperiores! Aut sequi non
-                      numquam modi possimus tempore cum voluptatem ratione
-                      corporis natus. Nam enim, quod accusantium magni labore
-                      debitis! Illo, labore? Cum aspernatur nobis omnis corporis
-                      corrupti unde similique, at veritatis tempora nihil
-                      repudiandae placeat quia porro natus ut voluptatem
-                      recusandae qui modi perspiciatis quos rem illum quam.
-                      Impedit!
+                      Welcome to your collection! Here you can add and view all
+                      the plants you have collected. Use the filter to search
+                      for a specific plant. The filter will return results in alphabetical order beginning with Family, then Genus and Species. Click on a plant to access the
+                      plants entry. From there you can add notes and images about that plant to
+                      your collection.
+                    </p>
+                    <p>
+                      These plants are all from Alberta and were generated from this website.
                     </p>
                   </div>
                 </div>
               </div>
-              <div className="p-2 m-2 bg-moss border-4 border-dark rounded-xl shadow-2xl shadow-dark text-2xl">
+              <div className="p-2 m-2 bg-moss border-4 border-dark rounded-xl shadow-2xl shadow-dark xl:text-2xl text-lg">
                 <div className=" bg-sand m-2">
-                  <div className="text-3xl p-2 m-2">
+                  <div className="xl:text-3xl text-xl p-2 m-2">
                     <h1>Filter</h1>
                   </div>
                   <div className="flex justify-between">
@@ -160,27 +149,23 @@ export default function Page() {
                   </div>
                 </div>
               </div>
-              <div className="p-2 m-2 bg-moss border-4 border-dark rounded-xl shadow-2xl shadow-dark">
+              <div className="p-2 m-2 bg-moss border-4 border-dark rounded-xl shadow-2xl shadow-dark text-xs m:text-sm xl:text-base">
                 <ul className=" bg-sand m-2 p-2">
                   {filteredAndSortedPlants.map((plant) => (
-                    <li
-                      key={plant.id}
-                      className="p-2 m-2 bg-sand flex border-b-2 border-dark"
-                    >
-                      <div className="w-3/4 flex justify-between">
-                        <span className="w-1/3">{plant.family}</span> |
-                        <span className="w-1/3">{plant.genus} </span> |
-                        <span className="w-1/3">{plant.species}</span> |
-                      </div>
-                      <div>
-                        <span>
-                          <Link
-                            href={`./${plant.elCode}`}
-                          >
-                            {statusUpdate(plant.elCode)}
-                          </Link>
-                        </span>
-                      </div>
+                    <li key={plant.id} className="">
+                      <Link
+                        className="p-2 m-2 bg-sand flex border-b-2 border-dark hover:text-brick hover:border-brick "
+                        href={`./${plant.elCode}`}
+                      >
+                        <div className="w-3/4 flex justify-start m:justify-between">
+                          <span className="w-1/3">{plant.family}</span>|{" "}
+                          <span className="w-1/3">{plant.genus} </span>|{" "}
+                          <span className="w-1/3">{plant.species}</span>
+                        </div>
+                        <div>
+                          |<span>{statusUpdate(plant.elCode)}</span>
+                        </div>
+                      </Link>
                     </li>
                   ))}
                 </ul>

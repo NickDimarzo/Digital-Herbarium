@@ -27,7 +27,7 @@ export default function Page() {
     >
       <div className="w-screen h-screen flex justify-center">
         <div className="w-2/5 bg-moss flex-col h-max rounded-3xl justify-center border-8 border-dark mt-64 ">
-          <div className="flex-col justify-center m-8 text-4xl font-mono bg-sand p-5 rounded-3xl">
+          <div className="flex-col justify-center m-8 xl:text-4xl text-2xl font-mono bg-sand p-5 rounded-3xl">
             {loading ? (
               <div className="flex justify-center flex-col">
                 <div className="flex justify-center px-8 pt-10">
@@ -64,9 +64,12 @@ export default function Page() {
                 </div>
               </div>
             ) : (
-              <div>
-                <div className="flex justify-center">
-                  <h1>Welcome to account sign up</h1>
+              <div className="flex flex-col">
+                <div className="flex justify-center items-center">
+                  <h1>Welcome to account</h1>
+                </div>
+                <div className="flex justify-center items-center">
+                  <h1>sign up</h1>
                 </div>
                 <div className="flex justify-center">
                   <p className="px-8 pt-10">
@@ -76,24 +79,24 @@ export default function Page() {
                 <div className="felx-col justify-center px-12 pt-10">
                   <form onSubmit={handleSubmit}>
                     <div className="flex justify-end">
-                      <label>
+                      <label className="w-full">
                         Email:
                         <input
                           type="email"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
-                          className=" text-black m-2"
+                          className=" text-black m-2 w-full"
                         />
                       </label>
                     </div>
                     <div className="flex justify-end">
-                      <label>
+                      <label className="w-full">
                         Password:
                         <input
                           type="password"
                           value={password}
                           onChange={(e) => setPassword(e.target.value)}
-                          className=" text-black m-2"
+                          className=" text-black m-2 w-full"
                         />
                       </label>
                     </div>
