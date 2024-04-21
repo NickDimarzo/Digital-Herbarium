@@ -10,6 +10,7 @@ import { addUserPlant } from "../../src/_services/DbServices";
 import plantsData from "../../src/assets/new-herbarium.json";
 import { uploadImages } from "../../src/_services/DbServices";
 import { fetchPlantImages } from "../../src/_services/DbServices";
+import Image from 'next/image';
 
 export default function Page({ params }) {
   const { user, createUser, emailSignIn } = useUserAuth();
@@ -81,11 +82,11 @@ export default function Page({ params }) {
       );
       setPlant(plant);
     }
-  }, [userPlants]);
+  }, [userPlants, systemPlants, params.plantId]);
 
   useEffect(() => {
     fetchImages();
-  }, [user, plant, userPlants, userImages]);
+  }, [user, plant, userPlants, userImages, fetchImages]);
 
   return (
     <>
@@ -144,11 +145,12 @@ export default function Page({ params }) {
                   <div className="grid grid-flow-row grid-cols-3 justify-center">
                     {userImages && userImages.length > 0 ? (
                       userImages.map((image) => (
-                        <div className="flex p-2 justify-center">
+                        <div key={plant.id} className="flex p-2 justify-center">
                           <Link href={image}>
                             <img
                               className="border-4 border-dark rounded-xl shadow-2xl shadow-dark"
                               src={image}
+                              alt="plant"
                             />
                           </Link>
                         </div>
