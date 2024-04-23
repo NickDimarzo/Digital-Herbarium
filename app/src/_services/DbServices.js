@@ -11,6 +11,7 @@ import { storage } from "../_utils/firebase";
 import { ref, uploadBytes, listAll, getDownloadURL } from "firebase/storage";
 import { v4 } from "uuid";
 
+// Create a new collection in the database for the user
 export const createUserPlantsCollection = async (userId) => {
   try {
     await addDoc(collection(db, "users", userId), {});
@@ -19,6 +20,7 @@ export const createUserPlantsCollection = async (userId) => {
   }
 };
 
+// Fetch the user's plant collection from the database
 export function fetchUserPlants(userId, setUserPlants) {
   const q = query(collection(db, "users", userId, "plants"));
   const unsubscribe = onSnapshot(q, (snapshot) => {
@@ -28,6 +30,7 @@ export function fetchUserPlants(userId, setUserPlants) {
   return unsubscribe;
 }
 
+// Add a plant to the user's collection
 export const addUserPlant = async (plant, userId) => {
   try {
     await setDoc(doc(db, "users", userId, "plants", plant.elCode), {
@@ -47,11 +50,11 @@ export const addUserPlant = async (plant, userId) => {
   }
 };
 
+// add a plant image to firebase storage
 export const uploadImages = async (files, userId, plantId) => {
   if (files.length === 0) {
     return;
   }
-  // map through each file and upload to storage
   files.map(async (file) => {
     const storageRef = ref(
       storage,
@@ -63,6 +66,7 @@ export const uploadImages = async (files, userId, plantId) => {
   alert("Images uploaded successfully!");
 };
 
+// fetch plant images from firebase storage
 export const fetchPlantImages = async (userId, plantId) => {
   const storageRef = ref(storage, `images/${userId}/${plantId}`);
   const listResult = await listAll(storageRef);

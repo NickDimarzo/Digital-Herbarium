@@ -19,10 +19,10 @@ export default function Page({ params }) {
   const [plant, setPlant] = useState({});
   const [notes, setNotes] = useState("Add your notes here!");
   const [textAreaValue, setTextAreaValue] = useState("");
-
   const [userImages, setUserImages] = useState([]);
-
   const [imageUpload, setImageUpload] = useState([]);
+
+  // Upload images to firebase storage
   const uploadImage = () => {
     if (user) {
       uploadImages(imageUpload, user.uid, plant.elCode).then(() => {
@@ -37,6 +37,7 @@ export default function Page({ params }) {
     }
   };
 
+  // Fetch images from firebase storage
   const fetchImages = () => {
     if (user) {
       fetchPlantImages(user.uid, plant.elCode).then((images) => {
@@ -45,6 +46,7 @@ export default function Page({ params }) {
     }
   };
 
+  // Handle text area change
   const handleTextAreaChange = (event) => {
     setTextAreaValue(event.target.value);
     plant.notes = event.target.value;
@@ -57,6 +59,7 @@ export default function Page({ params }) {
     }
   };
 
+  // Fetch user plants
   useEffect(() => {
     if (user) {
       const unsubscribe = fetchUserPlants(user.uid, setUserPlants);
@@ -64,6 +67,7 @@ export default function Page({ params }) {
     }
   }, [user]);
 
+  // Set plant data
   useEffect(() => {
     if (userPlants.length > 0) {
       const plant = userPlants.find((plant) => plant.elCode === params.plantId);
@@ -84,6 +88,7 @@ export default function Page({ params }) {
     }
   }, [userPlants, systemPlants, params.plantId]);
 
+  // Fetch images
   useEffect(() => {
     fetchImages();
   }, [user, plant, userPlants, userImages, fetchImages]);

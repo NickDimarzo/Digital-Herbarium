@@ -11,37 +11,33 @@ import {
 import { auth } from "./firebase";
 import { createUserPlantsCollection } from "../_services/DbServices";
 
- 
 const AuthContext = createContext();
 
- 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
- 
   const [loading, setLoading] = useState(false);
 
+  // Create a new user
   const createUser = (email, password, setLoading) => {
     setLoading(true); // Start loading
     return createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed up 
+        
         const user = userCredential.user;
-    
-        // Create the user's plant collection
         return createUserPlantsCollection(user.uid);
       })
       .then(() => {
-        setLoading(false); // Stop loading
+        setLoading(false);
         alert('Data insertion complete!');
       })
       .catch((error) => {
-        setLoading(false); // Stop loading
+        setLoading(false); 
         const errorCode = error.code;
         const errorMessage = error.message;
-        // ..
       });
   };
  
+  // Sign in with email and password
   const emailSignIn = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
   };

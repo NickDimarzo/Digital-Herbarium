@@ -15,15 +15,15 @@ export default function Page() {
   const [speciesFilter, setSpeciesFilter] = useState("");
   const { user, createUser, emailSignIn } = useUserAuth();
 
+  // Fetch the user's plant collection from the database
   useEffect(() => {
     if (user) {
       const unsubscribe = fetchUserPlants(user.uid, setUserPlants);
-
-      // Clean up subscription on unmount
       return () => unsubscribe();
     }
-  }, [user]); // Add user as a dependency
+  }, [user]); 
 
+  // Handle the filter change
   const handleFilterChange = (event, filterType) => {
     switch (filterType) {
       case "family":
@@ -40,6 +40,7 @@ export default function Page() {
     }
   };
 
+  // Filter and sort the plants
   const filteredAndSortedPlants = systemPlants
     .filter(
       (plant) =>
@@ -56,7 +57,7 @@ export default function Page() {
       return a.species.localeCompare(b.species);
     });
 
-  // map through userPlants to see if plant with same id exists
+  // Update the status of the plant
   const statusUpdate = (id) => {
     const plant = userPlants.find((plant) => plant.elCode === id);
     if (plant) {
