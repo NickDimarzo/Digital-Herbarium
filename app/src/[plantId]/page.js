@@ -92,7 +92,7 @@ export default function Page({ params }) {
     <>
       {user ? (
         <main
-          className="h-full flex-col justify-center font-mono xl:text-2xl text-lg"
+          className="h-full flex-col justify-center font-mono xl:text-2xl text-lg shadow-xl shadow-dark border-b-8 border-dark"
           style={{
             backgroundPosition: "center",
             backgroundImage:
@@ -190,7 +190,7 @@ export default function Page({ params }) {
                 </div>
               </div>
 
-              <div className="p-2 m-2 bg-moss border-4 border-dark rounded-xl shadow-2xl shadow-dark">
+              <div className="p-2 m-2 mb-14 bg-moss border-4 border-dark rounded-xl shadow-2xl shadow-dark">
                 <div className=" bg-sand rounded-xl m-2 p-2">
                   <form className="text-black flex-col">
                     <div className="flex justify-center">
