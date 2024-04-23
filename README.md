@@ -6,9 +6,9 @@ The project is built using Next.js, a React framework, and Tailwind CSS, a utili
 
 ## Features
 
-- Feature 1: A unique user authentication system that allows users to create an account, log in, and log out.
-- Feature 2: A comprehensive filter system that allows users to search for plants based on the plant's Family, Genus and Species.
-- Feature 3: A user-friendly interface that allows users to upload images and document their findings.
+- A unique user authentication system that allows users to create an account, log in, and log out.
+- A comprehensive filter system that allows users to search for plants based on the plant's Family, Genus and Species.
+- A user-friendly interface that allows users to upload images and document their findings.
 
 ## Installation
 
