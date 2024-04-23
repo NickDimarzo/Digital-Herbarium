@@ -1,3 +1,54 @@
+# Digital Herbarium
+
+This project aims to provide a platform for users to upload images and document their findings after successfully identifying a plant in the field. 
+The project is built using Next.js, a React framework, and Tailwind CSS, a utility-first CSS framework. 
+
+
+## Features
+
+- Feature 1: A unique user authentication system that allows users to create an account, log in, and log out.
+- Feature 2: A comprehensive filter system that allows users to search for plants based on the plant's Family, Genus and Species.
+- Feature 3: A user-friendly interface that allows users to upload images and document their findings.
+
+## Installation
+
+The project can be accessed here [Digital Herbarium](https://digital-herbarium.vercel.app/)
+
+
+## Backend Services
+
+This project leverages the following Google Firestore services for authentication, database, and storage:
+
+- Authentication: Google Firestore Authentication is used for user authentication and authorization.
+
+- Database: Google Firestore is used as the NoSQL database to store and manage user plant collection data.
+
+- Storage: Google Firestore Storage is used to store and retrieve user-uploaded images.
+
+## License
+
+MIT License
+
+Copyright (c) [2024] [Nicolas G. Di Marzo]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
