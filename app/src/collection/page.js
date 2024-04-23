@@ -100,7 +100,7 @@ export default function Page() {
                       your collection.
                     </p>
                     <p>
-                      These plants are all from Alberta and were generated from this website.
+                      These plants are all from Alberta and were generated from this website. <Link className=" hover:text-brick hover:underline " href="https://www.albertaparks.ca/albertaparksca/management-land-use/alberta-conservation-information-management-system-acims/download-data/">Alberta Conservation Information Management System (ACIMS)</Link>
                     </p>
                   </div>
                 </div>
