@@ -28,14 +28,14 @@ export default function Page() {
                 Welcome to the Digital Herbarium!
               </p>
             </div>
-            <p className="px-8 pt-10">
+            <p className="px-4 pt-5 xl:px-8 xl:pt-10">
               This is a platform for botany enthusiasts and horticulturalists to
               store and share their plant identification collections.
             </p>
-            <p className="px-8 pt-10">Please login to access your account.</p>
+            <p className="px-4 pt-5 xl:px-8 xl:pt-10">Please login to access your account.</p>
           </div>
           <div className="flex justify-center">
-            <button className="bg-velvet text-brick px-10 xl:text-4xl text-xl font-mono m-8 py-4 rounded-full hover:bg-dark shadow-2xl shadow-dark transition duration-500 hover:-translate-y-1 hover:scale-110">
+            <button className="bg-velvet text-brick px-5 xl:px-10 xl:text-4xl text-xl font-mono m-8 py-4 rounded-full hover:bg-dark shadow-2xl shadow-dark transition duration-500 hover:-translate-y-1 hover:scale-110">
               <Link href="src">Login page</Link>
             </button>
           </div>

@@ -16,7 +16,7 @@ export default function Page() {
 
   return (
     <main
-      className="w-screen h-full flex-col justify-center"
+      className="w-full h-full flex-col justify-center"
       style={{
         backgroundPosition: "center",
         backgroundImage:
@@ -25,8 +25,8 @@ export default function Page() {
       }}
     >
       <div className="w-screen h-screen flex justify-center">
-        <div className="w-2/5 bg-moss flex-col h-max rounded-3xl justify-center border-8 border-dark mt-64 ">
-          <div className="flex-col justify-center m-8 xl:text-4xl font-mono bg-sand p-5 rounded-3xl shadow-2xl text-2xl ">
+        <div className=" w-4/5 md:w-3/5 xl:w-2/5 bg-moss flex-col h-max rounded-3xl justify-center border-8 border-dark xl:mt-16 m-8 ">
+          <div className="flex-col justify-center m-4 xl:m-8 text-sm  m:text-lg lg:text-2xl xl:text-4xl font-mono bg-sand p-2 xl:p-5 rounded-3xl shadow-2xl ">
             {user ? (
               <div className="">
                 <div className="flex justify-center py-2">
@@ -57,7 +57,7 @@ export default function Page() {
                     Please sign in with your email and password
                   </p>
                 </div>
-                <div className="flex-col justify-center items-center px-12 pt-10">
+                <div className="flex-col justify-center items-center px-5 pt-5 xl:px-12 xl:pt-10">
                   <form onSubmit={handleSubmit}>
                     <div className="flex justify-end">
                       <label className="w-full">
@@ -81,7 +81,7 @@ export default function Page() {
                         />
                       </label>
                     </div>
-                    <div className="flex justify-center px-8 pt-10">
+                    <div className="flex justify-center px-5 pt-5 xl:px-12 xl:pt-10">
                       <button
                         type="submit"
                         onSubmit={handleSubmit}
@@ -92,7 +92,7 @@ export default function Page() {
                     </div>
                   </form>
                 </div>
-                <div className="flex justify-center px-8 pt-10">
+                <div className="flex justify-center px-5 pt-5 xl:px-12 xl:pt-10">
                   <p>Dont have an account? </p>
                 </div>
                 <div className="flex justify-center">
