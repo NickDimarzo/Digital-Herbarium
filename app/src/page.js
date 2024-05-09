@@ -66,7 +66,7 @@ export default function Page() {
                           type="email"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
-                          className=" text-black m-2 w-full"
+                          className=" text-black m-2 w-full  bg-sand border-b-2 border-black"
                         />
                       </label>
                     </div>
@@ -77,7 +77,7 @@ export default function Page() {
                           type="password"
                           value={password}
                           onChange={(e) => setPassword(e.target.value)}
-                          className=" text-black m-2 w-full"
+                          className=" text-black m-2 w-full bg-sand border-b-2 border-black"
                         />
                       </label>
                     </div>
