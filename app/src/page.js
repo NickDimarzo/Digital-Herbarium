@@ -17,16 +17,16 @@ export default function Page() {
   return (
     <main
       className="w-full h-full flex-col justify-center"
-      style={{
-        backgroundPosition: "center",
-        backgroundImage:
-          "url('https://images.unsplash.com/photo-1426604966848-d7adac402bff?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
-        backgroundSize: "cover",
-      }}
+      // style={{
+      //   backgroundPosition: "center",
+      //   backgroundImage:
+      //     "url('https://images.unsplash.com/photo-1426604966848-d7adac402bff?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
+      //   backgroundSize: "cover",
+      // }}
     >
-      <div className="w-screen h-screen flex justify-center">
-        <div className=" w-4/5 md:w-3/5 xl:w-2/5 bg-moss flex-col h-max rounded-3xl justify-center border-8 border-dark xl:mt-16 m-8 ">
-          <div className="flex-col justify-center m-4 xl:m-8 text-sm  m:text-lg lg:text-2xl xl:text-4xl font-mono bg-sand p-2 xl:p-5 rounded-3xl shadow-2xl ">
+      <div className="w-screen h-screen flex justify-center bg-light-sand text-gray-50">
+        <div className=" w-4/5 md:w-3/5 xl:w-2/5 bg-dark-blue flex-col h-max rounded-3xl justify-center border-8 border-darker-blue xl:mt-16 m-8 ">
+          <div className="flex-col justify-center m-4 xl:m-8 text-sm  m:text-lg lg:text-2xl xl:text-4xl font-mono bg-dark-green p-2 xl:p-5 rounded-3xl shadow-2xl ">
             {user ? (
               <div className="">
                 <div className="flex justify-center py-2">
@@ -39,7 +39,7 @@ export default function Page() {
                   <p>{user.email}</p>
                 </div>
                 <div className="flex justify-center">
-                  <button className="bg-velvet text-brick px-10  font-mono m-8 py-4 rounded-full hover:bg-dark shadow-2xl shadow-dark transition duration-500 hover:-translate-y-1 hover:scale-110">
+                  <button className="bg-dark-blue text-gray-50 px-10  font-mono m-8 py-4 rounded-2xl hover:bg-light-green shadow-2xl shadow-dark-blue transition duration-500 hover:-translate-y-1 hover:scale-110">
                     <Link href="src/collection">My Collection</Link>
                   </button>
                 </div>
@@ -66,7 +66,7 @@ export default function Page() {
                           type="email"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
-                          className=" text-black m-2 w-full  bg-sand border-b-2 border-black"
+                          className=" text-black m-2 w-full  bg-light-sand border-b-2 border-black rounded-md"
                         />
                       </label>
                     </div>
@@ -77,7 +77,7 @@ export default function Page() {
                           type="password"
                           value={password}
                           onChange={(e) => setPassword(e.target.value)}
-                          className=" text-black m-2 w-full bg-sand border-b-2 border-black"
+                          className=" text-black m-2 w-full bg-light-sand border-b-2 border-black rounded-md"
                         />
                       </label>
                     </div>
@@ -85,7 +85,7 @@ export default function Page() {
                       <button
                         type="submit"
                         onSubmit={handleSubmit}
-                        className="bg-velvet text-brick px-10 font-mono m-8 py-4 rounded-full hover:bg-dark shadow-2xl shadow-dark transition duration-500 hover:-translate-y-1 hover:scale-110 w-max"
+                        className="bg-dark-blue text-gray-50 px-10 font-mono m-8 py-4 rounded-2xl hover:bg-light-green shadow-2xl shadow-dark-blue transition duration-500 hover:-translate-y-1 hover:scale-110 w-max"
                       >
                         <span className="flex w-max">Sign In</span>
                       </button>
