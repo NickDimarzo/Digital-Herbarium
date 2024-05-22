@@ -110,8 +110,8 @@ export default function Page({ params }) {
           </header>
           <div className="flex justify-center mt-10">
             <div className=" w-3/4 justify-center flex flex-col">
-              <div className="p-2 m-2 bg-moss border-4 border-dark rounded-xl shadow-2xl shadow-dark">
-                <div className=" bg-sand rounded-xl m-2 p-2">
+              <div className="p-2 m-2 bg-dark-blue border-4 border-darker-blue rounded-xl shadow-2xl shadow-dark">
+                <div className=" bg-light-sand rounded-xl m-2 p-2">
                   <div className="flex justify-center">
                     <h1 className="w-max border-b-4 xl:text-3xl text-xl border-dark">
                       Plant Information
@@ -139,8 +139,8 @@ export default function Page({ params }) {
                 </div>
               </div>
               {/*PHOTO UPLOADS*/}
-              <div className="p-2 m-2 bg-moss border-4 border-dark rounded-xl shadow-2xl shadow-dark">
-                <div className=" bg-sand rounded-xl m-2 p-2">
+              <div className="p-2 m-2 bg-dark-blue border-4 border-darker-blue rounded-xl shadow-2xl shadow-dark">
+                <div className=" bg-light-sand rounded-xl m-2 p-2">
                   <div className="flex justify-center w-full p-2 m-2">
                     <h1 className="w-max border-b-4 xl:text-3xl text-xl border-dark">
                       {" "}
@@ -172,11 +172,11 @@ export default function Page({ params }) {
                   </div>
                 </div>
                 <div>
-                  <div className="flex-col justify-between bg-sand rounded-xl m-2 mt-4 p-2 ">
+                  <div className="flex-col justify-between bg-light-sand rounded-xl m-2 mt-4 p-2 ">
                     <div className="flex justify-center p-4 ">
                       <input
                         type="file"
-                        className=" bg-sand w-max"
+                        className=" bg-light-sand w-max"
                         multiple
                         onChange={(e) => {
                           setImageUpload(Array.from(e.target.files));
@@ -185,7 +185,7 @@ export default function Page({ params }) {
                     </div>
                     <div className="flex justify-center">
                       <button
-                        className="bg-velvet text-brick px-10 font-mono py-2 m-2 h-max rounded-xl hover:bg-dark shadow-2xl shadow-dark transition duration-500 hover:scale-110 "
+                        className="bg-dark-green text-gray-50 px-10 font-mono py-2 m-2 h-max rounded-xl hover:bg-light-green shadow-2xl shadow-dark transition duration-500 hover:scale-110 "
                         onClick={uploadImage}
                       >
                         Upload
@@ -195,8 +195,8 @@ export default function Page({ params }) {
                 </div>
               </div>
 
-              <div className="p-2 m-2 mb-14 bg-moss border-4 border-dark rounded-xl shadow-2xl shadow-dark">
-                <div className=" bg-sand rounded-xl m-2 p-2">
+              <div className="p-2 m-2 mb-14 bg-dark-blue border-4 border-darker-blue rounded-xl shadow-2xl shadow-dark">
+                <div className=" bg-light-sand rounded-xl m-2 p-2">
                   <form className="text-black flex-col">
                     <div className="flex justify-center">
                       <h1 className="w-max border-b-4 xl:text-3xl text-xl border-dark">
@@ -208,12 +208,12 @@ export default function Page({ params }) {
                         type="text"
                         value={textAreaValue}
                         onChange={handleTextAreaChange}
-                        className="text-black bg-sand border-4 border-dark rounded-xl shadow-2xl shadow-dark p-2 w-full m-2 max-h-full"
+                        className="text-black bg-gray-200 border-4 border-darker-blue rounded-xl shadow-lg shadow-black p-2 w-full m-2 max-h-full"
                       />
                     </div>
                     <div className="flex justify-center">
                       <button
-                        className="bg-velvet text-brick px-10 font-mono py-2 m-2 h-max rounded-xl hover:bg-dark shadow-2xl shadow-dark transition duration-500 hover:scale-110 "
+                        className="bg-dark-green text-gray-50 px-10 font-mono py-2 m-2 h-max rounded-xl hover:bg-light-green shadow-2xl shadow-dark transition duration-500 hover:scale-110 "
                         onClick={handleSubmit}
                       >
                         Submit
