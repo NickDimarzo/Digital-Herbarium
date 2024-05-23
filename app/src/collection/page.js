@@ -158,12 +158,13 @@ export default function Page() {
                         className="p-2 m-2 bg-light-sand flex border-b-2 border-dark hover:text-dark-green hover:border-dark-green "
                         href={`./${plant.elCode}`}
                       >
-                        <div className="w-3/4 flex justify-start m:justify-between">
-                          <span className="w-1/3">{plant.family}</span>|{" "}
-                          <span className="w-1/3">{plant.genus} </span>|{" "}
-                          <span className="w-1/3">{plant.species}</span>
+                        <div className="w-4/5 flex justify-start m:justify-between">
+                          <span className="w-1/4">{plant.family}</span>|{" "}
+                          <span className="w-1/4">{plant.genus} </span>|{" "}
+                          <span className="w-1/4">{plant.species}</span>|{" "}
+                          <span className="w-1/4">{plant.commonName}</span>
                         </div>
-                        <div>
+                        <div className="w-1/5">
                           |<span>{statusUpdate(plant.elCode)}</span>
                         </div>
                       </Link>
