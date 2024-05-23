@@ -84,8 +84,8 @@ export default function Page() {
           </header>
           <div className="flex justify-center mt-10">
             <div className=" w-3/4 justify-center flex flex-col">
-              <div className="p-2 m-2 bg-moss border-4 border-dark rounded-xl shadow-2xl shadow-dark">
-                <div className=" bg-sand rounded-xl m-2 p-2">
+              <div className="p-2 m-2 bg-dark-blue border-4 border-darker-blue rounded-xl shadow-2xl shadow-darker-blue">
+                <div className=" bg-light-sand rounded-xl m-2 p-2">
                   <div className="flex justify-center">
                     <h1 className="w-max border-b-4 xl:text-5xl text-3xl border-dark pb-2">
                       My Collection
@@ -100,13 +100,13 @@ export default function Page() {
                       your collection.
                     </p>
                     <p>
-                      These plants are all from Alberta and were generated from this website. <Link className=" hover:text-brick hover:underline " href="https://www.albertaparks.ca/albertaparksca/management-land-use/alberta-conservation-information-management-system-acims/download-data/">Alberta Conservation Information Management System (ACIMS)</Link>
+                      These plants are all from Alberta and were generated from this website. <Link className=" underline hover:text-green hover:underline " href="https://www.albertaparks.ca/albertaparksca/management-land-use/alberta-conservation-information-management-system-acims/download-data/">Alberta Conservation Information Management System (ACIMS)</Link>
                     </p>
                   </div>
                 </div>
               </div>
-              <div className="p-2 m-2 bg-moss border-4 border-dark rounded-xl shadow-2xl shadow-dark xl:text-2xl text-lg">
-                <div className=" bg-sand m-2">
+              <div className="p-2 m-2 bg-dark-blue border-4 border-darker-blue rounded-xl shadow-2xl shadow-dark-blue xl:text-2xl text-lg">
+                <div className=" bg-light-sand m-2">
                   <div className="xl:text-3xl text-xl p-2 m-2">
                     <h1>Filter</h1>
                   </div>
@@ -116,7 +116,7 @@ export default function Page() {
                         Family:
                         <input
                           type="text"
-                          className="bg-sand border-b-2 border-dark w-full"
+                          className="bg-light-sand border-b-2 border-dark w-full"
                           onChange={(event) =>
                             handleFilterChange(event, "family")
                           }
@@ -128,7 +128,7 @@ export default function Page() {
                         Genus:
                         <input
                           type="text"
-                          className="bg-sand border-b-2 border-dark w-full"
+                          className="bg-light-sand border-b-2 border-dark w-full"
                           onChange={(event) =>
                             handleFilterChange(event, "genus")
                           }
@@ -140,7 +140,7 @@ export default function Page() {
                         Species:
                         <input
                           type="text"
-                          className="bg-sand border-b-2 border-dark w-full"
+                          className="bg-light-sand border-b-2 border-dark w-full"
                           onChange={(event) =>
                             handleFilterChange(event, "species")
                           }
@@ -150,12 +150,12 @@ export default function Page() {
                   </div>
                 </div>
               </div>
-              <div className="p-2 m-2 bg-moss border-4 border-dark rounded-xl shadow-2xl shadow-dark text-xs m:text-sm xl:text-base">
-                <ul className=" bg-sand m-2 p-2">
+              <div className="p-2 m-2 bg-dark-blue border-4 border-darker-blue rounded-xl shadow-2xl shadow-dark-blue text-xs m:text-sm xl:text-base">
+                <ul className=" bg-light-sand m-2 p-2">
                   {filteredAndSortedPlants.map((plant) => (
                     <li key={plant.id} className="">
                       <Link
-                        className="p-2 m-2 bg-sand flex border-b-2 border-dark hover:text-brick hover:border-brick "
+                        className="p-2 m-2 bg-light-sand flex border-b-2 border-dark hover:text-dark-green hover:border-dark-green "
                         href={`./${plant.elCode}`}
                       >
                         <div className="w-3/4 flex justify-start m:justify-between">
