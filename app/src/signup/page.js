@@ -25,9 +25,9 @@ export default function Page() {
         backgroundSize: "cover",
       }}
     >
-      <div className="w-screen h-screen flex justify-center">
-        <div className="w-2/5 bg-moss flex-col h-max rounded-3xl justify-center border-8 border-dark mt-64 ">
-          <div className="flex-col justify-center m-8 xl:text-4xl text-2xl font-mono bg-sand p-5 rounded-3xl">
+      <div className="w-screen h-screen flex justify-center text-gray-50">
+        <div className="w-2/5 bg-dark-blue flex-col h-max rounded-3xl justify-center border-8 border-darker-blue mt-64 ">
+          <div className="flex-col justify-center m-8 xl:text-4xl text-2xl font-mono bg-dark-green p-5 rounded-3xl">
             {loading ? (
               <div className="flex justify-center flex-col">
                 <div className="flex justify-center px-8 pt-10">
@@ -39,7 +39,7 @@ export default function Page() {
                 <div className="flex justify-center px-8 pt-10">
                   <button
                     type="button"
-                    className="bg-velvet text-brick px-10 font-mono m-8 py-4 rounded-full animate-pulse"
+                    className="bg-dark-blue text-gray-50 px-10 font-mono m-8 py-4 rounded-3xl animate-pulse"
                     disabled
                   >
                     Loading...
@@ -58,7 +58,7 @@ export default function Page() {
                   <p>{user.email}</p>
                 </div>
                 <div className="flex justify-center px-8 pt-10">
-                  <button className="flex bg-velvet text-brick px-10 font-mono m-8 py-4 rounded-full hover:bg-dark shadow-2xl shadow-dark transition duration-500 hover:-translate-y-1 hover:scale-110">
+                  <button className="flex bg-dark-blue text-gray-50 px-10 font-mono m-8 py-4 rounded-3xl hover:bg-light-green shadow-2xl shadow-dark-blue transition duration-500 hover:-translate-y-1 hover:scale-110">
                     <Link href="collection">My Collection</Link>
                   </button>
                 </div>
@@ -85,7 +85,7 @@ export default function Page() {
                           type="email"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
-                          className=" text-black m-2 w-full bg-sand border-b-2 border-black"
+                          className=" text-black m-2 w-full bg-gray-50 rounded-md "
                         />
                       </label>
                     </div>
@@ -96,7 +96,7 @@ export default function Page() {
                           type="password"
                           value={password}
                           onChange={(e) => setPassword(e.target.value)}
-                          className=" text-black m-2 w-full bg-sand border-b-2 border-black"
+                          className=" text-black m-2 w-full bg-gray-50 rounded-md"
                         />
                       </label>
                     </div>
@@ -104,7 +104,7 @@ export default function Page() {
                       <button
                         type="submit"
                         onSubmit={handleSubmit}
-                        className="bg-velvet text-brick px-10 font-mono m-8 py-4 rounded-full hover:bg-dark shadow-2xl shadow-dark transition duration-500 hover:-translate-y-1 hover:scale-110"
+                        className="bg-dark-blue text-gray-50 px-10 font-mono m-8 py-4 rounded-3xl hover:bg-light-green shadow-2xl shadow-dark transition duration-500 hover:-translate-y-1 hover:scale-110"
                       >
                         {" "}
                         Submit
