@@ -162,7 +162,7 @@ export default function Page() {
                           <span className="w-1/4">{plant.family}</span>|{" "}
                           <span className="w-1/4">{plant.genus} </span>|{" "}
                           <span className="w-1/4">{plant.species}</span>|{" "}
-                          <span className="w-1/4">{plant.commonName}</span>
+                          <span className="w-1/4">{plant.commonName} {plant.variationSubspeices}</span>
                         </div>
                         <div className="w-1/5">
                           |<span>{statusUpdate(plant.elCode)}</span>
