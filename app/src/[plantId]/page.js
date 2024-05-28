@@ -113,7 +113,7 @@ export default function Page({ params }) {
               <div className="p-2 m-2 bg-dark-blue border-4 border-darker-blue rounded-xl shadow-2xl shadow-dark">
                 <div className=" bg-light-sand rounded-xl m-2 p-2">
                   <div className="flex justify-center">
-                    <h1 className="w-max border-b-4 xl:text-3xl text-xl border-dark">
+                    <h1 className="w-max border-b-4 xl:text-3xl text-xl border-dark-blue">
                       Plant Information
                     </h1>
                   </div>
@@ -142,7 +142,7 @@ export default function Page({ params }) {
               <div className="p-2 m-2 bg-dark-blue border-4 border-darker-blue rounded-xl shadow-2xl shadow-dark">
                 <div className=" bg-light-sand rounded-xl m-2 p-2">
                   <div className="flex justify-center w-full p-2 m-2">
-                    <h1 className="w-max border-b-4 xl:text-3xl text-xl border-dark">
+                    <h1 className="w-max border-b-4 xl:text-3xl text-xl border-dark-blue">
                       {" "}
                       My Photos
                     </h1>
@@ -153,7 +153,7 @@ export default function Page({ params }) {
                         <div key={plant.id} className="flex p-2 justify-center">
                           <Link href={image}>
                             <img
-                              className="border-4 border-dark rounded-xl shadow-2xl shadow-dark"
+                              className="border-4 border-dark-blue rounded-xl shadow-2xl shadow-dark"
                               src={image}
                               alt="plant"
                             />
@@ -199,7 +199,7 @@ export default function Page({ params }) {
                 <div className=" bg-light-sand rounded-xl m-2 p-2">
                   <form className="text-black flex-col">
                     <div className="flex justify-center">
-                      <h1 className="w-max border-b-4 xl:text-3xl text-xl border-dark">
+                      <h1 className="w-max border-b-4 xl:text-3xl text-xl border-dark-blue">
                         Notes
                       </h1>
                     </div>
