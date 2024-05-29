@@ -71,7 +71,7 @@ export default function Page() {
     <>
       {user ? (
         <main
-          className="font-mono flex flex-col h-screen border-b-8 border-dark shadow-xl shadow-dark"
+          className="font-mono flex flex-col h-screen border-b-8 border-dark-blue shadow-xl shadow-dark"
           style={{
             backgroundPosition: "center",
             backgroundImage:
@@ -87,7 +87,7 @@ export default function Page() {
               <div className="p-2 m-2 bg-dark-blue border-4 border-darker-blue rounded-xl shadow-2xl shadow-darker-blue">
                 <div className=" bg-light-sand rounded-xl m-2 p-2">
                   <div className="flex justify-center">
-                    <h1 className="w-max border-b-4 xl:text-5xl text-3xl border-dark pb-2">
+                    <h1 className="w-max border-b-4 xl:text-5xl text-3xl border-dark-blue pb-2">
                       My Collection
                     </h1>
                   </div>
@@ -116,7 +116,7 @@ export default function Page() {
                         Family:
                         <input
                           type="text"
-                          className="bg-light-sand border-b-2 border-dark w-full"
+                          className="bg-light-sand border-b-2 border-dark-blue w-full"
                           onChange={(event) =>
                             handleFilterChange(event, "family")
                           }
@@ -128,7 +128,7 @@ export default function Page() {
                         Genus:
                         <input
                           type="text"
-                          className="bg-light-sand border-b-2 border-dark w-full"
+                          className="bg-light-sand border-b-2 border-dark-blue w-full"
                           onChange={(event) =>
                             handleFilterChange(event, "genus")
                           }
@@ -140,7 +140,7 @@ export default function Page() {
                         Species:
                         <input
                           type="text"
-                          className="bg-light-sand border-b-2 border-dark w-full"
+                          className="bg-light-sand border-b-2 border-dark-blue w-full"
                           onChange={(event) =>
                             handleFilterChange(event, "species")
                           }
@@ -155,7 +155,7 @@ export default function Page() {
                   {filteredAndSortedPlants.map((plant) => (
                     <li key={plant.id} className="">
                       <Link
-                        className="p-2 m-2 bg-light-sand flex border-b-2 border-dark hover:text-dark-green hover:border-dark-green "
+                        className="p-2 m-2 bg-light-sand flex border-b-2 border-dark-blue hover:text-dark-green hover:border-dark-green "
                         href={`./${plant.elCode}`}
                       >
                         <div className="w-4/5 flex justify-start m:justify-between">
