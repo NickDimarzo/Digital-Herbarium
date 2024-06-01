@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useUserAuth } from "./_utils/auth-context";
 import Link from "next/link";
+import Card from "./components/card";
 
 export default function Page() {
   const [email, setEmail] = useState("");
@@ -25,23 +26,60 @@ export default function Page() {
       // }}
     >
       <div className="w-screen h-screen flex justify-center bg-light-sand text-gray-50">
-        <div className=" w-4/5 md:w-3/5 xl:w-2/5 bg-dark-blue flex-col h-max rounded-3xl justify-center border-8 border-darker-blue xl:mt-16 m-8 ">
+        <div className="bg-dark-blue flex-col h-max rounded-3xl justify-center border-8 border-darker-blue xl:mt-16 m-8 ">
           <div className="flex-col justify-center m-4 xl:m-8 text-sm  m:text-lg lg:text-2xl xl:text-4xl font-mono bg-dark-green p-2 xl:p-5 rounded-3xl shadow-2xl ">
             {user ? (
-              <div className="">
-                <div className="flex justify-center py-2">
-                  <h1>Welcome</h1>
+              <div>
+                <div className="">
+                  <div className="flex justify-center py-2">
+                    <h1>Welcome</h1>
+                  </div>
+                  <div className="flex justify-center py-2">
+                    <p>you are logged in as</p>
+                  </div>
+                  <div className="flex justify-center py-2">
+                    <p>{user.email}</p>
+                  </div>
+                  <div className="flex justify-center">
+                  </div>
                 </div>
-                <div className="flex justify-center py-2">
-                  <p>you are logged in as</p>
-                </div>
-                <div className="flex justify-center py-2">
-                  <p>{user.email}</p>
-                </div>
-                <div className="flex justify-center">
-                  <button className="bg-dark-blue text-gray-50 px-10  font-mono m-8 py-4 rounded-2xl hover:bg-light-green shadow-2xl shadow-dark-blue transition duration-500 hover:-translate-y-1 hover:scale-110">
-                    <Link href="src/collection">My Collection</Link>
-                  </button>
+                <div>
+                  <div className="flex flex-row gap-5">
+                    <div className="w-1/2">
+                      <Card
+                        title="My Collection"
+                        route="src/collection"
+                        description="Check out your collection here"
+                        buttonText="Collection"
+                      />
+                    </div>
+                    <div className="w-1/2">
+                      <Card
+                        title="Resources"
+                        route="/src"
+                        description="This feature is coming soon"
+                        buttonText="Resources"
+                      />
+                    </div>
+                  </div>
+                  <div className="flex flex-row gap-5">
+                    <div className="w-1/2">
+                      <Card
+                        title="Share"
+                        route="/src"
+                        description="This feature is coming soon"
+                        buttonText="Share"
+                      />
+                    </div>
+                    <div className="w-1/2">
+                      <Card
+                        title="Discover"
+                        route="/src"
+                        description="This feature is coming soon"
+                        buttonText="Discover"
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             ) : (
