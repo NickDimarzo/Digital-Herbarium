@@ -43,6 +43,7 @@ export default function Page() {
       </div>
       <div>
         <p>TEST</p>
+        <Link href="/src/test">Test page</Link>
       </div>
     </main>
   );
