@@ -1,11 +1,12 @@
 import Link from "next/link";
+import FeatureCard from "../components/feature-card";
 
 export default function Page() {
   return (
     // Main Container
     <div className="flex flex-col w-full justify-center font-mono">
       {/*Top Container*/}
-      <div className="flex flex-row w-7/8 justify-center m-20 ">
+      <div className="flex flex-row w-7/8 justify-center mx-20 my-10 ">
         {/*Left Container*/}
         <div className="flex-col w-1/3 flex bg-darker-blue justify-center items-center rounded-l-2xl">
           <div className="h-1/3 flex items-center">
@@ -32,67 +33,25 @@ export default function Page() {
         </div>
       </div>
       {/*Bottom Container*/}
-      <div className="flex justify-center gap-5 border-4 border-dark-blue m-20">
+      <div className="flex justify-center mx-20 my-5">
         {/*Left Container*/}
-        <div className="flex-col w-1/3 flex items-center">
-          <div className="flex items-center">
-            <h1 className="text-5xl">Feature 1</h1>
-          </div>
-          <div className=" w-full h-full flex justify-center">
-            <img
-              className="m-12 object-cover rounded-2xl"
-              src="https://images.unsplash.com/photo-1599864231004-948c8dcb3bbe?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzB8fGFsYmVydGF8ZW58MHx8MHx8fDA%3D"
-            />
-          </div>
-          <div className="flex items-center justify-center">
-            <p className="text-3xl">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi
-              incidunt officiis dolorem accusamus odit perferendis aperiam eaque
-              voluptas, iure suscipit maxime doloremque est laborum recusandae
-              illo fugit debitis amet consequatur.
-            </p>
-          </div>
-        </div>
+        <FeatureCard
+          header="Feature 1"
+          img="https://images.unsplash.com/photo-1599864231004-948c8dcb3bbe?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzB8fGFsYmVydGF8ZW58MHx8MHx8fDA%3D"
+          text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi incidunt officiis dolorem accusamus odit perferendis aperiam eaque voluptas, iure suscipit maxime doloremque est laborum recusandae illo fugit debitis amet consequatur."
+        />
         {/*Center Container*/}
-        <div className="flex-col w-1/3 flex items-center">
-          <div className="flex items-center">
-            <h1 className="text-5xl">Feature 2</h1>
-          </div>
-          <div className="w-full h-full flex justify-center">
-            <img
-              className="m-12 object-cover"
-              src="https://plus.unsplash.com/premium_photo-1673102662960-094f49b1d4e5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTE3fHxwbGFudHN8ZW58MHx8MHx8fDA%3D"
-            />
-          </div>
-          <div className="flex items-center">
-            <p className="text-3xl">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi
-              incidunt officiis dolorem accusamus odit perferendis aperiam eaque
-              voluptas, iure suscipit maxime doloremque est laborum recusandae
-              illo fugit debitis amet consequatur.
-            </p>
-          </div>
-        </div>
+        <FeatureCard
+          header="Feature 2"
+          img="https://plus.unsplash.com/premium_photo-1673102662960-094f49b1d4e5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTE3fHxwbGFudHN8ZW58MHx8MHx8fDA%3D"
+          text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi incidunt officiis dolorem accusamus odit perferendis aperiam eaque voluptas, iure suscipit maxime doloremque est laborum recusandae illo fugit debitis amet consequatur."
+        />
         {/*Right Container*/}
-        <div className="flex-col w-1/3 flex items-center justify-between">
-          <div className="flex items-center">
-            <h1 className="text-5xl">Feature 3</h1>
-          </div>
-          <div className=" w-full h-full flex justify-center">
-            <img
-              className="m-12 object-cover"
-              src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fG5hdHVyZXxlbnwwfHwwfHx8MA%3D%3D"
-            />
-          </div>
-          <div className="flex items-center">
-            <p className="text-3xl">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi
-              incidunt officiis dolorem accusamus odit perferendis aperiam eaque
-              voluptas, iure suscipit maxime doloremque est laborum recusandae
-              illo fugit debitis amet consequatur.
-            </p>
-          </div>
-        </div>
+        <FeatureCard
+          header="Feature 3"
+          img="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fG5hdHVyZXxlbnwwfHwwfHx8MA%3D%3D"
+          text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi incidunt officiis dolorem accusamus odit perferendis aperiam eaque voluptas, iure suscipit maxime doloremque est laborum recusandae illo fugit debitis amet consequatur."
+        />
       </div>
     </div>
   );
