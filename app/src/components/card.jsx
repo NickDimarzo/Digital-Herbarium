@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Card({ title, description, route, buttonText, image }) {
   return (
-    <div className=" flex-col justify-center m-4 xl:m-8 text-sm  m:text-lg lg:text-xl xl:text-2xl font-mono bg-dark-green p-2 xl:p-5 rounded-3xl shadow-2xl border-darker-blue border-4">
+    <div className=" flex-col justify-center m-2 p-4 text-sm  m:text-lg lg:text-xl xl:text-2xl font-mono bg-dark-green rounded-2xl shadow-2xl">
       <div className="">
         <div className="flex justify-start py-2">
           <h1 className=" font-bold">{title}</h1>

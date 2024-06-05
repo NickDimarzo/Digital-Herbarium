@@ -46,7 +46,7 @@ export default function Page() {
                   </div>
                 </div>
                 <div>
-                  <div className="flex flex-row gap-5">
+                  <div className="flex flex-row">
                     <div className="w-1/2">
                       <Card
                         title="My Collection"
@@ -66,7 +66,7 @@ export default function Page() {
                       />
                     </div>
                   </div>
-                  <div className="flex flex-row gap-5">
+                  <div className="flex flex-row ">
                     <div className="w-1/2">
                       <Card
                         title="Share"
