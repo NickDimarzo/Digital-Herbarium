@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useUserAuth } from "./_utils/auth-context";
 import Link from "next/link";
 import Card from "./components/card";
+import NavBar from "./components/nav-bar";
 
 export default function Page() {
   const [email, setEmail] = useState("");
@@ -25,12 +26,13 @@ export default function Page() {
       //   backgroundSize: "cover",
       // }}
     >
-      <div className="w-screen h-screen flex justify-center bg-light-sand text-gray-50">
-        <div className="bg-dark-blue flex-col h-max rounded-3xl justify-center border-8 border-darker-blue xl:mt-16 m-8 ">
-          <div className="flex-col justify-center m-4 xl:m-8 text-sm  m:text-lg lg:text-2xl xl:text-4xl font-mono bg-dark-green p-2 xl:p-5 rounded-3xl shadow-2xl ">
+      <NavBar />
+      <div className="w-screen h-screen flex justify-center bg-light-sand text-white">
+        <div className="flex-col h-max rounded-3xl justify-center xl:mt-16 m-8 ">
+          <div className="flex-col justify-center m-4 xl:m-8 text-sm  m:text-lg lg:text-2xl xl:text-4xl font-mono p-2 xl:p-5 ">
             {user ? (
               <div>
-                <div className="">
+                <div className=" text-black">
                   <div className="flex justify-center py-2">
                     <h1>Welcome</h1>
                   </div>
@@ -51,6 +53,7 @@ export default function Page() {
                         route="src/collection"
                         description="Check out your collection here"
                         buttonText="Collection"
+                        image="https://images.unsplash.com/photo-1698848053125-56ffcd25c7f1?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0fHx8ZW58MHx8fHx8"
                       />
                     </div>
                     <div className="w-1/2">
@@ -59,6 +62,7 @@ export default function Page() {
                         route="/src"
                         description="This feature is coming soon"
                         buttonText="Resources"
+                        image="https://media.istockphoto.com/id/537599600/photo/green-is-a-way-of-life.webp?b=1&s=170667a&w=0&k=20&c=xruXkXZDKoe9A_6xcJPoL3X6zOv9fSCnUgoPj6-z1gw="
                       />
                     </div>
                   </div>
@@ -69,6 +73,7 @@ export default function Page() {
                         route="/src"
                         description="This feature is coming soon"
                         buttonText="Share"
+                        image="https://images.unsplash.com/photo-1421789665209-c9b2a435e3dc?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGZvcnJlc3R8ZW58MHx8MHx8fDA%3D"
                       />
                     </div>
                     <div className="w-1/2">
@@ -77,6 +82,7 @@ export default function Page() {
                         route="/src"
                         description="This feature is coming soon"
                         buttonText="Discover"
+                        image="https://plus.unsplash.com/premium_photo-1675342786681-e33a19414cfd?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bGVhdmVzfGVufDB8fDB8fHww"
                       />
                     </div>
                   </div>
