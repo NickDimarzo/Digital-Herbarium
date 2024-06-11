@@ -76,7 +76,7 @@ export default function Page() {
                     please fill out the form below to create an account
                   </p>
                 </div>
-                <div className="felx-col justify-center px-12 pt-10">
+                <div className="flex-col justify-center px-12 pt-10">
                   <form onSubmit={handleSubmit}>
                     <div className="flex justify-end">
                       <label className="w-full">
