@@ -89,7 +89,8 @@ export default function Page() {
                 </div>
               </div>
             ) : (
-              <div className="flex-col items-center ">
+              <div className="bg-dark-blue p-8 rounded-3xl border-8 border-darker-blue">
+              <div className="flex-col items-center bg-dark-green p-4 rounded-3xl ">
                 <div className="flex justify-center w-full items-center">
                   <h1>Welcome to account</h1>
                 </div>
@@ -141,13 +142,14 @@ export default function Page() {
                 </div>
                 <div className="flex justify-center">
                   <Link
-                    className="underline hover:text-brick"
+                    className="underline hover:text-dark-blue"
                     href="src/signup"
                   >
                     Sign up
                   </Link>
                 </div>
               </div>
+            </div>
             )}
           </div>
         </div>
