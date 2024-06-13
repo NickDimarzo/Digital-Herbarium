@@ -5,7 +5,7 @@ import { fetchUserPlants } from "../_services/DbServices";
 import { useUserAuth } from "../_utils/auth-context";
 import NavBar from "../components/nav-bar";
 import Link from "next/link";
-import plantsData from "../assets/new-herbarium.json";
+import plantsData from "../alberta-plants/new-herbarium.json";
 
 export default function Page() {
   const [userPlants, setUserPlants] = useState([]);

@@ -7,7 +7,7 @@ import { useUserAuth } from "../../src/_utils/auth-context";
 import { useEffect } from "react";
 import { fetchUserPlants } from "../../src/_services/DbServices";
 import { addUserPlant } from "../../src/_services/DbServices";
-import plantsData from "../../src/assets/new-herbarium.json";
+import plantsData from "../../src/alberta-plants/new-herbarium.json";
 import { uploadImages } from "../../src/_services/DbServices";
 import { fetchPlantImages } from "../../src/_services/DbServices";
 import Image from 'next/image';
