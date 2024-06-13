@@ -4,9 +4,9 @@ import FeatureCard from "../components/feature-card";
 export default function Page() {
   return (
     // Main Container
-    <div className="flex flex-col w-full justify-center font-mono">
+    <div className="flex flex-col w-full justify-center items-center font-mono">
       {/*Top Container*/}
-      <div className="flex flex-row w-7/8 justify-center mx-20 my-10 ">
+      <div className="flex flex-col xl:flex-row w-7/8 mx-20 my-10 items-center justify-center xl:items-stretch ">
         {/*Left Container*/}
         <div className="flex-col w-1/2 xl:w-1/3 flex bg-darker-blue justify-center items-center rounded-l-2xl">
           <div className="flex items-center p-4 justify-center">
@@ -25,7 +25,7 @@ export default function Page() {
           </div>
         </div>
         {/*Right Container*/}
-        <div className="w-1/2 xl:w-1/3 flex justify-center bg-light-green rounded-r-2xl">
+        <div className="w-1/2 xl:w-1/3 flex justify-center bg-light-green rounded-r-2xl p-4  ">
           <img
             className="w-full m-12 object-cover rounded-2xl border-4 border-dark-blue shadow-2xl shadow-dark-blue "
             src="https://media.istockphoto.com/id/1466653322/photo/close-up-woman-planting-a-young-fir-tree-in-the-forest-putting-it-down-on-the-ground.jpg?s=612x612&w=0&k=20&c=6B_xWx9GiHJzz24ilUUz-dfhPnY4iujhSYWj9aFzkVg="
