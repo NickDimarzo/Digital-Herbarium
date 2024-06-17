@@ -153,7 +153,7 @@ export default function Page({ params }) {
                         <div key={plant.id} className="flex p-2 justify-center">
                           <Link href={image}>
                             <img
-                              className="border-4 border-dark-blue rounded-xl shadow-2xl shadow-dark"
+                              className="border-4 border-dark-blue rounded-xl shadow-2xl shadow-dark object-cover h-72 w-72"
                               src={image}
                               alt="plant"
                             />
