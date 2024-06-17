@@ -27,7 +27,7 @@ export default function Page() {
         {/*Right Container*/}
         <div className="w-1/2 xl:w-1/3 flex justify-center bg-light-green rounded-b-2xl xl:rounded-r-2xl xl:rounded-bl-none p-4">
           <img
-            className="w-full m-12 object-cover rounded-2xl border-4 border-dark-blue shadow-2xl shadow-dark-blue "
+            className="m-12 object-cover rounded-2xl border-4 border-dark-blue shadow-2xl shadow-dark-blue w-96 h-96 "
             src="https://media.istockphoto.com/id/1466653322/photo/close-up-woman-planting-a-young-fir-tree-in-the-forest-putting-it-down-on-the-ground.jpg?s=612x612&w=0&k=20&c=6B_xWx9GiHJzz24ilUUz-dfhPnY4iujhSYWj9aFzkVg="
           />
         </div>
@@ -44,13 +44,13 @@ export default function Page() {
         <FeatureCard
           header="Feature 2"
           img="/assets/images/icon-plant.png"
-          text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi incidunt officiis dolorem accusamus odit perferendis aperiam eaque voluptas, iure suscipit maxime doloremque est laborum recusandae illo fugit debitis amet consequatur."
+          text="Sequi incidunt officiis dolorem accusamus odit perferendis aperiam eaque voluptas, iure suscipit maxime doloremque est laborum recusandae illo fugit debitis amet consequatur."
         />
         {/*Right Container*/}
         <FeatureCard
           header="Feature 3"
           img="/assets/images/save-icon.png"
-          text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi incidunt officiis dolorem accusamus odit perferendis aperiam eaque voluptas, iure suscipit maxime doloremque est laborum recusandae illo fugit debitis amet consequatur."
+          text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi incidunt officiis dolorem accusamus odit perferendis aperiam eaque voluptas, iure suscipit maxime doloremque est laborum recusandae illo fugit debitis amet consequatur. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi incidunt officiis dolorem accusamus odit perferendis aperiam eaque voluptas, iure suscipit maxime doloremque est laborum recusandae illo fugit debitis amet consequatur"
         />
       </div>
     </div>
