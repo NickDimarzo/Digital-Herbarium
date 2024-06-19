@@ -33,7 +33,7 @@ export default function Page() {
         </div>
       </div>
       {/*Bottom Container*/}
-      <div className="flex flex-col xl:flex-row items-center mx-20">
+      <div className="flex flex-col xl:flex-row items-center sm:mx-20">
         {/*Left Container*/}
         <FeatureCard
           header="Feature 1"
