@@ -27,31 +27,18 @@ export default function Page() {
       // }}
     >
       <NavBar />
-      <div className="w-screen h-screen flex justify-center bg-light-sand text-white">
+      <div className=" h-screen flex justify-center bg-light-sand text-white">
         <div className="flex-col h-max rounded-3xl justify-center xl:mt-16 m-8 ">
           <div className="flex-col justify-center m-4 xl:m-8 text-sm  m:text-lg lg:text-2xl xl:text-4xl font-mono p-2 xl:p-5 ">
             {user ? (
               <div>
-                <div className=" text-black">
-                  <div className="flex justify-center py-2">
-                    <h1>Welcome</h1>
-                  </div>
-                  <div className="flex justify-center py-2">
-                    <p>you are logged in as</p>
-                  </div>
-                  <div className="flex justify-center py-2">
-                    <p>{user.email}</p>
-                  </div>
-                  <div className="flex justify-center">
-                  </div>
-                </div>
                 <div>
                   <div className="flex flex-row">
                     <div className="w-1/2">
                       <Card
                         title="My Collection"
                         route="src/collection"
-                        description="Check out your collection here"
+                        description="Add new plants and view your collection here."
                         buttonText="Collection"
                         image="https://images.unsplash.com/photo-1698848053125-56ffcd25c7f1?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0fHx8ZW58MHx8fHx8"
                       />
@@ -60,8 +47,8 @@ export default function Page() {
                       <Card
                         title="Resources"
                         route="/src"
-                        description="This feature is coming soon"
-                        buttonText="Resources"
+                        description="Find resources to help you identify your plants here."
+                        buttonText="Coming Soon"
                         image="https://media.istockphoto.com/id/537599600/photo/green-is-a-way-of-life.webp?b=1&s=170667a&w=0&k=20&c=xruXkXZDKoe9A_6xcJPoL3X6zOv9fSCnUgoPj6-z1gw="
                       />
                     </div>
@@ -71,8 +58,8 @@ export default function Page() {
                       <Card
                         title="Share"
                         route="/src"
-                        description="This feature is coming soon"
-                        buttonText="Share"
+                        description="Share your plants with other users here."
+                        buttonText="Coming Soon"
                         image="https://images.unsplash.com/photo-1421789665209-c9b2a435e3dc?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGZvcnJlc3R8ZW58MHx8MHx8fDA%3D"
                       />
                     </div>
@@ -80,7 +67,7 @@ export default function Page() {
                       <Card
                         title="Discover"
                         route="/src"
-                        description="This feature is coming soon"
+                        description="Plan your next excursion here."
                         buttonText="Discover"
                         image="https://plus.unsplash.com/premium_photo-1675342786681-e33a19414cfd?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bGVhdmVzfGVufDB8fDB8fHww"
                       />

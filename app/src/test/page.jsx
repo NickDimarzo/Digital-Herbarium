@@ -36,21 +36,21 @@ export default function Page() {
       <div className="flex flex-col xl:flex-row items-center sm:mx-20">
         {/*Left Container*/}
         <FeatureCard
-          header="Feature 1"
+          header="Discover"
           img="/assets/images/reading-book.png"
-          text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi incidunt officiis dolorem accusamus odit perferendis aperiam eaque voluptas, iure suscipit maxime doloremque est laborum recusandae illo fugit debitis amet consequatur."
+          text="Find the tools and resources you need to begin identifying plants and building your collection."
         />
         {/*Center Container*/}
         <FeatureCard
-          header="Feature 2"
+          header="Identify"
           img="/assets/images/icon-plant.png"
-          text="Sequi incidunt officiis dolorem accusamus odit perferendis aperiam eaque voluptas, iure suscipit maxime doloremque est laborum recusandae illo fugit debitis amet consequatur."
+          text="Collect, identify and capture your plant findings in the field or at home."
         />
         {/*Right Container*/}
         <FeatureCard
-          header="Feature 3"
+          header="Save"
           img="/assets/images/save-icon.png"
-          text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi incidunt officiis dolorem accusamus odit perferendis aperiam eaque voluptas, iure suscipit maxime doloremque est laborum recusandae illo fugit debitis amet consequatur. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi incidunt officiis dolorem accusamus odit perferendis aperiam eaque voluptas, iure suscipit maxime doloremque est laborum recusandae illo fugit debitis amet consequatur"
+          text="Store your plant images and details of your findings in your personal digital herbarium."
         />
       </div>
     </div>
