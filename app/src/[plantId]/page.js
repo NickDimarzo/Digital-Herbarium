@@ -98,12 +98,12 @@ export default function Page({ params }) {
       {user ? (
         <main
           className="h-full flex-col justify-center font-mono xl:text-2xl text-lg shadow-xl shadow-dark border-b-8 border-dark"
-          style={{
-            backgroundPosition: "center",
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1426604966848-d7adac402bff?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
-            backgroundSize: "cover",
-          }}
+          // style={{
+          //   backgroundPosition: "center",
+          //   backgroundImage:
+          //     "url('https://images.unsplash.com/photo-1426604966848-d7adac402bff?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
+          //   backgroundSize: "cover",
+          // }}
         >
           <header>
             <NavBar />
