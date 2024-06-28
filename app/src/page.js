@@ -27,7 +27,7 @@ export default function Page() {
       // }}
     >
       <NavBar />
-      <div className=" h-screen flex justify-center bg-light-sand text-white">
+      <div className=" h-screen flex justify-center text-white">
         <div className="flex-col h-max rounded-3xl justify-center xl:mt-16 m-8 ">
           <div className="flex-col justify-center m-4 xl:m-8 text-sm  m:text-lg lg:text-2xl xl:text-4xl font-mono p-2 xl:p-5 ">
             {user ? (
@@ -98,7 +98,7 @@ export default function Page() {
                           type="email"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
-                          className=" text-black m-2 w-full  bg-light-sand border-b-2 border-black rounded-md"
+                          className=" text-black m-2 w-full  bg-gray-50 border-b-2 border-black rounded-md"
                         />
                       </label>
                     </div>
@@ -109,7 +109,7 @@ export default function Page() {
                           type="password"
                           value={password}
                           onChange={(e) => setPassword(e.target.value)}
-                          className=" text-black m-2 w-full bg-light-sand border-b-2 border-black rounded-md"
+                          className=" text-black m-2 w-full bg-gray-50 border-b-2 border-black rounded-md"
                         />
                       </label>
                     </div>
