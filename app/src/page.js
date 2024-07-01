@@ -33,8 +33,8 @@ export default function Page() {
             {user ? (
               <div>
                 <div>
-                  <div className="flex flex-row">
-                    <div className="w-1/2">
+                  <div className=" flex flex-col sm:flex-row">
+                    <div className="flex m:w-1/2">
                       <Card
                         title="My Collection"
                         route="src/collection"
@@ -43,7 +43,7 @@ export default function Page() {
                         image="https://images.unsplash.com/photo-1698848053125-56ffcd25c7f1?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0fHx8ZW58MHx8fHx8"
                       />
                     </div>
-                    <div className="w-1/2">
+                    <div className="flex m:w-1/2">
                       <Card
                         title="Resources"
                         route="/src"
@@ -53,8 +53,8 @@ export default function Page() {
                       />
                     </div>
                   </div>
-                  <div className="flex flex-row ">
-                    <div className="w-1/2">
+                  <div className="flex flex-col sm:flex-row ">
+                    <div className="flex m:w-1/2">
                       <Card
                         title="Share"
                         route="/src"
@@ -63,7 +63,7 @@ export default function Page() {
                         image="https://images.unsplash.com/photo-1421789665209-c9b2a435e3dc?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGZvcnJlc3R8ZW58MHx8MHx8fDA%3D"
                       />
                     </div>
-                    <div className="w-1/2">
+                    <div className="flex m:w-1/2">
                       <Card
                         title="Discover"
                         route="/src"
