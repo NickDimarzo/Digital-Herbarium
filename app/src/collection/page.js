@@ -84,7 +84,7 @@ export default function Page() {
             <NavBar />
           </header>
           <div className="flex justify-center mt-10">
-            <div className=" w-3/4 justify-center flex flex-col">
+            <div className=" w-full sm:w-3/4 justify-center flex flex-col">
               <div className="p-2 m-2 bg-dark-blue border-4 border-darker-blue rounded-xl shadow-2xl shadow-darker-blue">
                 <div className=" bg-light-sand rounded-xl m-2 p-2">
                   <div className="flex justify-center">
@@ -111,7 +111,7 @@ export default function Page() {
                   <div className="xl:text-3xl text-xl p-2 m-2">
                     <h1>Filter</h1>
                   </div>
-                  <div className="flex justify-between">
+                  <div className="flex flex-col sm:flex-row justify-between">
                     <div className="p-2 m-2">
                       <label>
                         Family:
@@ -159,14 +159,14 @@ export default function Page() {
                         className="p-2 m-2 bg-light-sand flex border-b-2 border-dark-blue hover:text-dark-green hover:border-dark-green "
                         href={`./${plant.elCode}`}
                       >
-                        <div className="w-4/5 flex justify-start m:justify-between">
-                          <span className="w-1/4">{plant.family}</span>|{" "}
-                          <span className="w-1/4">{plant.genus} </span>|{" "}
-                          <span className="w-1/4">{plant.species}</span>|{" "}
-                          <span className="w-1/4">{plant.commonName} {plant.variationSubspeices}</span>
+                        <div className=" flex flex-col sm:flex-row w-4/5 justify-start m:justify-between">
+                          <span className="w-full sm:w-1/4">{plant.family}</span>|{" "}
+                          <span className="w-full sm:w-1/4">{plant.genus} </span>|{" "}
+                          <span className="w-full sm:w-1/4">{plant.species}</span>|{" "}
+                          <span className="w-full sm:w-1/4">{plant.commonName} {plant.variationSubspeices}</span>
                         </div>
-                        <div className="w-1/5">
-                          |<span>{statusUpdate(plant.elCode)}</span>
+                        <div className="flex justify-end w-1/5">
+                          <span>{statusUpdate(plant.elCode)}</span>
                         </div>
                       </Link>
                     </li>

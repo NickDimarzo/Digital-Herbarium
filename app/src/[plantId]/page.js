@@ -109,7 +109,7 @@ export default function Page({ params }) {
             <NavBar />
           </header>
           <div className="flex justify-center mt-10">
-            <div className=" w-3/4 justify-center flex flex-col">
+            <div className=" w-full sm:w-3/4 justify-center flex flex-col">
               <div className="p-2 m-2 bg-dark-blue border-4 border-darker-blue rounded-xl shadow-2xl shadow-dark">
                 <div className=" bg-light-sand rounded-xl m-2 p-2">
                   <div className="flex justify-center">
@@ -147,7 +147,7 @@ export default function Page({ params }) {
                       My Photos
                     </h1>
                   </div>
-                  <div className="grid grid-flow-row grid-cols-3 justify-center">
+                  <div className=" sm:grid sm:grid-flow-row sm:grid-cols-3 justify-center">
                     {userImages && userImages.length > 0 ? (
                       userImages.map((image) => (
                         <div key={plant.id} className="flex p-2 justify-center">
