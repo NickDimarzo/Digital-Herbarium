@@ -46,7 +46,7 @@ export default function Page() {
                     <div className="flex m:w-1/2">
                       <Card
                         title="Resources"
-                        route="/src"
+                        route="/src/resources"
                         description="Find resources to help you identify your plants here."
                         buttonText="Coming Soon"
                         image="https://media.istockphoto.com/id/537599600/photo/green-is-a-way-of-life.webp?b=1&s=170667a&w=0&k=20&c=xruXkXZDKoe9A_6xcJPoL3X6zOv9fSCnUgoPj6-z1gw="
