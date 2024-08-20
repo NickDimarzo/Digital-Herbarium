@@ -88,7 +88,7 @@ export default function Page() {
               <div className="p-2 m-2 bg-dark-blue border-4 border-darker-blue rounded-xl shadow-2xl shadow-darker-blue">
                 <div className=" bg-light-sand rounded-xl m-2 p-2">
                   <div className="flex justify-center">
-                    <h1 className="w-max border-b-4 xl:text-5xl text-3xl border-dark-blue pb-2">
+                    <h1 className="w-max xl:text-5xl text-3xl pb-2">
                       My Collection
                     </h1>
                   </div>
@@ -160,9 +160,9 @@ export default function Page() {
                         href={`./${plant.elCode}`}
                       >
                         <div className=" flex flex-col sm:flex-row w-4/5 justify-start m:justify-between">
-                          <span className="w-full sm:w-1/4">{plant.family}</span>|{" "}
-                          <span className="w-full sm:w-1/4">{plant.genus} </span>|{" "}
-                          <span className="w-full sm:w-1/4">{plant.species}</span>|{" "}
+                          <span className="w-full sm:w-1/4">{plant.family}</span>{" "}
+                          <span className="w-full sm:w-1/4">{plant.genus} </span>{" "}
+                          <span className="w-full sm:w-1/4">{plant.species}</span>{" "}
                           <span className="w-full sm:w-1/4">{plant.commonName} {plant.variationSubspeices}</span>
                         </div>
                         <div className="flex justify-end w-1/5">
