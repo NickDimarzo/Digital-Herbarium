@@ -1,15 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import NavBar from "../components/nav-bar";
+import NavBar from "../../components/nav-bar";
 import { useState } from "react";
-import { useUserAuth } from "../../src/_utils/auth-context";
+import { useUserAuth } from "../../_utils/auth-context";
 import { useEffect } from "react";
-import { fetchUserPlants } from "../../src/_services/DbServices";
-import { addUserPlant } from "../../src/_services/DbServices";
-import plantsData from "../../src/alberta-plants/new-herbarium.json";
-import { uploadImages } from "../../src/_services/DbServices";
-import { fetchPlantImages } from "../../src/_services/DbServices";
+import { fetchUserPlants } from "../../_services/DbServices";
+import { addUserPlant } from "../../_services/DbServices";
+import plantsData from "../../alberta-plants/new-herbarium.json";
+import { uploadImages } from "../../_services/DbServices";
+import { fetchPlantImages } from "../../_services/DbServices";
 import Image from 'next/image';
 
 export default function Page({ params }) {
