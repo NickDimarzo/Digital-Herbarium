@@ -69,7 +69,7 @@ export default function Page() {
 
   return (
     <>
-      {user?  ( // add this ".emailVerified ?"
+      {user?.emailVerified ?  ( 
         <main
           className="font-mono"
           // className="font-mono flex flex-col h-screen border-b-8 border-dark-blue shadow-xl shadow-dark"
