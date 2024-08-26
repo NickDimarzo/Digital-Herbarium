@@ -6,6 +6,7 @@ import {
   createUserWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
+  sendEmailVerification
 } from "firebase/auth";
 
 import { auth } from "./firebase";
@@ -21,9 +22,9 @@ export const AuthContextProvider = ({ children }) => {
   const createUser = (email, password, setLoading) => {
     setLoading(true); // Start loading
     return createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        
+      .then( async (userCredential) => {
         const user = userCredential.user;
+        await sendEmailVerification(user);
         return createUserPlantsCollection(user.uid);
       })
       .then(() => {
@@ -38,6 +39,7 @@ export const AuthContextProvider = ({ children }) => {
   };
  
   // Sign in with email and password
+  // check if user email is verified
   const emailSignIn = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
