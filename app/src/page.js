@@ -130,7 +130,7 @@ export default function Page() {
                 <div className="flex justify-center">
                   <Link
                     className="underline hover:text-dark-blue"
-                    href="src/signup"
+                    href="src/pages/signup"
                   >
                     Sign up
                   </Link>
