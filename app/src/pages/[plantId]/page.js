@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import NavBar from "../../components/nav-bar";
+import Redirect from "../../components/redirect";
 import { useState } from "react";
 import { useUserAuth } from "../../_utils/auth-context";
 import { useEffect } from "react";
@@ -95,7 +96,7 @@ export default function Page({ params }) {
 
   return (
     <>
-      {user ? (
+      {user?.emailVerified ? (
         <main
           className="h-full flex-col justify-center font-mono xl:text-2xl text-lg shadow-xl shadow-dark border-b-8 border-dark"
           // style={{
@@ -235,20 +236,7 @@ export default function Page({ params }) {
             backgroundSize: "cover",
           }}
         >
-          <div className="w-screen h-screen flex justify-center">
-            <div className="w-2/5 bg-moss flex-col h-max rounded-3xl justify-center border-8 border-dark mt-64 ">
-              <div className="flex-col justify-center m-8 text-4xl font-mono bg-sand p-5 rounded-3xl shadow-2xl">
-                <div className="flex justify-center">
-                  <p>You must be signed in to access this page</p>
-                </div>
-                <div className="flex justify-center">
-                  <button className="bg-velvet text-brick px-10  font-mono m-8 py-4 rounded-full hover:bg-dark shadow-2xl shadow-dark transition duration-500 hover:-translate-y-1 hover:scale-110">
-                    <Link href="/src">Sign In</Link>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+          <Redirect />
         </main>
       )}
     </>
