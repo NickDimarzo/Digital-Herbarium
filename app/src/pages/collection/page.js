@@ -22,7 +22,7 @@ export default function Page() {
       const unsubscribe = fetchUserPlants(user.uid, setUserPlants);
       return () => unsubscribe();
     }
-  }, [user]); 
+  }, [user]);
 
   // Handle the filter change
   const handleFilterChange = (event, filterType) => {
@@ -70,7 +70,7 @@ export default function Page() {
 
   return (
     <>
-      {user?.emailVerified ?  ( 
+      {user?.emailVerified ? (
         <main
           className="font-mono"
           // className="font-mono flex flex-col h-screen border-b-8 border-dark-blue shadow-xl shadow-dark"
@@ -86,10 +86,10 @@ export default function Page() {
           </header>
           <div className="flex justify-center mt-10">
             <div className=" w-full sm:w-3/4 justify-center flex flex-col">
-              <div className="p-2 m-2 bg-dark-blue border-4 border-darker-blue rounded-xl shadow-2xl shadow-darker-blue">
-                <div className=" bg-light-sand rounded-xl m-2 p-2">
-                  <div className="flex justify-center">
-                    <h1 className="w-max xl:text-5xl text-3xl pb-2">
+              <div class="custom-card">
+                <div className=" bg-white rounded-xl m-2 p-2">
+                  <div className="flex">
+                    <h1 className="w-max xl:text-5xl text-3xl pb-2 p-4">
                       My Collection
                     </h1>
                   </div>
@@ -97,74 +97,95 @@ export default function Page() {
                     <p>
                       Welcome to your collection! Here you can add and view all
                       the plants you have collected. Use the filter to search
-                      for a specific plant. The filter will return results in alphabetical order beginning with Family, then Genus and Species. Click on a plant to access the
-                      plants entry. From there you can add notes and images about that plant to
+                      for a specific plant. The filter will return results in
+                      alphabetical order beginning with Family, then Genus and
+                      Species. Click on a plant to access the plants entry. From
+                      there you can add notes and images about that plant to
                       your collection.
                     </p>
                     <p>
-                      These plants are all from Alberta and were generated from this website. <Link className=" underline hover:text-green hover:underline " href="https://www.albertaparks.ca/albertaparksca/management-land-use/alberta-conservation-information-management-system-acims/download-data/">Alberta Conservation Information Management System (ACIMS)</Link>
+                      These plants are all from Alberta and were generated from
+                      this website.{" "}
+                      <Link
+                        className=" underline hover:text-green hover:underline "
+                        href="https://www.albertaparks.ca/albertaparksca/management-land-use/alberta-conservation-information-management-system-acims/download-data/"
+                      >
+                        Alberta Conservation Information Management System
+                        (ACIMS)
+                      </Link>
                     </p>
                   </div>
                 </div>
               </div>
-              <div className="p-2 m-2 bg-dark-blue border-4 border-darker-blue rounded-xl shadow-2xl shadow-dark-blue xl:text-2xl text-lg">
-                <div className=" bg-light-sand m-2">
-                  <div className="xl:text-3xl text-xl p-2 m-2">
-                    <h1>Filter</h1>
-                  </div>
-                  <div className="flex flex-col sm:flex-row justify-between">
-                    <div className="p-2 m-2">
-                      <label>
-                        Family:
-                        <input
-                          type="text"
-                          className="bg-light-sand border-b-2 border-dark-blue w-full"
-                          onChange={(event) =>
-                            handleFilterChange(event, "family")
-                          }
-                        />
-                      </label>
+              <div class="custom-card">
+                <div className="xl:text-2xl text-lg">
+                  <div className=" bg-white m-2">
+                    <div className="xl:text-3xl text-xl p-2 m-2">
+                      <h1>Filter</h1>
                     </div>
-                    <div className="p-2 m-2 ">
-                      <label>
-                        Genus:
-                        <input
-                          type="text"
-                          className="bg-light-sand border-b-2 border-dark-blue w-full"
-                          onChange={(event) =>
-                            handleFilterChange(event, "genus")
-                          }
-                        />
-                      </label>
-                    </div>
-                    <div className="p-2 m-2">
-                      <label>
-                        Species:
-                        <input
-                          type="text"
-                          className="bg-light-sand border-b-2 border-dark-blue w-full"
-                          onChange={(event) =>
-                            handleFilterChange(event, "species")
-                          }
-                        />
-                      </label>
+                    <div className="flex flex-col sm:flex-row justify-between">
+                      <div className="p-2 m-2">
+                        <label>
+                          Family:
+                          <input
+                            type="text"
+                            className="bg-white border-b-2 border-dark-blue w-full"
+                            onChange={(event) =>
+                              handleFilterChange(event, "family")
+                            }
+                          />
+                        </label>
+                      </div>
+                      <div className="p-2 m-2 ">
+                        <label>
+                          Genus:
+                          <input
+                            type="text"
+                            className="bg-white border-b-2 border-dark-blue w-full"
+                            onChange={(event) =>
+                              handleFilterChange(event, "genus")
+                            }
+                          />
+                        </label>
+                      </div>
+                      <div className="p-2 m-2">
+                        <label>
+                          Species:
+                          <input
+                            type="text"
+                            className="bg-white border-b-2 border-dark-blue w-full"
+                            onChange={(event) =>
+                              handleFilterChange(event, "species")
+                            }
+                          />
+                        </label>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="p-2 m-2 bg-dark-blue border-4 border-darker-blue rounded-xl shadow-2xl shadow-dark-blue text-xs m:text-sm xl:text-base">
-                <ul className=" bg-light-sand m-2 p-2">
+              <div class="custom-card" >
+              <div className="text-xs m:text-sm xl:text-base">
+                <ul className=" bg-white m-2 p-2">
                   {filteredAndSortedPlants.map((plant) => (
                     <li key={plant.id} className="">
                       <Link
-                        className="p-2 m-2 bg-light-sand flex border-b-2 border-dark-blue hover:text-dark-green hover:border-dark-green "
+                        className="p-2 m-2 bg-white flex border-b-2 border-dark-blue hover:text-dark-green hover:border-dark-green "
                         href={`./${plant.elCode}`}
                       >
                         <div className=" flex flex-col sm:flex-row w-4/5 justify-start m:justify-between">
-                          <span className="w-full sm:w-1/4">{plant.family}</span>{" "}
-                          <span className="w-full sm:w-1/4">{plant.genus} </span>{" "}
-                          <span className="w-full sm:w-1/4">{plant.species}</span>{" "}
-                          <span className="w-full sm:w-1/4">{plant.commonName} {plant.variationSubspeices}</span>
+                          <span className="w-full sm:w-1/4">
+                            {plant.family}
+                          </span>{" "}
+                          <span className="w-full sm:w-1/4">
+                            {plant.genus}{" "}
+                          </span>{" "}
+                          <span className="w-full sm:w-1/4">
+                            {plant.species}
+                          </span>{" "}
+                          <span className="w-full sm:w-1/4">
+                            {plant.commonName} {plant.variationSubspeices}
+                          </span>
                         </div>
                         <div className="flex justify-end w-1/5">
                           <span>{statusUpdate(plant.elCode)}</span>
@@ -173,6 +194,7 @@ export default function Page() {
                     </li>
                   ))}
                 </ul>
+              </div>
               </div>
             </div>
           </div>
