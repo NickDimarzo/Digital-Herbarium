@@ -12,14 +12,14 @@ export default function NavBar() {
         <div className="flex justify-center">
         <div className="bg-dark-green text-gray-50 font-mono m-2 sm:px-4 rounded-lg hover:bg-light-green transition duration-500 hover:scale-110 ">
           <button className="flex justify-center p-2 items-center">
-            <Link href="/src/pages/home">Digital Herbarium</Link>
+            <Link href="/src/pages/home">Home</Link>
           </button>
         </div>
-        <div className="bg-dark-green text-gray-50 font-mono w-max m-2 sm:px-4 rounded-lg hover:bg-light-green transition duration-500 hover:scale-110">
+        {/* <div className="bg-dark-green text-gray-50 font-mono w-max m-2 sm:px-4 rounded-lg hover:bg-light-green transition duration-500 hover:scale-110">
           <button className="flex justify-center p-2">
             <Link href="/src/pages/collection">My Collection</Link>
           </button>
-        </div>
+        </div> */}
         </div>
         <div className="flex justify-center">
           <div className="bg-dark-green text-gray-50 font-mono w-max m-2 px-4 rounded-lg hover:bg-light-green transition duration-500 hover:scale-110">
