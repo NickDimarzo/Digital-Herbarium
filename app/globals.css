@@ -4,25 +4,42 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background-color-1: #e9e3e3;
+  --background-color-2: #d1d1d1;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+html, body {
+  height: 100%;
+  margin: 0;
+  width: 100%;
 }
-
 body {
   color: rgb(var(--foreground-rgb));
-  background: #dedad0
+  background: linear-gradient(
+    60deg,
+    var(--background-color-1) 50%,
+    var(--background-color-2) 50%
+  );
+  background-repeat: repeat;
+  background-size: cover;
+  min-height: 100%; 
+  margin: 0;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.custom-card {
+  padding: 0.5rem; /* Equivalent to p-2 */
+  margin: 2.5rem; /* Equivalent to m-10 */
+  background-color: white; /* Equivalent to bg-white */
+  border-top-width: 8px; /* Equivalent to border-t-8 */
+  border-right-width: 8px; /* Equivalent to border-r-8 */
+  border-color: #354f52; /* Equivalent to border-darker-blue */
+  border-style: solid;
+  border-radius: 0.75rem; /* Equivalent to rounded-xl */
+  box-shadow: 0 25px 50px -12px #354f52; /* Equivalent to shadow-2xl shadow-darker-blue */
 }

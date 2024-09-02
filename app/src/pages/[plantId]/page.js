@@ -98,23 +98,17 @@ export default function Page({ params }) {
     <>
       {user?.emailVerified ? (
         <main
-          className="h-full flex-col justify-center font-mono xl:text-2xl text-lg shadow-xl shadow-dark border-b-8 border-dark"
-          // style={{
-          //   backgroundPosition: "center",
-          //   backgroundImage:
-          //     "url('https://images.unsplash.com/photo-1426604966848-d7adac402bff?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
-          //   backgroundSize: "cover",
-          // }}
+          className="flex-col justify-center font-mono xl:text-2xl text-lg "
         >
           <header>
             <NavBar />
           </header>
           <div className="flex justify-center mt-10">
             <div className=" w-full sm:w-3/4 justify-center flex flex-col">
-              <div className="p-2 m-2 bg-dark-blue border-4 border-darker-blue rounded-xl shadow-2xl shadow-dark">
-                <div className=" bg-light-sand rounded-xl m-2 p-2">
+              <div class="custom-card">
+                <div className=" bg-white rounded-xl m-2 p-2">
                   <div className="flex justify-center">
-                    <h1 className="w-max border-b-4 xl:text-3xl text-xl border-dark-blue">
+                    <h1 className="w-max xl:text-3xl text-xl border-dark-blue">
                       Plant Information
                     </h1>
                   </div>
@@ -140,10 +134,10 @@ export default function Page({ params }) {
                 </div>
               </div>
               {/*PHOTO UPLOADS*/}
-              <div className="p-2 m-2 bg-dark-blue border-4 border-darker-blue rounded-xl shadow-2xl shadow-dark">
-                <div className=" bg-light-sand rounded-xl m-2 p-2">
+              <div class="custom-card">
+                <div className=" bg-white rounded-xl m-2 p-2">
                   <div className="flex justify-center w-full p-2 m-2">
-                    <h1 className="w-max border-b-4 xl:text-3xl text-xl border-dark-blue">
+                    <h1 className="w-max xl:text-3xl text-xl">
                       {" "}
                       My Photos
                     </h1>
@@ -154,7 +148,7 @@ export default function Page({ params }) {
                         <div key={plant.id} className="flex p-2 justify-center">
                           <Link href={image}>
                             <img
-                              className="border-4 border-dark-blue rounded-xl shadow-2xl shadow-dark object-cover h-72 w-72"
+                              className="border-2 border-dark-blue rounded-xl shadow-2xl shadow-black object-cover"
                               src={image}
                               alt="plant"
                             />
@@ -173,11 +167,11 @@ export default function Page({ params }) {
                   </div>
                 </div>
                 <div>
-                  <div className="flex-col justify-between bg-light-sand rounded-xl m-2 mt-4 p-2 ">
+                  <div className="flex-col justify-between bg-white rounded-xl m-2 mt-4 p-2 ">
                     <div className="flex justify-center p-4 ">
                       <input
                         type="file"
-                        className=" bg-light-sand w-max"
+                        className=" bg-white w-max"
                         multiple
                         onChange={(e) => {
                           setImageUpload(Array.from(e.target.files));
@@ -186,7 +180,7 @@ export default function Page({ params }) {
                     </div>
                     <div className="flex justify-center">
                       <button
-                        className="bg-dark-green text-gray-50 px-10 font-mono py-2 m-2 h-max rounded-xl hover:bg-light-green shadow-2xl shadow-dark transition duration-500 hover:scale-110 "
+                        className="bg-dark-green text-gray-50 px-10 font-mono py-2 m-2 h-max rounded-xl hover:bg-light-green shadow-2xl shadow-black transition duration-500 hover:scale-110 "
                         onClick={uploadImage}
                       >
                         Upload
@@ -196,11 +190,11 @@ export default function Page({ params }) {
                 </div>
               </div>
 
-              <div className="p-2 m-2 mb-14 bg-dark-blue border-4 border-darker-blue rounded-xl shadow-2xl shadow-dark">
-                <div className=" bg-light-sand rounded-xl m-2 p-2">
+              <div class="custom-card">
+                <div className=" bg-white rounded-xl m-2 p-2">
                   <form className="text-black flex-col">
                     <div className="flex justify-center">
-                      <h1 className="w-max border-b-4 xl:text-3xl text-xl border-dark-blue">
+                      <h1 className="w-max xl:text-3xl text-xl">
                         Notes
                       </h1>
                     </div>
@@ -209,7 +203,7 @@ export default function Page({ params }) {
                         type="text"
                         value={textAreaValue}
                         onChange={handleTextAreaChange}
-                        className="text-black bg-gray-200 border-4 border-darker-blue rounded-xl shadow-lg shadow-black p-2 w-full m-2 max-h-full"
+                        className="text-black bg-gray-100 border-2 border-darker-blue rounded-xl p-2 w-full m-2 max-h-full"
                       />
                     </div>
                     <div className="flex justify-center">
