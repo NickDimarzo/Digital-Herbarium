@@ -18,8 +18,8 @@ export default function Page() {
   };
 
   return (
-    <main
-      className="w-full h-full flex-col justify-center"
+    <div
+      className="flex-col justify-center"
       // style={{
       //   backgroundPosition: "center",
       //   backgroundImage:
@@ -29,7 +29,7 @@ export default function Page() {
     >
       <NavBar />
       <div className=" h-screen flex justify-center text-white">
-        <div className="flex-col h-max rounded-3xl justify-center xl:mt-16 m-8 ">
+        <div className="flex-col h-max rounded-3xl justify-center xl:mt-16 ">
           <div className="flex-col justify-center m-4 xl:m-8 text-sm  m:text-lg lg:text-2xl xl:text-4xl font-mono p-2 xl:p-5 ">
             {user?.emailVerified ? (
               <div>
@@ -82,6 +82,6 @@ export default function Page() {
           </div>
         </div>
       </div>
-    </main>
+    </div>
   );
 }

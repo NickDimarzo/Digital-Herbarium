@@ -69,8 +69,8 @@ export default function Page() {
                 </div>
               </div>
             ) : (
-              <div className="bg-dark-blue p-8 rounded-3xl border-8 border-darker-blue">
-                <div className="flex-col items-center bg-dark-green p-4 rounded-3xl ">
+              <div class="custom-card">
+                <div className="flex-col items-center bg-white p-4 rounded-3xl text-black ">
                   <div className="flex justify-center w-full items-center">
                     <h1>Welcome to account</h1>
                   </div>
