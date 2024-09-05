@@ -11,7 +11,7 @@ import { addUserPlant } from "../../_services/DbServices";
 import plantsData from "../../alberta-plants/new-herbarium.json";
 import { uploadImages } from "../../_services/DbServices";
 import { fetchPlantImages } from "../../_services/DbServices";
-import Image from 'next/image';
+import Image from "next/image";
 
 export default function Page({ params }) {
   const { user, createUser, emailSignIn } = useUserAuth();
@@ -97,9 +97,7 @@ export default function Page({ params }) {
   return (
     <>
       {user?.emailVerified ? (
-        <main
-          className="flex-col justify-center font-mono xl:text-2xl text-lg "
-        >
+        <main className="flex-col justify-center font-mono xl:text-2xl text-lg ">
           <header>
             <NavBar />
           </header>
@@ -137,10 +135,7 @@ export default function Page({ params }) {
               <div class="custom-card">
                 <div className=" bg-white rounded-xl m-2 p-2">
                   <div className="flex justify-center w-full p-2 m-2">
-                    <h1 className="w-max xl:text-3xl text-xl">
-                      {" "}
-                      My Photos
-                    </h1>
+                    <h1 className="w-max xl:text-3xl text-xl"> My Photos</h1>
                   </div>
                   <div className=" sm:grid sm:grid-flow-row sm:grid-cols-3 justify-center">
                     {userImages && userImages.length > 0 ? (
@@ -157,18 +152,20 @@ export default function Page({ params }) {
                       ))
                     ) : (
                       <div className="flex justify-center w-full col-span-3 m-2 p-2">
-                      <div className="flex flex-col items-center">
-                        <p>Click the Choose Files button below to get started</p>
-                        <p>Images will be displayed here</p>
-                        <p>once they have been uploaded!</p>
-                      </div>
+                        <div className="flex flex-col items-center">
+                          <p>
+                            Click the Choose Files button below to get started
+                          </p>
+                          <p>Images will be displayed here</p>
+                          <p>once they have been uploaded!</p>
+                        </div>
                       </div>
                     )}
                   </div>
                 </div>
                 <div>
                   <div className="flex-col justify-between bg-white rounded-xl m-2 mt-4 p-2 ">
-                    <div className="flex justify-center p-4 ">
+                    <div className="flex justify-center p-4 text-sm m:text-lg lg:text-xl xl:text-2xl ">
                       <input
                         type="file"
                         className=" bg-white w-max"
@@ -194,9 +191,7 @@ export default function Page({ params }) {
                 <div className=" bg-white rounded-xl m-2 p-2">
                   <form className="text-black flex-col">
                     <div className="flex justify-center">
-                      <h1 className="w-max xl:text-3xl text-xl">
-                        Notes
-                      </h1>
+                      <h1 className="w-max xl:text-3xl text-xl">Notes</h1>
                     </div>
                     <div className="flex justify-center h-96 ">
                       <textarea
@@ -221,15 +216,7 @@ export default function Page({ params }) {
           </div>
         </main>
       ) : (
-        <main
-          className="w-screen h-full flex-col justify-center"
-          style={{
-            backgroundPosition: "center",
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1426604966848-d7adac402bff?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
-            backgroundSize: "cover",
-          }}
-        >
+        <main>
           <Redirect />
         </main>
       )}

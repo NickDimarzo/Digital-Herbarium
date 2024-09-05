@@ -164,51 +164,43 @@ export default function Page() {
                   </div>
                 </div>
               </div>
-              <div class="custom-card" >
-              <div className="text-xs m:text-sm xl:text-base">
-                <ul className=" bg-white m-2 p-2">
-                  {filteredAndSortedPlants.map((plant) => (
-                    <li key={plant.id} className="">
-                      <Link
-                        className="p-2 m-2 bg-white flex border-b-2 border-dark-blue hover:text-dark-green hover:border-dark-green "
-                        href={`./${plant.elCode}`}
-                      >
-                        <div className=" flex flex-col sm:flex-row w-4/5 justify-start m:justify-between">
-                          <span className="w-full sm:w-1/4">
-                            {plant.family}
-                          </span>{" "}
-                          <span className="w-full sm:w-1/4">
-                            {plant.genus}{" "}
-                          </span>{" "}
-                          <span className="w-full sm:w-1/4">
-                            {plant.species}
-                          </span>{" "}
-                          <span className="w-full sm:w-1/4">
-                            {plant.commonName} {plant.variationSubspeices}
-                          </span>
-                        </div>
-                        <div className="flex justify-end w-1/5">
-                          <span>{statusUpdate(plant.elCode)}</span>
-                        </div>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <div class="custom-card">
+                <div className="text-xs m:text-sm xl:text-base">
+                  <ul className=" bg-white m-2 p-2">
+                    {filteredAndSortedPlants.map((plant) => (
+                      <li key={plant.id} className="">
+                        <Link
+                          className="p-2 m-2 bg-white flex border-b-2 border-dark-blue hover:text-dark-green hover:border-dark-green "
+                          href={`./${plant.elCode}`}
+                        >
+                          <div className=" flex flex-col sm:flex-row w-4/5 justify-start m:justify-between">
+                            <span className="w-full sm:w-1/4">
+                              {plant.family}
+                            </span>{" "}
+                            <span className="w-full sm:w-1/4">
+                              {plant.genus}{" "}
+                            </span>{" "}
+                            <span className="w-full sm:w-1/4">
+                              {plant.species}
+                            </span>{" "}
+                            <span className="w-full sm:w-1/4">
+                              {plant.commonName} {plant.variationSubspeices}
+                            </span>
+                          </div>
+                          <div className="flex justify-end w-1/5">
+                            <span>{statusUpdate(plant.elCode)}</span>
+                          </div>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
         </main>
       ) : (
-        <main
-          className="w-screen h-full flex-col justify-center"
-          style={{
-            backgroundPosition: "center",
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1426604966848-d7adac402bff?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
-            backgroundSize: "cover",
-          }}
-        >
+        <main>
           <Redirect />
         </main>
       )}
