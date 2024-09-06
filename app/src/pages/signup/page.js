@@ -25,9 +25,9 @@ export default function Page() {
       //   backgroundSize: "cover",
       // }}
     >
-      <div className="w-screen h-screen flex justify-center text-gray-50">
-        <div className="w-2/5 bg-dark-blue flex-col h-max rounded-3xl justify-center border-8 border-darker-blue mt-32 ">
-          <div className="flex-col justify-center m-8 xl:text-4xl text-2xl font-mono bg-dark-green p-5 rounded-3xl">
+      <div className="flex justify-center">
+        <div class="custom-card">
+          <div className="flex-col justify-center m-8 xl:text-4xl text-2xl font-mono bg-white p-5 rounded-3xl">
             {loading ? (
               <div className="flex justify-center flex-col">
                 <div className="flex justify-center px-8 pt-10">
@@ -78,14 +78,14 @@ export default function Page() {
                 </div>
                 <div className="flex-col justify-center px-12 pt-10">
                   <form onSubmit={handleSubmit}>
-                    <div className="flex justify-end">
+                    <div className="flex justify-end mb-2">
                       <label className="w-full">
                         Email:
                         <input
                           type="email"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
-                          className=" text-black m-2 w-full bg-gray-50 rounded-md "
+                          className=" text-black m-2 w-full bg-gray-50 border-b-2 border-dark-blue"
                         />
                       </label>
                     </div>
@@ -96,7 +96,7 @@ export default function Page() {
                           type="password"
                           value={password}
                           onChange={(e) => setPassword(e.target.value)}
-                          className=" text-black m-2 w-full bg-gray-50 rounded-md"
+                          className=" text-black m-2 w-full bg-gray-50 border-b-2 border-dark-blue"
                         />
                       </label>
                     </div>
