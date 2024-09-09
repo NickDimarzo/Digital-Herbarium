@@ -23,9 +23,14 @@ export default function Page() {
           <p>
             {user.email}: <span className="text-green">Verified</span>
           </p>
-          <Link className="w-full flex justify-center p-4" href="/src/pages/home">
+          <Link
+            className="w-full flex justify-center p-4"
+            href="/src/pages/home"
+          >
             {" "}
-            <a className="bg-dark-green text-white rounded-xl py-4 px-8 mt-6  hover:bg-light-green transition duration-500 hover:scale-110">Continue</a>{" "}
+            <a className="bg-dark-green text-white rounded-xl py-4 px-8 mt-6  hover:bg-light-green transition duration-500 hover:scale-110">
+              Continue
+            </a>{" "}
           </Link>
         </div>
       );
@@ -41,15 +46,7 @@ export default function Page() {
   };
 
   return (
-    <main
-      className="w-full h-full flex-col justify-center"
-      // style={{
-      //   backgroundPosition: "center",
-      //   backgroundImage:
-      //     "url('https://images.unsplash.com/photo-1426604966848-d7adac402bff?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
-      //   backgroundSize: "cover",
-      // }}
-    >
+    <main className="w-full h-full flex-col justify-center">
       <NavBar />
       <div className=" h-screen flex justify-center text-white">
         <div className="flex-col h-max rounded-3xl justify-center xl:mt-16 m-8 ">
@@ -79,7 +76,7 @@ export default function Page() {
                   </div>
                   <div className="flex justify-center w-full">
                     <p className="px-8 pt-10">
-                      Please sign in with your email and password
+                      
                     </p>
                   </div>
                   <div className="flex-col justify-center items-center px-5 pt-5 xl:px-12 xl:pt-10">
@@ -122,7 +119,7 @@ export default function Page() {
                   </div>
                   <div className="flex justify-center">
                     <Link
-                      className="underline hover:text-dark-blue"
+                      className="underline hover:text-light-green"
                       href="src/pages/signup"
                     >
                       Sign up
