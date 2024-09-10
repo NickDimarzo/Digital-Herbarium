@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useUserAuth } from "../../_utils/auth-context";
+import LoadingBlock from "./components/loading-block";
 
 import Link from "next/link";
 
@@ -49,27 +50,11 @@ export default function Page() {
         <div class="custom-card">
           <div className="flex-col justify-center m-8 font-mono bg-white p-5 rounded-3xl text-sm  m:text-lg lg:text-2xl xl:text-4xl">
             {loading ? (
-              <div className="flex justify-center flex-col">
-                <div className="flex justify-center px-8 pt-10">
-                  <p>Hang tight This may take a few minutes.</p>
-                </div>
-                <div className="flex justify-center px-8 pt-10">
-                  <p>We are building your Herbarium now!</p>
-                </div>
-                <div className="flex justify-center px-8 pt-10">
-                  <button
-                    type="button"
-                    className="bg-dark-blue text-gray-50 px-10 font-mono m-8 py-4 rounded-3xl animate-pulse"
-                    disabled
-                  >
-                    Loading...
-                  </button>
-                </div>
-              </div>
+              <LoadingBlock />
             ) : user ? (
               <div>
                 <div className="flex justify-center px-8 pt-10">
-                  <h1>Thanks for creating an Account</h1>
+                  <h1>Thanks for creating an account</h1>
                 </div>
                 <div className="flex justify-center px-8 pt-10">
                   <p>A verification email has been sent to: </p>
@@ -78,7 +63,7 @@ export default function Page() {
                   <p>{user.email}</p>
                 </div>
                 <div className="flex justify-center px-8 pt-10">
-                  <button className="flex bg-dark-blue text-gray-50 px-10 font-mono m-8 py-4 rounded-3xl hover:bg-light-green shadow-2xl shadow-dark-blue transition duration-500 hover:-translate-y-1 hover:scale-110">
+                  <button className="flex bg-dark-blue text-gray-50 px-10 font-mono m-8 py-4 rounded-xl hover:bg-light-green shadow-2xl shadow-dark-blue transition duration-500 hover:-translate-y-1 hover:scale-110">
                     <Link href="/src">Login</Link>
                   </button>
                 </div>
@@ -117,7 +102,7 @@ export default function Page() {
                       />
                     </div>
                     <div className="flex justify-end text-sm lg:text-lg">
-                    <small
+                      <small
                         style={{
                           color:
                             passwordMessage === "Password is valid"
@@ -126,7 +111,6 @@ export default function Page() {
                         }}
                         className="w-1/2 flex justify-end"
                       >
-
                         {passwordMessage}
                       </small>
                     </div>
@@ -140,7 +124,7 @@ export default function Page() {
                       />
                     </div>
                     <div className="flex justify-end text-sm lg:text-lg ">
-                    <small 
+                      <small
                         style={{
                           color:
                             confirmMessage === "Passwords match"
