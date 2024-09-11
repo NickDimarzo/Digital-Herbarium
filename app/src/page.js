@@ -54,10 +54,10 @@ export default function Page() {
             {user ? (
               <div className="bg-white text-black p-4 rounded-2xl border-t-8 border-r-8 border-dark-blue shadow-2xl shadow-black">
                 <div className="p-4 flex-col justify-center">
-                  <div className="w-full flex justify-center">
+                  <div className="w-full flex justify-center m-2">
                     <h1>You have successfully logged in</h1>
                   </div>
-                  <div className="w-full flex justify-center">
+                  <div className="w-full flex justify-center m-2">
                     <h1>Verify your email to continue</h1>
                   </div>
                 </div>
