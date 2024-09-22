@@ -69,7 +69,7 @@ export default function Page() {
                         title="Discover"
                         route="/src"
                         description="Plan your next excursion here."
-                        buttonText="Discover"
+                        buttonText="Coming Soon"
                         image="https://plus.unsplash.com/premium_photo-1675342786681-e33a19414cfd?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bGVhdmVzfGVufDB8fDB8fHww"
                       />
                     </div>
