@@ -103,31 +103,58 @@ export default function Page({ params }) {
           </header>
           <div className="flex justify-center mt-10">
             <div className=" w-full sm:w-3/4 justify-center flex flex-col">
-              <div class="custom-card">
-                <div className=" bg-white rounded-xl m-2 p-2">
-                  <div className="flex justify-center">
-                    <h1 className="w-max xl:text-3xl text-xl border-dark-blue">
-                      Plant Information
-                    </h1>
+              <div className="flex justify-between w-full">
+                <div class="custom-card">
+                  <div className=" bg-white rounded-xl m-2 p-2">
+                    <div className="flex mb-2">
+                      <h1 className="w-max xl:text-3xl text-xl border-dark-blue">
+                        Plant Information
+                      </h1>
+                    </div>
+                    <div>
+                      <p>Family: {plant.family}</p>
+                    </div>
+                    <div>
+                      <p>
+                        Genus: <span className="italic">{plant.genus}</span>
+                      </p>
+                    </div>
+                    <div>
+                      <p>
+                        Species: <span className="italic">{plant.species}</span>
+                      </p>
+                    </div>
+                    <div>
+                      <p>Common Name: {plant.commonName}</p>
+                    </div>
+                    <div>
+                      <p>Origin: {plant.origin} </p>
+                    </div>
                   </div>
-                  <div>
-                    <p>Family: {plant.family}</p>
-                  </div>
-                  <div>
-                    <p>
-                      Genus: <span className="italic">{plant.genus}</span>
-                    </p>
-                  </div>
-                  <div>
-                    <p>
-                      Species: <span className="italic">{plant.species}</span>
-                    </p>
-                  </div>
-                  <div>
-                    <p>Common Name: {plant.commonName}</p>
-                  </div>
-                  <div>
-                    <p>Origin: {plant.origin} </p>
+                </div>
+                <div class="custom-card">
+                  <div className=" bg-white rounded-xl m-2 p-2">
+                    <div className="flex mb-2">
+                      <h1 className="w-max xl:text-3xl text-xl border-dark-blue">
+                        Collection Information
+                      </h1>
+                    </div>
+                    <div className="flex w-full">
+                      <label className="w-1/2">Date of Collection:</label>
+                      <input type="date" className="" />
+                    </div>
+                    <div className="flex w-full">
+                      <label className="w-1/2">Location:</label>
+                      <input type="text" className="border-b-2 border-dark-blue w-full" />
+                    </div>
+                    <div className="flex w-full">
+                      <label className="w-1/2"l>Habitat:</label>
+                      <input type="text" className="border-b-2 border-dark-blue w-full" />
+                    </div>
+                    <div className="flex w-full">
+                      <label className="w-1/2">Collector:</label>
+                      <input type="text" className="border-b-2 border-dark-blue w-full" />
+                    </div>
                   </div>
                 </div>
               </div>
