@@ -41,6 +41,10 @@ export const addUserPlant = async (plant, userId) => {
       species: plant.species,
       variationSubspeices: plant.variationSubspeices,
       origin: plant.origin,
+      dateOfCollection: plant.dateOfCollection,
+      location: plant.location,
+      habitat: plant.habitat,
+      collector: plant.collector,
       notes: plant.notes,
     });
     alert("Your collection has been updated!");

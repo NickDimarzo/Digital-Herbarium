@@ -20,6 +20,10 @@ export default function Page({ params }) {
   const [plant, setPlant] = useState({});
   const [notes, setNotes] = useState("Add your notes here!");
   const [textAreaValue, setTextAreaValue] = useState("");
+  const [dateOfCollection, setDateOfCollection] = useState("");
+  const [location, setLocation] = useState("");
+  const [habitat, setHabitat] = useState("");
+  const [collector, setCollector] = useState("");
   const [userImages, setUserImages] = useState([]);
   const [imageUpload, setImageUpload] = useState([]);
 
@@ -31,6 +35,10 @@ export default function Page({ params }) {
           setUserImages(images);
         });
       });
+      plant.dateOfCollection = dateOfCollection;
+      plant.location = location;
+      plant.habitat = habitat;
+      plant.collector = collector;
       plant.notes = textAreaValue;
       addUserPlant(plant, user.uid);
     } else {
@@ -56,6 +64,11 @@ export default function Page({ params }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (user) {
+      plant.dateOfCollection = dateOfCollection;
+      plant.location = location;
+      plant.habitat = habitat;
+      plant.collector = collector;
+      plant.notes = textAreaValue;
       addUserPlant(plant, user.uid);
     }
   };
@@ -75,6 +88,10 @@ export default function Page({ params }) {
       if (plant) {
         setPlant(plant);
         setTextAreaValue(plant.notes);
+        setDateOfCollection(plant.dateOfCollection);
+        setLocation(plant.location);
+        setHabitat(plant.habitat);
+        setCollector(plant.collector);
       } else {
         const plant = systemPlants.find(
           (plant) => plant.elCode === params.plantId
@@ -103,9 +120,9 @@ export default function Page({ params }) {
           </header>
           <div className="flex justify-center mt-10">
             <div className=" w-full sm:w-3/4 justify-center flex flex-col">
-              <div className="flex justify-between w-full">
+              <div className="flex flex-col lg:flex-row justify-between w-full">
                 <div class="custom-card">
-                  <div className=" bg-white rounded-xl m-2 p-2">
+                  <div className=" bg-white rounded-xl m-2 p-2 flex-col">
                     <div className="flex mb-2">
                       <h1 className="w-max xl:text-3xl text-xl border-dark-blue">
                         Plant Information
@@ -139,21 +156,43 @@ export default function Page({ params }) {
                         Collection Information
                       </h1>
                     </div>
-                    <div className="flex w-full">
+                    <div className="flex w-full my-2">
                       <label className="w-1/2">Date of Collection:</label>
-                      <input type="date" className="" />
+                      <input
+                        type="date"
+                        value={dateOfCollection}
+                        onChange={(e) => setDateOfCollection(e.target.value)}
+                        className="ml-2 border-b-2 border-dark-blue w-full"
+                      />
                     </div>
-                    <div className="flex w-full">
+                    <div className="flex w-full my-2 py-2">
                       <label className="w-1/2">Location:</label>
-                      <input type="text" className="border-b-2 border-dark-blue w-full" />
+                      <input
+                        type="text"
+                        value={location}
+                        onChange={(e) => setLocation(e.target.value)}
+                        className="border-b-2 border-dark-blue w-full"
+                      />
                     </div>
-                    <div className="flex w-full">
-                      <label className="w-1/2"l>Habitat:</label>
-                      <input type="text" className="border-b-2 border-dark-blue w-full" />
+                    <div className="flex w-full my-2">
+                      <label className="w-1/2" l>
+                        Habitat:
+                      </label>
+                      <input
+                        type="text"
+                        value={habitat}
+                        onChange={(e) => setHabitat(e.target.value)}
+                        className="border-b-2 border-dark-blue w-full"
+                      />
                     </div>
-                    <div className="flex w-full">
+                    <div className="flex w-full my-2">
                       <label className="w-1/2">Collector:</label>
-                      <input type="text" className="border-b-2 border-dark-blue w-full" />
+                      <input
+                        type="text"
+                        value={collector}
+                        onChange={(e) => setCollector(e.target.value)}
+                        className="border-b-2 border-dark-blue w-full"
+                      />
                     </div>
                   </div>
                 </div>
