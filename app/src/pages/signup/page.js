@@ -5,6 +5,7 @@ import LoadingBlock from "./components/loading-block";
 import NewUserBlock from "./components/newUser-block";
 
 export default function Page() {
+  const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -22,7 +23,7 @@ export default function Page() {
       setPasswordMessage("Password is valid");
     } else {
       setPasswordMessage(
-        "Password must be at least 8 characters long and contain both uppercase and lowercase letters"
+        "Password must be at least 8 characters long, contain both uppercase and lowercase letters"
       );
     }
   };
@@ -47,7 +48,7 @@ export default function Page() {
     <main className="w-screen h-full flex-col justify-center">
       <div className="flex justify-center">
         <div class="custom-card">
-          <div className="flex-col justify-center m-8 font-mono bg-white p-5 rounded-3xl text-sm  m:text-lg lg:text-2xl xl:text-4xl">
+          <div className="flex-col justify-center m-8 font-mono bg-white p-5 rounded-3xl text-sm  m:text-lg lg:text-2xl xl:text-2xl">
             {loading ? (
               <LoadingBlock />
             ) : user ? (
@@ -65,24 +66,33 @@ export default function Page() {
                     Please fill out the form below to create an account
                   </p>
                 </div> */}
-                <div className="flex-col justify-center  my-4">
+                <div className="flex-col justify-center m-4 w-full">
                   <form onSubmit={handleSubmit}>
-                    <div className="flex justify-end my-4 w-full">
-                      <label className="w-1/2">Email:</label>
+                  <div className="flex flex-col justify-end my-4 w-full p-4">
+                      <label className="w-full">User Name:</label>
+                      <input
+                        type="text"
+                        value={userName}
+                        onChange={(e) => setUserName(e.target.value)}
+                        className=" text-black m-2 w-full border-b-2 border-dark-blue"
+                      />
+                    </div>
+                    <div className="flex flex-col justify-end my-4 w-full p-4">
+                      <label className="w-full">Email:</label>
                       <input
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className=" text-black m-2 w-full bg-gray-50 border-b-2 border-dark-blue"
+                        className=" text-black m-2 w-full border-b-2 border-dark-blue"
                       />
                     </div>
-                    <div className="flex justify-end my-4 w-full">
-                      <label className="w-1/2">Password:</label>
+                    <div className="flex flex-col justify-end my-4 w-full p-4">
+                      <label className="w-full">Password:</label>
                       <input
                         type="password"
                         value={password}
                         onChange={handlePasswordChange}
-                        className=" text-black m-2 w-full bg-gray-50 border-b-2 border-dark-blue"
+                        className=" text-black m-2 w-full border-b-2 border-dark-blue"
                       />
                     </div>
                     <div className="flex justify-end text-sm lg:text-lg">
@@ -98,13 +108,13 @@ export default function Page() {
                         {passwordMessage}
                       </small>
                     </div>
-                    <div className="flex justify-end my-4 w-full">
-                      <label className="w-1/2">Confirm Password:</label>
+                    <div className="flex flex-col justify-end my-4 w-full p-4">
+                      <label className="w-full">Confirm Password:</label>
                       <input
                         type="password"
                         value={confirmPassword}
                         onChange={handleConfirmPasswordChange}
-                        className=" text-black m-2 w-full bg-gray-50 border-b-2 border-dark-blue"
+                        className=" text-black m-2 w-full border-b-2 border-dark-blue"
                       />
                     </div>
                     <div className="flex justify-end text-sm lg:text-lg ">
@@ -123,7 +133,7 @@ export default function Page() {
                       <button
                         type="submit"
                         onSubmit={handleSubmit}
-                        className="bg-dark-blue text-gray-50 px-10 font-mono m-8 py-4 rounded-xl hover:bg-light-green shadow-2xl shadow-dark transition duration-500 hover:-translate-y-1 hover:scale-110"
+                        className="bg-dark-blue text-gray-50 px-10 font-mono m-8 py-4 rounded-xl hover:bg-light-green shadow-2xl shadow-black transition duration-500 hover:-translate-y-1 hover:scale-110"
                       >
                         {" "}
                         Submit
