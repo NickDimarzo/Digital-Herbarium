@@ -68,15 +68,6 @@ export default function Page() {
                 </div> */}
                 <div className="flex-col justify-center m-4 w-full">
                   <form onSubmit={handleSubmit}>
-                  <div className="flex flex-col justify-end my-4 w-full p-4">
-                      <label className="w-full">User Name:</label>
-                      <input
-                        type="text"
-                        value={userName}
-                        onChange={(e) => setUserName(e.target.value)}
-                        className=" text-black m-2 w-full border-b-2 border-dark-blue"
-                      />
-                    </div>
                     <div className="flex flex-col justify-end my-4 w-full p-4">
                       <label className="w-full">Email:</label>
                       <input
