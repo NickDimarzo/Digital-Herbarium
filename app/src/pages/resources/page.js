@@ -13,10 +13,7 @@ export default function Page() {
           <NavBar />
         </nav>
       </header>
-      <main className="flex flex-col items-center">
-        <div className="flex justify-center m-4">
-          <h1 className="text-3xl font-bold">Resources</h1>
-        </div>
+      <main className="flex flex-col items-center justify-center">
         <section class="custom-card">
           <div className="flex-col m-2">
             <div>
