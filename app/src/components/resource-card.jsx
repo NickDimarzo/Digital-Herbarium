@@ -15,7 +15,7 @@ export default function ResourceCard({ desc, img, text, link }) {
             </div>
             <div className="flex-grow flex items-end p-4">
                 <div className="w-full bg-light-green rounded-2xl py-4 px-8 text-center">
-                    <Link href={link} target="_blank">
+                    <Link className="font-bold" href={link} target="_blank">
                         {text}
                     </Link>
                 </div>
