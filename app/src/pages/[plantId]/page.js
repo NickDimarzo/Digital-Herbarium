@@ -269,7 +269,7 @@ export default function Page({ params }) {
                     </div>
                     <div className="flex justify-center">
                       <button
-                        className="bg-dark-green text-gray-50 px-10 font-mono py-2 m-2 h-max rounded-xl hover:bg-light-green shadow-2xl shadow-dark transition duration-500 hover:scale-110 "
+                        className="bg-dark-green text-gray-50 px-10 font-mono py-2 m-2 h-max rounded-xl hover:bg-light-green shadow-2xl shadow-black transition duration-500 hover:scale-110 "
                         onClick={handleSubmit}
                       >
                         Submit
