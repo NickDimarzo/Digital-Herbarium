@@ -54,7 +54,7 @@ export default function Page() {
                       />
                     </div>
                   </div>
-                  <div className="flex flex-col sm:flex-row ">
+                  {/* <div className="flex flex-col sm:flex-row ">
                     <div className="flex m:w-1/2">
                       <Card
                         title="Share"
@@ -73,7 +73,7 @@ export default function Page() {
                         image="https://plus.unsplash.com/premium_photo-1675342786681-e33a19414cfd?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bGVhdmVzfGVufDB8fDB8fHww"
                       />
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             ) : (
