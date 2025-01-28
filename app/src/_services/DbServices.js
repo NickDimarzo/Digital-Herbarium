@@ -46,6 +46,8 @@ export const addUserPlant = async (plant, userId) => {
       habitat: plant.habitat,
       collector: plant.collector,
       notes: plant.notes,
+      primaryImage: plant.primaryImage,
+      highlightImages: plant.highlightImages,
     });
     alert("Your collection has been updated!");
     return plant.elCode;

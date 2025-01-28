@@ -24,7 +24,7 @@ export default function NavBar() {
         <div className="flex justify-center">
           <div className="bg-dark-green text-gray-50 font-mono w-max my-2 px-4 rounded-lg">
             <p className="flex items-center h-full">
-              {user.email}
+              {user ? `${user.email}` : "Sign In"}
             </p>
           </div>
           <div className="bg-dark-green text-gray-50 font-mono w-max m-2 px-4 rounded-lg hover:bg-light-green transition duration-500 hover:scale-110">
