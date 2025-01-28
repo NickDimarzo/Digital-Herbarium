@@ -26,6 +26,8 @@ export default function Page({ params }) {
   const [collector, setCollector] = useState("");
   const [userImages, setUserImages] = useState([]);
   const [imageUpload, setImageUpload] = useState([]);
+  const [primaryImage, setPrimaryImage] = useState("");
+  const [highlightImages, setHighlightImages] = useState([]);
 
   // Upload images to firebase storage
   const uploadImage = () => {
@@ -40,6 +42,8 @@ export default function Page({ params }) {
       plant.habitat = habitat;
       plant.collector = collector;
       plant.notes = textAreaValue;
+      plant.primaryImage = primaryImage;
+      plant.highlightImages = highlightImages;
       addUserPlant(plant, user.uid);
     } else {
       alert("You must be signed in to upload images");
@@ -53,6 +57,29 @@ export default function Page({ params }) {
         setUserImages(images);
       });
     }
+  };
+
+  const handleSelectPrimaryImage = (imageUrl) => {
+    setPrimaryImage(imageUrl);
+  };
+
+  const handleSelectHighlightImage = (imageUrl) => {
+    if (!imageUrl) return;
+    
+    // Ensure highlightImages exists and is an array
+    const currentHighlights = Array.isArray(highlightImages) ? highlightImages : [];
+    
+    if (currentHighlights.includes(imageUrl)) {
+      // If the image is already selected, remove it
+      setHighlightImages(currentHighlights.filter((img) => img !== imageUrl));
+    } else if (currentHighlights.length < 3) {
+      // Add the image to the highlights if there are fewer than 3
+      setHighlightImages([...currentHighlights, imageUrl]);
+    } else {
+      alert("You can only select up to 3 highlight images.");
+    }
+
+    console.log(highlightImages);
   };
 
   // Handle text area change
@@ -69,7 +96,10 @@ export default function Page({ params }) {
       plant.habitat = habitat;
       plant.collector = collector;
       plant.notes = textAreaValue;
+      plant.primaryImage = primaryImage;
+      plant.highlightImages = highlightImages;
       addUserPlant(plant, user.uid);
+      console.log(plant);
     }
   };
 
@@ -92,6 +122,8 @@ export default function Page({ params }) {
         setLocation(plant.location);
         setHabitat(plant.habitat);
         setCollector(plant.collector);
+        setPrimaryImage(plant.primaryImage);
+        setHighlightImages(plant.highlightImages);
       } else {
         const plant = systemPlants.find(
           (plant) => plant.elCode === params.plantId
@@ -197,6 +229,58 @@ export default function Page({ params }) {
                   </div>
                 </div>
               </div>
+              <div className="flex lg:flex-row justify-between w-full">
+                {/* Primary Image (left side) */}
+                <div className="w-full lg:w-2/3 lg:pl-8">
+                  <h2 className="text-xl font-bold mb-4">Primary Image</h2>
+                  {primaryImage ? (
+                    <div className="relative">
+                      <img
+                        src={primaryImage}
+                        alt="Primary"
+                        className="w-full h-96 object-cover rounded-lg shadow-lg"
+                      />
+                      <button
+                        onClick={() => setPrimaryImage("")}
+                        className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600"
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="flex items-center justify-center h-96 bg-gray-100 rounded-lg">
+                      <p className="text-gray-500">Select a primary image</p>
+                    </div>
+                  )}
+                </div>
+                {/* Highlight Images (Right Side) */}
+                <div className="w-full lg:w-1/3">
+                  <h2 className="text-xl font-bold mb-4">Highlight Images</h2>
+                  <div className="grid grid-cols-1 gap-4">
+                    {highlightImages ? (
+                      highlightImages.map((image, index) => (
+                        <div key={index} className="relative">
+                          <img
+                            src={image}
+                            alt={`Highlight ${index + 1}`}
+                            className="w-full h-48 object-cover rounded-lg shadow-lg"
+                          />
+                          <button
+                            onClick={() => handleSelectHighlightImage(image)}
+                            className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600"
+                          >
+                            Remove
+                          </button>
+                        </div>
+                      ))
+                    ) : (
+                      <div className="flex items-center justify-center h-48 bg-gray-100 rounded-lg">
+                        <p className="text-gray-500">Select up to 3 highlight images</p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
               {/*PHOTO UPLOADS*/}
               <div class="custom-card">
                 <div className=" bg-white rounded-xl m-2 p-2">
@@ -206,7 +290,10 @@ export default function Page({ params }) {
                   <div className=" sm:grid sm:grid-flow-row sm:grid-cols-3 justify-center">
                     {userImages && userImages.length > 0 ? (
                       userImages.map((image) => (
-                        <div key={plant.id} className="flex p-2 justify-center">
+                        <div
+                          key={plant.id}
+                          className="flex-col p-2 justify-center"
+                        >
                           <Link href={image}>
                             <img
                               className="border-2 border-dark-blue rounded-xl shadow-2xl shadow-black object-cover"
@@ -214,6 +301,18 @@ export default function Page({ params }) {
                               alt="plant"
                             />
                           </Link>
+                          <button
+                            onClick={() => handleSelectPrimaryImage(image)}
+                            className="bg-green text-black rounded-full p-1 hover:bg-light-green"
+                          >
+                            Set as Primary
+                          </button>
+                          <button
+                            onClick={() => handleSelectHighlightImage(image)}
+                            className="bg-green text-black rounded-full p-1 hover:bg-light-green"
+                          >
+                            Add to Highlights
+                          </button>
                         </div>
                       ))
                     ) : (
