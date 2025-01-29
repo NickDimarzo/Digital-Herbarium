@@ -65,10 +65,12 @@ export default function Page({ params }) {
 
   const handleSelectHighlightImage = (imageUrl) => {
     if (!imageUrl) return;
-    
+
     // Ensure highlightImages exists and is an array
-    const currentHighlights = Array.isArray(highlightImages) ? highlightImages : [];
-    
+    const currentHighlights = Array.isArray(highlightImages)
+      ? highlightImages
+      : [];
+
     if (currentHighlights.includes(imageUrl)) {
       // If the image is already selected, remove it
       setHighlightImages(currentHighlights.filter((img) => img !== imageUrl));
@@ -152,9 +154,9 @@ export default function Page({ params }) {
           </header>
           <div className="flex justify-center mt-10">
             <div className=" w-full sm:w-3/4 justify-center flex flex-col">
-              <div className="flex flex-col lg:flex-row justify-between w-full">
-                <div class="custom-card">
-                  <div className=" bg-white rounded-xl m-2 p-2 flex-col">
+              <div className="flex flex-col lg:flex-row w-full">
+                <div className="flex flex-col w-full h-full lg:w-1/2 ml-8">
+                  <div className=" bg-white h-full rounded-xl m-2 p-2 flex flex-col justify-between border-t-8 border-r-8 border-dark-blue">
                     <div className="flex mb-2">
                       <h1 className="w-max xl:text-3xl text-xl border-dark-blue">
                         Plant Information
@@ -181,8 +183,8 @@ export default function Page({ params }) {
                     </div>
                   </div>
                 </div>
-                <div class="custom-card">
-                  <div className=" bg-white rounded-xl m-2 p-2">
+                <div className="flex flex-col w-full h-full lg:w-1/2 mr-10">
+                  <div className=" bg-white rounded-xl m-2 p-2 border-t-8 border-r-8 border-dark-blue">
                     <div className="flex mb-2">
                       <h1 className="w-max xl:text-3xl text-xl border-dark-blue">
                         Collection Information
@@ -231,51 +233,51 @@ export default function Page({ params }) {
               </div>
               <div className="flex lg:flex-row justify-between w-full">
                 {/* Primary Image (left side) */}
-                <div className="w-full lg:w-2/3 lg:pl-8">
-                  <h2 className="text-xl font-bold mb-4">Primary Image</h2>
+                <div className="w-full lg:w-2/3 lg:pl-8 m-2"> 
                   {primaryImage ? (
-                    <div className="relative">
+                    <div className="relative w-full h-[800px]">
                       <img
                         src={primaryImage}
                         alt="Primary"
-                        className="w-full h-96 object-cover rounded-lg shadow-lg"
+                        className="absolute w-full h-full object-contain rounded-lg shadow-lg bg-gray-500 bg-opacity-45 border-t-4 border-r-4 border-dark-blue"
                       />
-                      <button
-                        onClick={() => setPrimaryImage("")}
-                        className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600"
+                      {/* <button
+                        onClick={() => handleSelectPrimaryImage("")}
+                        className="absolute top-1 right-1 bg-dark-blue text-white text-sm rounded-full py-1 px-2"
                       >
-                        Remove
-                      </button>
+                        X
+                      </button> */}
                     </div>
                   ) : (
-                    <div className="flex items-center justify-center h-96 bg-gray-100 rounded-lg">
+                    <div className="flex items-center justify-center h-[800px] bg-gray-100 rounded-lg">
                       <p className="text-gray-500">Select a primary image</p>
                     </div>
                   )}
                 </div>
                 {/* Highlight Images (Right Side) */}
-                <div className="w-full lg:w-1/3">
-                  <h2 className="text-xl font-bold mb-4">Highlight Images</h2>
-                  <div className="grid grid-cols-1 gap-4">
+                <div className="w-full h-full lg:w-1/3 mr-10">
+                  <div className="flex flex-col justify-between h-[800px]">
                     {highlightImages ? (
                       highlightImages.map((image, index) => (
-                        <div key={index} className="relative">
+                        <div key={index} className="relative flex">
                           <img
                             src={image}
                             alt={`Highlight ${index + 1}`}
-                            className="w-full h-48 object-cover rounded-lg shadow-lg"
+                            className="w-full h-56 object-cover rounded-lg shadow-lg p-1 m-2  bg-gray-500 bg-opacity-45 border-t-4 border-r-4 border-dark-blue"
                           />
                           <button
                             onClick={() => handleSelectHighlightImage(image)}
-                            className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600"
+                            className="absolute top-1 right-1 bg-dark-blue text-white text-sm rounded-full py-1 px-2"
                           >
-                            Remove
+                            X
                           </button>
                         </div>
                       ))
                     ) : (
                       <div className="flex items-center justify-center h-48 bg-gray-100 rounded-lg">
-                        <p className="text-gray-500">Select up to 3 highlight images</p>
+                        <p className="text-gray-500">
+                          Select up to 3 highlight images
+                        </p>
                       </div>
                     )}
                   </div>
