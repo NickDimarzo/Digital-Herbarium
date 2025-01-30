@@ -12,6 +12,8 @@ import plantsData from "../../alberta-plants/new-herbarium.json";
 import { uploadImages } from "../../_services/DbServices";
 import { fetchPlantImages } from "../../_services/DbServices";
 import Image from "next/image";
+import { Menu, MenuButton, MenuItem, MenuItems, Transition } from '@headlessui/react'
+import { EllipsisVerticalIcon } from '@heroicons/react/24/outline'
 
 export default function Page({ params }) {
   const { user, createUser, emailSignIn } = useUserAuth();
@@ -26,6 +28,8 @@ export default function Page({ params }) {
   const [collector, setCollector] = useState("");
   const [userImages, setUserImages] = useState([]);
   const [imageUpload, setImageUpload] = useState([]);
+  const [primaryImage, setPrimaryImage] = useState("");
+  const [highlightImages, setHighlightImages] = useState([]);
 
   // Upload images to firebase storage
   const uploadImage = () => {
@@ -40,6 +44,8 @@ export default function Page({ params }) {
       plant.habitat = habitat;
       plant.collector = collector;
       plant.notes = textAreaValue;
+      plant.primaryImage = primaryImage;
+      plant.highlightImages = highlightImages;
       addUserPlant(plant, user.uid);
     } else {
       alert("You must be signed in to upload images");
@@ -53,6 +59,31 @@ export default function Page({ params }) {
         setUserImages(images);
       });
     }
+  };
+
+  const handleSelectPrimaryImage = (imageUrl) => {
+    setPrimaryImage(imageUrl);
+  };
+
+  const handleSelectHighlightImage = (imageUrl) => {
+    if (!imageUrl) return;
+
+    // Ensure highlightImages exists and is an array
+    const currentHighlights = Array.isArray(highlightImages)
+      ? highlightImages
+      : [];
+
+    if (currentHighlights.includes(imageUrl)) {
+      // If the image is already selected, remove it
+      setHighlightImages(currentHighlights.filter((img) => img !== imageUrl));
+    } else if (currentHighlights.length < 3) {
+      // Add the image to the highlights if there are fewer than 3
+      setHighlightImages([...currentHighlights, imageUrl]);
+    } else {
+      alert("You can only select up to 3 highlight images.");
+    }
+
+    console.log(highlightImages);
   };
 
   // Handle text area change
@@ -69,7 +100,10 @@ export default function Page({ params }) {
       plant.habitat = habitat;
       plant.collector = collector;
       plant.notes = textAreaValue;
+      plant.primaryImage = primaryImage;
+      plant.highlightImages = highlightImages;
       addUserPlant(plant, user.uid);
+      console.log(plant);
     }
   };
 
@@ -92,6 +126,8 @@ export default function Page({ params }) {
         setLocation(plant.location);
         setHabitat(plant.habitat);
         setCollector(plant.collector);
+        setPrimaryImage(plant.primaryImage);
+        setHighlightImages(plant.highlightImages);
       } else {
         const plant = systemPlants.find(
           (plant) => plant.elCode === params.plantId
@@ -120,9 +156,9 @@ export default function Page({ params }) {
           </header>
           <div className="flex justify-center mt-10">
             <div className=" w-full sm:w-3/4 justify-center flex flex-col">
-              <div className="flex flex-col lg:flex-row justify-between w-full">
-                <div class="custom-card">
-                  <div className=" bg-white rounded-xl m-2 p-2 flex-col">
+              <div className="flex flex-col lg:flex-row w-full">
+                <div className="flex flex-col w-full h-full lg:w-1/2 ml-8">
+                  <div className=" bg-white h-full rounded-xl m-2 p-2 flex flex-col justify-between border-t-8 border-r-8 border-dark-blue">
                     <div className="flex mb-2">
                       <h1 className="w-max xl:text-3xl text-xl border-dark-blue">
                         Plant Information
@@ -149,8 +185,8 @@ export default function Page({ params }) {
                     </div>
                   </div>
                 </div>
-                <div class="custom-card">
-                  <div className=" bg-white rounded-xl m-2 p-2">
+                <div className="flex flex-col w-full h-full lg:w-1/2 mr-10">
+                  <div className=" bg-white rounded-xl m-2 p-2 border-t-8 border-r-8 border-dark-blue">
                     <div className="flex mb-2">
                       <h1 className="w-max xl:text-3xl text-xl border-dark-blue">
                         Collection Information
@@ -197,23 +233,126 @@ export default function Page({ params }) {
                   </div>
                 </div>
               </div>
+              <div className="flex lg:flex-row justify-between w-full">
+                {/* Primary Image (left side) */}
+                <div className="w-full lg:w-2/3 lg:pl-8 m-2">
+                  {primaryImage ? (
+                    <div className="relative w-full h-[800px]">
+                      <img
+                        src={primaryImage}
+                        alt="Primary"
+                        className="absolute w-full h-full object-contain rounded-lg shadow-lg p-2 bg-gray-500 bg-opacity-45 border-t-4 border-r-4 border-dark-blue"
+                      />
+                      {/* <button
+                        onClick={() => handleSelectPrimaryImage("")}
+                        className="absolute top-1 right-1 bg-dark-blue text-white text-sm rounded-full py-1 px-2"
+                      >
+                        X
+                      </button> */}
+                    </div>
+                  ) : (
+                    <div className="flex items-center justify-center h-[800px] bg-gray-100 rounded-lg">
+                      <p className="text-gray-500">Select a primary image</p>
+                    </div>
+                  )}
+                </div>
+                {/* Highlight Images (Right Side) */}
+                <div className="w-full h-full lg:w-1/3 mr-10">
+                  <div className="flex flex-col justify-between h-[800px]">
+                    {highlightImages ? (
+                      highlightImages.map((image, index) => (
+                        <div key={index} className="relative flex">
+                          <img
+                            src={image}
+                            alt={`Highlight ${index + 1}`}
+                            className="w-full h-56 object-cover rounded-lg shadow-lg p-1 m-2 bg-gray-500 bg-opacity-45 border-t-4 border-r-4 border-dark-blue"
+                          />
+                          <button
+                            onClick={() => handleSelectHighlightImage(image)}
+                            className="absolute top-1 right-1 bg-dark-blue text-white text-sm rounded-full py-1 px-2"
+                          >
+                            X
+                          </button>
+                        </div>
+                      ))
+                    ) : (
+                      <div className="flex items-center justify-center h-48 bg-gray-100 rounded-lg">
+                        <p className="text-gray-500">
+                          Select up to 3 highlight images
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
               {/*PHOTO UPLOADS*/}
               <div class="custom-card">
                 <div className=" bg-white rounded-xl m-2 p-2">
                   <div className="flex justify-center w-full p-2 m-2">
                     <h1 className="w-max xl:text-3xl text-xl"> My Photos</h1>
                   </div>
-                  <div className=" sm:grid sm:grid-flow-row sm:grid-cols-3 justify-center">
+                  <div className="sm:grid sm:grid-flow-row sm:grid-cols-3 justify-center gap-4">
                     {userImages && userImages.length > 0 ? (
                       userImages.map((image) => (
-                        <div key={plant.id} className="flex p-2 justify-center">
+                        <div
+                          key={plant.id}
+                          className="flex-col p-2 justify-center relative"
+                        >
                           <Link href={image}>
                             <img
-                              className="border-2 border-dark-blue rounded-xl shadow-2xl shadow-black object-cover"
+                              className="border-2 border-dark-blue rounded-xl shadow-2xl shadow-black object-cover w-full h-64"
                               src={image}
                               alt="plant"
                             />
                           </Link>
+                          <Menu as="div" className="absolute top-4 right-4">
+                            <MenuButton className="bg-white p-2 rounded-full hover:bg-gray-100 shadow-lg">
+                              <EllipsisVerticalIcon className="h-5 w-5 text-gray-600" />
+                            </MenuButton>
+                            <Transition
+                              enter="transition duration-100 ease-out"
+                              enterFrom="transform scale-95 opacity-0"
+                              enterTo="transform scale-100 opacity-100"
+                              leave="transition duration-75 ease-out"
+                              leaveFrom="transform scale-100 opacity-100"
+                              leaveTo="transform scale-95 opacity-0"
+                            >
+                              <MenuItems className="absolute right-0 mt-2 w-48 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                <MenuItem>
+                                  {({ focus }) => (
+                                    <button
+                                      onClick={() =>
+                                        handleSelectPrimaryImage(image)
+                                      }
+                                      className={`${
+                                        focus
+                                          ? "bg-light-green text-white"
+                                          : "text-gray-900"
+                                      } group flex w-full items-center px-4 py-2 text-sm`}
+                                    >
+                                      Set as Primary
+                                    </button>
+                                  )}
+                                </MenuItem>
+                                <MenuItem>
+                                  {({ focus }) => (
+                                    <button
+                                      onClick={() =>
+                                        handleSelectHighlightImage(image)
+                                      }
+                                      className={`${
+                                        focus
+                                          ? "bg-light-green text-white"
+                                          : "text-gray-900"
+                                      } group flex w-full items-center px-4 py-2 text-sm`}
+                                    >
+                                      Add to Highlights
+                                    </button>
+                                  )}
+                                </MenuItem>
+                              </MenuItems>
+                            </Transition>
+                          </Menu>
                         </div>
                       ))
                     ) : (
