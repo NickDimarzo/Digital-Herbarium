@@ -157,7 +157,7 @@ export default function Page({ params }) {
           <div className="flex justify-center mt-10">
             <div className=" w-full sm:w-3/4 justify-center flex flex-col">
               <div className="flex flex-col lg:flex-row w-full">
-                <div className="flex flex-col w-full h-full lg:w-1/2 ml-8">
+                <div className="flex flex-col w-full h-full lg:w-1/2 lg:ml-8">
                   <div className=" bg-white h-full rounded-xl m-2 p-2 flex flex-col justify-between border-t-8 border-r-8 border-dark-blue">
                     <div className="flex mb-2">
                       <h1 className="w-max xl:text-3xl text-xl border-dark-blue">
@@ -233,11 +233,11 @@ export default function Page({ params }) {
                   </div>
                 </div>
               </div>
-              <div className="flex lg:flex-row justify-between w-full">
+              <div className="flex flex-col lg:flex-row justify-between items-center w-full lg:w-full">
                 {/* Primary Image (left side) */}
                 <div className="w-full lg:w-2/3 lg:pl-8 m-2">
                   {primaryImage ? (
-                    <div className="relative w-full h-[800px]">
+                    <div className="relative w-full h-[800px] mr-10">
                       <img
                         src={primaryImage}
                         alt="Primary"
@@ -257,7 +257,7 @@ export default function Page({ params }) {
                   )}
                 </div>
                 {/* Highlight Images (Right Side) */}
-                <div className="w-full h-full lg:w-1/3 mr-10">
+                <div className="w-full h-full lg:w-1/3 lg:mr-10">
                   <div className="flex flex-col justify-between h-[800px]">
                     {highlightImages ? (
                       highlightImages.map((image, index) => (
