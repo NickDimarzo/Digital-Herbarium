@@ -12,8 +12,14 @@ import plantsData from "../../alberta-plants/new-herbarium.json";
 import { uploadImages } from "../../_services/DbServices";
 import { fetchPlantImages } from "../../_services/DbServices";
 import Image from "next/image";
-import { Menu, MenuButton, MenuItem, MenuItems, Transition } from '@headlessui/react'
-import { EllipsisVerticalIcon } from '@heroicons/react/24/outline'
+import {
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuItems,
+  Transition,
+} from "@headlessui/react";
+import { EllipsisVerticalIcon } from "@heroicons/react/24/outline";
 
 export default function Page({ params }) {
   const { user, createUser, emailSignIn } = useUserAuth();
@@ -157,7 +163,7 @@ export default function Page({ params }) {
           <div className="flex justify-center mt-10">
             <div className=" w-full sm:w-3/4 justify-center flex flex-col">
               <div className="flex flex-col lg:flex-row w-full">
-                <div className="flex flex-col w-full h-full lg:w-1/2 ml-8">
+                <div className="flex flex-col w-full h-full lg:w-1/2 lg:ml-8">
                   <div className=" bg-white h-full rounded-xl m-2 p-2 flex flex-col justify-between border-t-8 border-r-8 border-dark-blue">
                     <div className="flex mb-2">
                       <h1 className="w-max xl:text-3xl text-xl border-dark-blue">
@@ -233,55 +239,57 @@ export default function Page({ params }) {
                   </div>
                 </div>
               </div>
-              <div className="flex lg:flex-row justify-between w-full">
-                {/* Primary Image (left side) */}
-                <div className="w-full lg:w-2/3 lg:pl-8 m-2">
-                  {primaryImage ? (
-                    <div className="relative w-full h-[800px]">
-                      <img
-                        src={primaryImage}
-                        alt="Primary"
-                        className="absolute w-full h-full object-contain rounded-lg shadow-lg p-2 bg-gray-500 bg-opacity-45 border-t-4 border-r-4 border-dark-blue"
-                      />
-                      {/* <button
+              <div class="custom-card">
+                <div className="flex flex-col lg:flex-row justify-between items-center w-full lg:w-full">
+                  {/* Primary Image (left side) */}
+                  <div className="w-full lg:w-2/3 lg:pl-8 m-2">
+                    {primaryImage ? (
+                      <div className="relative w-full h-[800px] mr-10">
+                        <img
+                          src={primaryImage}
+                          alt="Primary"
+                          className="absolute w-full h-full object-contain rounded-lg shadow-lg p-2 bg-gray-500 bg-opacity-45 border-t-4 border-r-4 border-dark-blue"
+                        />
+                        {/* <button
                         onClick={() => handleSelectPrimaryImage("")}
                         className="absolute top-1 right-1 bg-dark-blue text-white text-sm rounded-full py-1 px-2"
                       >
                         X
                       </button> */}
-                    </div>
-                  ) : (
-                    <div className="flex items-center justify-center h-[800px] bg-gray-100 rounded-lg">
-                      <p className="text-gray-500">Select a primary image</p>
-                    </div>
-                  )}
-                </div>
-                {/* Highlight Images (Right Side) */}
-                <div className="w-full h-full lg:w-1/3 mr-10">
-                  <div className="flex flex-col justify-between h-[800px]">
-                    {highlightImages ? (
-                      highlightImages.map((image, index) => (
-                        <div key={index} className="relative flex">
-                          <img
-                            src={image}
-                            alt={`Highlight ${index + 1}`}
-                            className="w-full h-56 object-cover rounded-lg shadow-lg p-1 m-2 bg-gray-500 bg-opacity-45 border-t-4 border-r-4 border-dark-blue"
-                          />
-                          <button
-                            onClick={() => handleSelectHighlightImage(image)}
-                            className="absolute top-1 right-1 bg-dark-blue text-white text-sm rounded-full py-1 px-2"
-                          >
-                            X
-                          </button>
-                        </div>
-                      ))
+                      </div>
                     ) : (
-                      <div className="flex items-center justify-center h-48 bg-gray-100 rounded-lg">
-                        <p className="text-gray-500">
-                          Select up to 3 highlight images
-                        </p>
+                      <div className="flex items-center justify-center h-[800px] bg-gray-100 rounded-lg">
+                        <p className="text-gray-500">Select a primary image</p>
                       </div>
                     )}
+                  </div>
+                  {/* Highlight Images (Right Side) */}
+                  <div className="w-full h-full lg:w-1/3 lg:mr-10">
+                    <div className="flex flex-col justify-between h-[800px]">
+                      {highlightImages ? (
+                        highlightImages.map((image, index) => (
+                          <div key={index} className="relative flex">
+                            <img
+                              src={image}
+                              alt={`Highlight ${index + 1}`}
+                              className="w-full h-56 object-cover rounded-lg shadow-lg p-1 m-2 bg-gray-500 bg-opacity-45 border-t-4 border-r-4 border-dark-blue"
+                            />
+                            <button
+                              onClick={() => handleSelectHighlightImage(image)}
+                              className="absolute top-1 right-1 bg-dark-blue text-white text-sm rounded-full py-1 px-2"
+                            >
+                              X
+                            </button>
+                          </div>
+                        ))
+                      ) : (
+                        <div className="flex items-center justify-center h-48 bg-gray-100 rounded-lg">
+                          <p className="text-gray-500">
+                            Select up to 3 highlight images
+                          </p>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
