@@ -72,6 +72,16 @@ export const uploadImages = async (files, userId, plantId) => {
   alert("Images uploaded successfully!");
 };
 
+// delete a plant from firebase storage
+export const deletePlant = async (userId, plantId) => {
+  const storageRef = ref(storage, `images/${userId}/${plantId}`);
+  const listResult = await listAll(storageRef);
+
+  for (let item of listResult.items) {
+    await item.delete();
+  }
+};
+
 // fetch plant images from firebase storage
 export const fetchPlantImages = async (userId, plantId) => {
   const storageRef = ref(storage, `images/${userId}/${plantId}`);
