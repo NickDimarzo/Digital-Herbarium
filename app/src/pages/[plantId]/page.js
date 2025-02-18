@@ -250,12 +250,6 @@ export default function Page({ params }) {
                           alt="Primary"
                           className="absolute w-full h-full object-contain rounded-lg shadow-lg p-2 bg-gray-500 bg-opacity-45 border-t-4 border-r-4 border-dark-blue"
                         />
-                        {/* <button
-                        onClick={() => handleSelectPrimaryImage("")}
-                        className="absolute top-1 right-1 bg-dark-blue text-white text-sm rounded-full py-1 px-2"
-                      >
-                        X
-                      </button> */}
                       </div>
                     ) : (
                       <div className="flex items-center justify-center h-[800px] bg-gray-100 rounded-lg">
