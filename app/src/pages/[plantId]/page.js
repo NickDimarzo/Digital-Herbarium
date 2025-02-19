@@ -34,8 +34,29 @@ export default function Page({ params }) {
   const [collector, setCollector] = useState("");
   const [userImages, setUserImages] = useState([]);
   const [imageUpload, setImageUpload] = useState([]);
-  const [primaryImage, setPrimaryImage] = useState("");
   const [highlightImages, setHighlightImages] = useState([]);
+
+  // Variables for image titles, dates, and descriptions
+  // Primary Image
+  const [primaryImage, setPrimaryImage] = useState("");
+  const [primaryImageTitle, setPrimaryImageTitle] = useState("Primary Image");
+  const [primaryImageDate, setPrimaryImageDate] = useState(dateOfCollection);
+  const [primaryImageDescription, setPrimaryImageDescription] = useState("Primary Image Description");
+  // HighlightImageOne
+  const [highLightImagesOne, setHighLightImagesOne] = useState("");
+  const [highLightImagesOneTitle, setHighLightImagesOneTitle] = useState("Highlight Image 1");
+  const [highLightImagesOneDate, setHighLightImagesOneDate] = useState(dateOfCollection);
+  const [highLightImagesOneDescription, setHighLightImagesOneDescription] = useState("Highlight Image 1 Description");
+  // HighlightImageTwo
+  const [highLightImagesTwo, setHighLightImagesTwo] = useState("");
+  const [highLightImagesTwoTitle, setHighLightImagesTwoTitle] = useState("Highlight Image 2");
+  const [highLightImagesTwoDate, setHighLightImagesTwoDate] = useState(dateOfCollection);
+  const [highLightImagesTwoDescription, setHighLightImagesTwoDescription] = useState("Highlight Image 2 Description");
+  // HighlightImageThree
+  const [highLightImagesThree, setHighLightImagesThree] = useState("");
+  const [highLightImagesThreeTitle, setHighLightImagesThreeTitle] = useState("Highlight Image 3");
+  const [highLightImagesThreeDate, setHighLightImagesThreeDate] = useState(dateOfCollection);
+  const [highLightImagesThreeDescription, setHighLightImagesThreeDescription] = useState("Highlight Image 3 Description");
 
   // Upload images to firebase storage
   const uploadImage = () => {
@@ -244,12 +265,23 @@ export default function Page({ params }) {
                   {/* Primary Image (left side) */}
                   <div className="w-full lg:w-2/3 lg:pl-8 m-2">
                     {primaryImage ? (
-                      <div className="relative w-full h-[800px] mr-10">
-                        <img
-                          src={primaryImage}
-                          alt="Primary"
-                          className="absolute w-full h-full object-contain rounded-lg shadow-lg p-2 bg-gray-500 bg-opacity-45 border-t-4 border-r-4 border-dark-blue"
-                        />
+                      <div className="flex flex-col">
+                        <div className="relative w-full h-[400px] lg:h-[835px] mr-10">
+                          <img
+                            src={primaryImage}
+                            alt="Primary"
+                            className="absolute w-full h-full object-contain rounded-lg shadow-lg p-2 bg-gray-500 bg-opacity-45 border-t-4 border-r-4 border-dark-blue"
+                          />
+                        </div>
+                        <div className="text-sm">
+                          <p className="">{primaryImageTitle}</p>
+                        </div>
+                        <div className="text-xs">
+                          <p>Date of Collection:{dateOfCollection}</p>
+                        </div>
+                        <div className="text-xs">
+                          <p>{primaryImageDescription}</p>
+                        </div>
                       </div>
                     ) : (
                       <div className="flex items-center justify-center h-[800px] bg-gray-100 rounded-lg">
@@ -258,15 +290,15 @@ export default function Page({ params }) {
                     )}
                   </div>
                   {/* Highlight Images (Right Side) */}
-                  <div className="w-full h-full lg:w-1/3 lg:mr-10">
-                    <div className="flex flex-col justify-between h-[800px]">
+                  <div className="w-full h-full lg:w-1/3 lg:mr-10 ">
+                    <div className="flex flex-col justify-between h-[900px]">
                       {highlightImages ? (
                         highlightImages.map((image, index) => (
-                          <div key={index} className="relative flex">
+                          <div key={index} className="relative flex flex-col">
                             <img
                               src={image}
                               alt={`Highlight ${index + 1}`}
-                              className="w-full h-56 object-cover rounded-lg shadow-lg p-1 m-2 bg-gray-500 bg-opacity-45 border-t-4 border-r-4 border-dark-blue"
+                              className="w-full h-56 object-cover rounded-lg shadow-lg p-1 lg:ml-2 bg-gray-500 bg-opacity-45 border-t-4 border-r-4 border-dark-blue"
                             />
                             <button
                               onClick={() => handleSelectHighlightImage(image)}
@@ -274,6 +306,9 @@ export default function Page({ params }) {
                             >
                               X
                             </button>
+                            <div className="text-sm ml-2">
+                              <p>{highLightImagesOneDescription}</p>
+                            </div>
                           </div>
                         ))
                       ) : (
