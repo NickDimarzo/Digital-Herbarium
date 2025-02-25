@@ -3,6 +3,7 @@
 import Link from "next/link";
 import NavBar from "../../components/nav-bar";
 import Redirect from "../../components/redirect";
+import HighlightImage from "../../components/highlight-image";
 import { useState } from "react";
 import { useUserAuth } from "../../_utils/auth-context";
 import { useEffect } from "react";
@@ -34,29 +35,28 @@ export default function Page({ params }) {
   const [collector, setCollector] = useState("");
   const [userImages, setUserImages] = useState([]);
   const [imageUpload, setImageUpload] = useState([]);
-  const [highlightImages, setHighlightImages] = useState([]);
-
+ 
   // Variables for image titles, dates, and descriptions
   // Primary Image
-  const [primaryImage, setPrimaryImage] = useState("");
-  const [primaryImageTitle, setPrimaryImageTitle] = useState("Primary Image");
+  const [primaryImage, setPrimaryImage] = useState(plant.primaryImage);
+  const [primaryImageTitle, setPrimaryImageTitle] = useState(plant.primaryImageTitle);
   const [primaryImageDate, setPrimaryImageDate] = useState(dateOfCollection);
-  const [primaryImageDescription, setPrimaryImageDescription] = useState("Primary Image Description");
+  const [primaryImageDescription, setPrimaryImageDescription] = useState(plant.primaryImageDescription);
   // HighlightImageOne
-  const [highLightImagesOne, setHighLightImagesOne] = useState("");
-  const [highLightImagesOneTitle, setHighLightImagesOneTitle] = useState("Highlight Image 1");
+  const [highLightImagesOne, setHighLightImagesOne] = useState(plant.highLightImagesOne);
+  const [highLightImagesOneTitle, setHighLightImagesOneTitle] = useState(plant.highLightImagesOneTitle);
   const [highLightImagesOneDate, setHighLightImagesOneDate] = useState(dateOfCollection);
-  const [highLightImagesOneDescription, setHighLightImagesOneDescription] = useState("Highlight Image 1 Description");
+  const [highLightImagesOneDescription, setHighLightImagesOneDescription] = useState(plant.highLightImagesOneDescription);
   // HighlightImageTwo
-  const [highLightImagesTwo, setHighLightImagesTwo] = useState("");
-  const [highLightImagesTwoTitle, setHighLightImagesTwoTitle] = useState("Highlight Image 2");
+  const [highLightImagesTwo, setHighLightImagesTwo] = useState(plant.highLightImagesTwo);
+  const [highLightImagesTwoTitle, setHighLightImagesTwoTitle] = useState(plant.highLightImagesTwoTitle);
   const [highLightImagesTwoDate, setHighLightImagesTwoDate] = useState(dateOfCollection);
-  const [highLightImagesTwoDescription, setHighLightImagesTwoDescription] = useState("Highlight Image 2 Description");
+  const [highLightImagesTwoDescription, setHighLightImagesTwoDescription] = useState(plant.highLightImagesTwoDescription);
   // HighlightImageThree
-  const [highLightImagesThree, setHighLightImagesThree] = useState("");
-  const [highLightImagesThreeTitle, setHighLightImagesThreeTitle] = useState("Highlight Image 3");
+  const [highLightImagesThree, setHighLightImagesThree] = useState(plant.highLightImagesThree);
+  const [highLightImagesThreeTitle, setHighLightImagesThreeTitle] = useState(plant.highLightImagesThreeTitle);
   const [highLightImagesThreeDate, setHighLightImagesThreeDate] = useState(dateOfCollection);
-  const [highLightImagesThreeDescription, setHighLightImagesThreeDescription] = useState("Highlight Image 3 Description");
+  const [highLightImagesThreeDescription, setHighLightImagesThreeDescription] = useState(plant.highLightImagesThreeDescription);
 
   // Upload images to firebase storage
   const uploadImage = () => {
@@ -72,7 +72,21 @@ export default function Page({ params }) {
       plant.collector = collector;
       plant.notes = textAreaValue;
       plant.primaryImage = primaryImage;
-      plant.highlightImages = highlightImages;
+      plant.primaryImageTitle = primaryImageTitle;
+      plant.primaryImageDate = primaryImageDate;
+      plant.primaryImageDescription = primaryImageDescription;
+      plant.highLightImagesOne = highLightImagesOne;
+      plant.highLightImagesOneTitle = highLightImagesOneTitle;
+      plant.highLightImagesOneDate = highLightImagesOneDate;
+      plant.highLightImagesOneDescription = highLightImagesOneDescription;
+      plant.highLightImagesTwo = highLightImagesTwo;
+      plant.highLightImagesTwoTitle = highLightImagesTwoTitle;
+      plant.highLightImagesTwoDate = highLightImagesTwoDate;
+      plant.highLightImagesTwoDescription = highLightImagesTwoDescription;
+      plant.highLightImagesThree = highLightImagesThree;
+      plant.highLightImagesThreeTitle = highLightImagesThreeTitle;
+      plant.highLightImagesThreeDate = highLightImagesThreeDate;
+      plant.highLightImagesThreeDescription = highLightImagesThree
       addUserPlant(plant, user.uid);
     } else {
       alert("You must be signed in to upload images");
@@ -92,25 +106,16 @@ export default function Page({ params }) {
     setPrimaryImage(imageUrl);
   };
 
-  const handleSelectHighlightImage = (imageUrl) => {
-    if (!imageUrl) return;
+  const handleSelectHighlightImageOne = (imageUrl) => {
+    setHighLightImagesOne(imageUrl);
+  };
 
-    // Ensure highlightImages exists and is an array
-    const currentHighlights = Array.isArray(highlightImages)
-      ? highlightImages
-      : [];
+  const handleSelectHighlightImageTwo = (imageUrl) => {
+    setHighLightImagesTwo(imageUrl);
+  };
 
-    if (currentHighlights.includes(imageUrl)) {
-      // If the image is already selected, remove it
-      setHighlightImages(currentHighlights.filter((img) => img !== imageUrl));
-    } else if (currentHighlights.length < 3) {
-      // Add the image to the highlights if there are fewer than 3
-      setHighlightImages([...currentHighlights, imageUrl]);
-    } else {
-      alert("You can only select up to 3 highlight images.");
-    }
-
-    console.log(highlightImages);
+  const handleSelectHighlightImageThree = (imageUrl) => {
+    setHighLightImagesThree(imageUrl);
   };
 
   // Handle text area change
@@ -128,7 +133,21 @@ export default function Page({ params }) {
       plant.collector = collector;
       plant.notes = textAreaValue;
       plant.primaryImage = primaryImage;
-      plant.highlightImages = highlightImages;
+      plant.primaryImageTitle = primaryImageTitle;
+      plant.primaryImageDate = primaryImageDate;
+      plant.primaryImageDescription = primaryImageDescription;
+      plant.highLightImagesOne = highLightImagesOne;
+      plant.highLightImagesOneTitle = highLightImagesOneTitle;
+      plant.highLightImagesOneDate = highLightImagesOneDate;
+      plant.highLightImagesOneDescription = highLightImagesOneDescription;
+      plant.highLightImagesTwo = highLightImagesTwo;
+      plant.highLightImagesTwoTitle = highLightImagesTwoTitle;
+      plant.highLightImagesTwoDate = highLightImagesTwoDate;
+      plant.highLightImagesTwoDescription = highLightImagesTwoDescription;
+      plant.highLightImagesThree = highLightImagesThree;
+      plant.highLightImagesThreeTitle = highLightImagesThreeTitle;
+      plant.highLightImagesThreeDate = highLightImagesThreeDate;
+      plant.highLightImagesThreeDescription = highLightImagesThreeDescription;
       addUserPlant(plant, user.uid);
       console.log(plant);
     }
@@ -154,18 +173,35 @@ export default function Page({ params }) {
         setHabitat(plant.habitat);
         setCollector(plant.collector);
         setPrimaryImage(plant.primaryImage);
-        setHighlightImages(plant.highlightImages);
+        setPrimaryImageTitle(plant.primaryImageTitle);
+        setPrimaryImageDate(plant.dateOfCollection);
+        setPrimaryImageDescription(plant.primaryImageDescription);
+        setHighLightImagesOne(plant.highLightImagesOne);
+        setHighLightImagesOneTitle(plant.highLightImagesOneTitle);
+        setHighLightImagesOneDate(plant.dateOfCollection);  
+        setHighLightImagesOneDescription(plant.highLightImagesOneDescription);
+        setHighLightImagesTwo(plant.highLightImagesTwo);
+        setHighLightImagesTwoTitle(plant.highLightImagesTwoTitle);
+        setHighLightImagesTwoDate(plant.dateOfCollection);
+        setHighLightImagesTwoDescription(plant.highLightImagesTwoDescription);
+        setHighLightImagesThree(plant.highLightImagesThree);
+        setHighLightImagesThreeTitle(plant.highLightImagesThreeTitle);
+        setHighLightImagesThreeDate(plant.dateOfCollection);
+        setHighLightImagesThreeDescription(plant.highLightImagesThreeDescription);
+        console.log(plant);
       } else {
         const plant = systemPlants.find(
           (plant) => plant.elCode === params.plantId
         );
         setPlant(plant);
+        console.log(plant);
       }
     } else {
       const plant = systemPlants.find(
         (plant) => plant.elCode === params.plantId
       );
       setPlant(plant);
+      console.log(plant);
     }
   }, [userPlants, systemPlants, params.plantId]);
 
@@ -274,13 +310,23 @@ export default function Page({ params }) {
                           />
                         </div>
                         <div className="text-sm">
-                          <p className="">{primaryImageTitle}</p>
+                          <input
+                            type="text"
+                            value={primaryImageTitle? primaryImageTitle : "Primary Image"}
+                            onChange={(e) => setPrimaryImageTitle(e.target.value)}  
+                            className="w-max h-8"
+                          />
                         </div>
                         <div className="text-xs">
                           <p>Date of Collection:{dateOfCollection}</p>
                         </div>
                         <div className="text-xs">
-                          <p>{primaryImageDescription}</p>
+                          <input
+                            type="text"
+                            value={primaryImageDescription? primaryImageDescription : "Primary Image Description"}
+                            onChange={(e) => setPrimaryImageDescription(e.target.value)}
+                            className="w-full h-8"
+                          />
                         </div>
                       </div>
                     ) : (
@@ -292,32 +338,30 @@ export default function Page({ params }) {
                   {/* Highlight Images (Right Side) */}
                   <div className="w-full h-full lg:w-1/3 lg:mr-10 ">
                     <div className="flex flex-col justify-between h-[900px]">
-                      {highlightImages ? (
-                        highlightImages.map((image, index) => (
-                          <div key={index} className="relative flex flex-col">
-                            <img
-                              src={image}
-                              alt={`Highlight ${index + 1}`}
-                              className="w-full h-56 object-cover rounded-lg shadow-lg p-1 lg:ml-2 bg-gray-500 bg-opacity-45 border-t-4 border-r-4 border-dark-blue"
-                            />
-                            <button
-                              onClick={() => handleSelectHighlightImage(image)}
-                              className="absolute top-1 right-1 bg-dark-blue text-white text-sm rounded-full py-1 px-2"
-                            >
-                              X
-                            </button>
-                            <div className="text-sm ml-2">
-                              <p>{highLightImagesOneDescription}</p>
-                            </div>
-                          </div>
-                        ))
-                      ) : (
-                        <div className="flex items-center justify-center h-48 bg-gray-100 rounded-lg">
-                          <p className="text-gray-500">
-                            Select up to 3 highlight images
-                          </p>
-                        </div>
-                      )}
+                      <HighlightImage
+                        image={highLightImagesOne}
+                        title={highLightImagesOneTitle}
+                        date={highLightImagesOneDate}
+                        description={highLightImagesOneDescription}
+                        setTitle={setHighLightImagesOneTitle}
+                        setDescription={setHighLightImagesOneDescription}
+                      />
+                      <HighlightImage
+                        image={highLightImagesTwo}
+                        title={highLightImagesTwoTitle}
+                        date={highLightImagesTwoDate}
+                        description={highLightImagesTwoDescription}
+                        setTitle={setHighLightImagesTwoTitle}
+                        setDescription={setHighLightImagesTwoDescription}
+                      />
+                      <HighlightImage
+                        image={highLightImagesThree}
+                        title={highLightImagesThreeTitle}
+                        date={highLightImagesThreeDate}
+                        description={highLightImagesThreeDescription}
+                        setTitle={setHighLightImagesThreeTitle}
+                        setDescription={setHighLightImagesThreeDescription}
+                      />
                     </div>
                   </div>
                 </div>
@@ -354,7 +398,7 @@ export default function Page({ params }) {
                               leaveFrom="transform scale-100 opacity-100"
                               leaveTo="transform scale-95 opacity-0"
                             >
-                              <MenuItems className="absolute right-0 mt-2 w-48 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                              <MenuItems className="absolute right-0 mt-2 w-64 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                                 <MenuItem>
                                   {({ focus }) => (
                                     <button
@@ -375,7 +419,7 @@ export default function Page({ params }) {
                                   {({ focus }) => (
                                     <button
                                       onClick={() =>
-                                        handleSelectHighlightImage(image)
+                                        handleSelectHighlightImageOne(image)
                                       }
                                       className={`${
                                         focus
@@ -383,7 +427,39 @@ export default function Page({ params }) {
                                           : "text-gray-900"
                                       } group flex w-full items-center px-4 py-2 text-sm`}
                                     >
-                                      Add to Highlights
+                                      Set as {highLightImagesOneTitle? highLightImagesOneTitle : "Highlight Image One"}
+                                    </button>
+                                  )}
+                                </MenuItem>
+                                <MenuItem>
+                                  {({ focus }) => (
+                                    <button
+                                      onClick={() =>
+                                        handleSelectHighlightImageTwo(image)
+                                      }
+                                      className={`${
+                                        focus
+                                          ? "bg-light-green text-white"
+                                          : "text-gray-900"
+                                      } group flex w-full items-center px-4 py-2 text-sm`}
+                                    >
+                                      Set as {highLightImagesTwoTitle? highLightImagesTwoTitle : "Highlight Image Two"}
+                                    </button>
+                                  )}
+                                </MenuItem>
+                                <MenuItem>
+                                  {({ focus }) => (
+                                    <button
+                                      onClick={() =>
+                                        handleSelectHighlightImageThree(image)
+                                      }
+                                      className={`${
+                                        focus
+                                          ? "bg-light-green text-white"
+                                          : "text-gray-900"
+                                      } group flex w-full items-center px-4 py-2 text-sm`}
+                                    >
+                                      Set as {highLightImagesThreeTitle? highLightImagesThreeTitle : "Highlight Image Three"}
                                     </button>
                                   )}
                                 </MenuItem>
