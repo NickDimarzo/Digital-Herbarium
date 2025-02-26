@@ -35,28 +35,50 @@ export default function Page({ params }) {
   const [collector, setCollector] = useState("");
   const [userImages, setUserImages] = useState([]);
   const [imageUpload, setImageUpload] = useState([]);
- 
+
   // Variables for image titles, dates, and descriptions
   // Primary Image
   const [primaryImage, setPrimaryImage] = useState(plant.primaryImage);
-  const [primaryImageTitle, setPrimaryImageTitle] = useState(plant.primaryImageTitle);
+  const [primaryImageTitle, setPrimaryImageTitle] = useState(
+    plant.primaryImageTitle
+  );
   const [primaryImageDate, setPrimaryImageDate] = useState(dateOfCollection);
-  const [primaryImageDescription, setPrimaryImageDescription] = useState(plant.primaryImageDescription);
+  const [primaryImageDescription, setPrimaryImageDescription] = useState(
+    plant.primaryImageDescription
+  );
   // HighlightImageOne
-  const [highLightImagesOne, setHighLightImagesOne] = useState(plant.highLightImagesOne);
-  const [highLightImagesOneTitle, setHighLightImagesOneTitle] = useState(plant.highLightImagesOneTitle);
-  const [highLightImagesOneDate, setHighLightImagesOneDate] = useState(dateOfCollection);
-  const [highLightImagesOneDescription, setHighLightImagesOneDescription] = useState(plant.highLightImagesOneDescription);
+  const [highLightImagesOne, setHighLightImagesOne] = useState(
+    plant.highLightImagesOne
+  );
+  const [highLightImagesOneTitle, setHighLightImagesOneTitle] = useState(
+    plant.highLightImagesOneTitle
+  );
+  const [highLightImagesOneDate, setHighLightImagesOneDate] =
+    useState(dateOfCollection);
+  const [highLightImagesOneDescription, setHighLightImagesOneDescription] =
+    useState(plant.highLightImagesOneDescription);
   // HighlightImageTwo
-  const [highLightImagesTwo, setHighLightImagesTwo] = useState(plant.highLightImagesTwo);
-  const [highLightImagesTwoTitle, setHighLightImagesTwoTitle] = useState(plant.highLightImagesTwoTitle);
-  const [highLightImagesTwoDate, setHighLightImagesTwoDate] = useState(dateOfCollection);
-  const [highLightImagesTwoDescription, setHighLightImagesTwoDescription] = useState(plant.highLightImagesTwoDescription);
+  const [highLightImagesTwo, setHighLightImagesTwo] = useState(
+    plant.highLightImagesTwo
+  );
+  const [highLightImagesTwoTitle, setHighLightImagesTwoTitle] = useState(
+    plant.highLightImagesTwoTitle
+  );
+  const [highLightImagesTwoDate, setHighLightImagesTwoDate] =
+    useState(dateOfCollection);
+  const [highLightImagesTwoDescription, setHighLightImagesTwoDescription] =
+    useState(plant.highLightImagesTwoDescription);
   // HighlightImageThree
-  const [highLightImagesThree, setHighLightImagesThree] = useState(plant.highLightImagesThree);
-  const [highLightImagesThreeTitle, setHighLightImagesThreeTitle] = useState(plant.highLightImagesThreeTitle);
-  const [highLightImagesThreeDate, setHighLightImagesThreeDate] = useState(dateOfCollection);
-  const [highLightImagesThreeDescription, setHighLightImagesThreeDescription] = useState(plant.highLightImagesThreeDescription);
+  const [highLightImagesThree, setHighLightImagesThree] = useState(
+    plant.highLightImagesThree
+  );
+  const [highLightImagesThreeTitle, setHighLightImagesThreeTitle] = useState(
+    plant.highLightImagesThreeTitle
+  );
+  const [highLightImagesThreeDate, setHighLightImagesThreeDate] =
+    useState(dateOfCollection);
+  const [highLightImagesThreeDescription, setHighLightImagesThreeDescription] =
+    useState(plant.highLightImagesThreeDescription);
 
   // Upload images to firebase storage
   const uploadImage = () => {
@@ -86,7 +108,7 @@ export default function Page({ params }) {
       plant.highLightImagesThree = highLightImagesThree;
       plant.highLightImagesThreeTitle = highLightImagesThreeTitle;
       plant.highLightImagesThreeDate = highLightImagesThreeDate;
-      plant.highLightImagesThreeDescription = highLightImagesThree
+      plant.highLightImagesThreeDescription = highLightImagesThreeDescription;
       addUserPlant(plant, user.uid);
     } else {
       alert("You must be signed in to upload images");
@@ -178,7 +200,7 @@ export default function Page({ params }) {
         setPrimaryImageDescription(plant.primaryImageDescription);
         setHighLightImagesOne(plant.highLightImagesOne);
         setHighLightImagesOneTitle(plant.highLightImagesOneTitle);
-        setHighLightImagesOneDate(plant.dateOfCollection);  
+        setHighLightImagesOneDate(plant.dateOfCollection);
         setHighLightImagesOneDescription(plant.highLightImagesOneDescription);
         setHighLightImagesTwo(plant.highLightImagesTwo);
         setHighLightImagesTwoTitle(plant.highLightImagesTwoTitle);
@@ -187,7 +209,9 @@ export default function Page({ params }) {
         setHighLightImagesThree(plant.highLightImagesThree);
         setHighLightImagesThreeTitle(plant.highLightImagesThreeTitle);
         setHighLightImagesThreeDate(plant.dateOfCollection);
-        setHighLightImagesThreeDescription(plant.highLightImagesThreeDescription);
+        setHighLightImagesThreeDescription(
+          plant.highLightImagesThreeDescription
+        );
         console.log(plant);
       } else {
         const plant = systemPlants.find(
@@ -219,7 +243,7 @@ export default function Page({ params }) {
           </header>
           <div className="flex justify-center mt-10">
             <div className=" w-full sm:w-3/4 justify-center flex flex-col">
-              <div className="flex flex-col lg:flex-row w-full">
+              <div className="flex flex-col lg:flex-row w-full ">
                 <div className="flex flex-col w-full h-full lg:w-1/2 lg:ml-8">
                   <div className=" bg-white h-full rounded-xl m-2 p-2 flex flex-col justify-between border-t-8 border-r-8 border-dark-blue">
                     <div className="flex mb-2">
@@ -248,7 +272,7 @@ export default function Page({ params }) {
                     </div>
                   </div>
                 </div>
-                <div className="flex flex-col w-full h-full lg:w-1/2 mr-10">
+                <div className="flex flex-col w-full h-full lg:w-1/2 lg:mr-10">
                   <div className=" bg-white rounded-xl m-2 p-2 border-t-8 border-r-8 border-dark-blue">
                     <div className="flex mb-2">
                       <h1 className="w-max xl:text-3xl text-xl border-dark-blue">
@@ -312,21 +336,27 @@ export default function Page({ params }) {
                         <div className="text-sm">
                           <input
                             type="text"
-                            value={primaryImageTitle? primaryImageTitle : "Primary Image"}
-                            onChange={(e) => setPrimaryImageTitle(e.target.value)}  
-                            className="w-max h-8"
+                            value={primaryImageTitle}
+                            placeholder="Primary Image Title"
+                            onChange={(e) =>
+                              setPrimaryImageTitle(e.target.value)
+                            }
+                            className="w-max font-semibold bg-transparent py-1"
                           />
-                        </div>
-                        <div className="text-xs">
-                          <p>Date of Collection:{dateOfCollection}</p>
                         </div>
                         <div className="text-xs">
                           <input
                             type="text"
-                            value={primaryImageDescription? primaryImageDescription : "Primary Image Description"}
-                            onChange={(e) => setPrimaryImageDescription(e.target.value)}
-                            className="w-full h-8"
+                            value={primaryImageDescription}
+                            placeholder="Primary Image Description"
+                            onChange={(e) =>
+                              setPrimaryImageDescription(e.target.value)
+                            }
+                            className="w-full py-1"
                           />
+                        </div>
+                        <div className="text-xs">
+                          <p>Date of Collection:{dateOfCollection}</p>
                         </div>
                       </div>
                     ) : (
@@ -337,7 +367,7 @@ export default function Page({ params }) {
                   </div>
                   {/* Highlight Images (Right Side) */}
                   <div className="w-full h-full lg:w-1/3 lg:mr-10 ">
-                    <div className="flex flex-col justify-between h-[900px]">
+                    <div className="flex flex-col justify-between h-[903px]">
                       <HighlightImage
                         image={highLightImagesOne}
                         title={highLightImagesOneTitle}
@@ -427,7 +457,10 @@ export default function Page({ params }) {
                                           : "text-gray-900"
                                       } group flex w-full items-center px-4 py-2 text-sm`}
                                     >
-                                      Set as {highLightImagesOneTitle? highLightImagesOneTitle : "Highlight Image One"}
+                                      Set as{" "}
+                                      {highLightImagesOneTitle
+                                        ? highLightImagesOneTitle
+                                        : "Highlight Image One"}
                                     </button>
                                   )}
                                 </MenuItem>
@@ -443,7 +476,10 @@ export default function Page({ params }) {
                                           : "text-gray-900"
                                       } group flex w-full items-center px-4 py-2 text-sm`}
                                     >
-                                      Set as {highLightImagesTwoTitle? highLightImagesTwoTitle : "Highlight Image Two"}
+                                      Set as{" "}
+                                      {highLightImagesTwoTitle
+                                        ? highLightImagesTwoTitle
+                                        : "Highlight Image Two"}
                                     </button>
                                   )}
                                 </MenuItem>
@@ -459,7 +495,10 @@ export default function Page({ params }) {
                                           : "text-gray-900"
                                       } group flex w-full items-center px-4 py-2 text-sm`}
                                     >
-                                      Set as {highLightImagesThreeTitle? highLightImagesThreeTitle : "Highlight Image Three"}
+                                      Set as{" "}
+                                      {highLightImagesThreeTitle
+                                        ? highLightImagesThreeTitle
+                                        : "Highlight Image Three"}
                                     </button>
                                   )}
                                 </MenuItem>

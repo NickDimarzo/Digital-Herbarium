@@ -47,7 +47,21 @@ export const addUserPlant = async (plant, userId) => {
       collector: plant.collector,
       notes: plant.notes,
       primaryImage: plant.primaryImage,
-      highlightImages: plant.highlightImages,
+      primaryImageTitle: plant.primaryImageTitle,
+      primaryImageDate: plant.primaryImageDate,
+      primaryImageDescription: plant.primaryImageDescription,
+      highLightImagesOne: plant.highLightImagesOne,
+      highLightImagesOneTitle: plant.highLightImagesOneTitle,
+      highLightImagesOneDate: plant.highLightImagesOneDate,
+      highLightImagesOneDescription: plant.highLightImagesOneDescription,
+      highLightImagesTwo: plant.highLightImagesTwo,
+      highLightImagesTwoTitle: plant.highLightImagesTwoTitle,
+      highLightImagesTwoDate: plant.highLightImagesTwoDate,
+      highLightImagesTwoDescription: plant.highLightImagesTwoDescription,
+      highLightImagesThree: plant.highLightImagesThree,
+      highLightImagesThreeTitle: plant.highLightImagesThreeTitle,
+      highLightImagesThreeDate: plant.highLightImagesThreeDate,
+      highLightImagesThreeDescription: plant.highLightImagesThreeDescription,
     });
     alert("Your collection has been updated!");
     return plant.elCode;
