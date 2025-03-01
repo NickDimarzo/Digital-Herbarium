@@ -36,7 +36,7 @@ export default function HighlightImage({
                 value={title}
                 placeholder="Add a Title"
                 onChange={(e) => setTitle(e.target.value)}
-                className="w-max font-semibold bg-transparent py-1"
+                className="w-max font-semibold bg-transparent py-1 outline-none"
               />
             </div>
             <div className="text-xs">
@@ -45,7 +45,7 @@ export default function HighlightImage({
                 value={description}
                 placeholder="Add a Description"
                 onChange={(e) => setDescription(e.target.value)}
-                className="w-full py-1"
+                className="w-full py-1 outline-none"
               />
             </div>
             <div className="text-xs">

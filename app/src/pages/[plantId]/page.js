@@ -341,7 +341,7 @@ export default function Page({ params }) {
                             onChange={(e) =>
                               setPrimaryImageTitle(e.target.value)
                             }
-                            className="w-max font-semibold bg-transparent py-1"
+                            className="w-max font-semibold bg-transparent py-1 outline-none"
                           />
                         </div>
                         <div className="text-xs">
@@ -352,7 +352,7 @@ export default function Page({ params }) {
                             onChange={(e) =>
                               setPrimaryImageDescription(e.target.value)
                             }
-                            className="w-full py-1"
+                            className="w-full py-1 outline-none"
                           />
                         </div>
                         <div className="text-xs">
