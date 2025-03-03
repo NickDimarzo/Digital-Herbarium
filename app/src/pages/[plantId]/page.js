@@ -441,7 +441,10 @@ export default function Page({ params }) {
                                           : "text-gray-900"
                                       } group flex w-full items-center px-4 py-2 text-sm`}
                                     >
-                                      Set as Primary
+                                      Set as {" "}
+                                      {primaryImageTitle
+                                        ? primaryImageTitle
+                                        : "Primary Image"}
                                     </button>
                                   )}
                                 </MenuItem>
