@@ -33,38 +33,19 @@ export function fetchUserPlants(userId, setUserPlants) {
 // Add a plant to the user's collection
 export const addUserPlant = async (plant, userId) => {
   try {
-    await setDoc(doc(db, "users", userId, "plants", plant.elCode), {
-      elCode: plant.elCode,
-      family: plant.family,
-      commonName: plant.commonName,
-      genus: plant.genus,
-      species: plant.species,
-      variationSubspeices: plant.variationSubspeices,
-      origin: plant.origin,
-      dateOfCollection: plant.dateOfCollection,
-      location: plant.location,
-      habitat: plant.habitat,
-      collector: plant.collector,
-      notes: plant.notes,
-      primaryImage: plant.primaryImage,
-      primaryImageTitle: plant.primaryImageTitle,
-      primaryImageDate: plant.primaryImageDate,
-      primaryImageDescription: plant.primaryImageDescription,
-      highLightImagesOne: plant.highLightImagesOne,
-      highLightImagesOneTitle: plant.highLightImagesOneTitle,
-      highLightImagesOneDate: plant.highLightImagesOneDate,
-      highLightImagesOneDescription: plant.highLightImagesOneDescription,
-      highLightImagesTwo: plant.highLightImagesTwo,
-      highLightImagesTwoTitle: plant.highLightImagesTwoTitle,
-      highLightImagesTwoDate: plant.highLightImagesTwoDate,
-      highLightImagesTwoDescription: plant.highLightImagesTwoDescription,
-      highLightImagesThree: plant.highLightImagesThree,
-      highLightImagesThreeTitle: plant.highLightImagesThreeTitle,
-      highLightImagesThreeDate: plant.highLightImagesThreeDate,
-      highLightImagesThreeDescription: plant.highLightImagesThreeDescription,
+    const { elCode, ...plantData } = plant;
+    
+    // Remove null/undefined values
+    const cleanData = Object.fromEntries(
+      Object.entries(plantData).filter(([_, value]) => value != null)
+    );
+
+    await setDoc(doc(db, "users", userId, "plants", elCode), {
+      elCode,
+      ...cleanData
     });
     alert("Your collection has been updated!");
-    return plant.elCode;
+    return elCode;
   } catch (error) {
     console.error("Error adding item", error);
   }
