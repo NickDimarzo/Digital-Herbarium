@@ -409,7 +409,11 @@ export default function Page({ params }) {
                           key={plant.id}
                           className="flex-col p-2 justify-center relative"
                         >
-                          <Link href={image}>
+                          <Link
+                            href={image}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
                             <img
                               className="border-2 border-dark-blue rounded-xl shadow-2xl shadow-black object-cover w-full h-64"
                               src={image}
@@ -441,7 +445,7 @@ export default function Page({ params }) {
                                           : "text-gray-900"
                                       } group flex w-full items-center px-4 py-2 text-sm`}
                                     >
-                                      Set as {" "}
+                                      Set as{" "}
                                       {primaryImageTitle
                                         ? primaryImageTitle
                                         : "Primary Image"}

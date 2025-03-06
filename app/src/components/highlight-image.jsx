@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useEffect } from "react";
+import Link from "next/link";
 
 export default function HighlightImage({
   image,
@@ -19,16 +20,13 @@ export default function HighlightImage({
     <>
       {image ? (
         <div className="relative flex flex-col">
-          <img
-            src={image}
-            className="w-full h-56 object-cover rounded-lg shadow-lg p-1 lg:ml-2 bg-gray-500 bg-opacity-45 border-t-4 border-r-4 border-dark-blue"
-          />
-          {/* <button
-            onClick={() => handleSelectHighlightImage(image)}
-            className="absolute top-1 right-1 bg-dark-blue text-white text-sm rounded-full py-1 px-2"
-          >
-            X
-          </button> */}
+          <Link href={image} target="_blank" rel="noopener noreferrer">
+            <img
+              className="w-full h-56 object-cover rounded-lg shadow-lg p-1 lg:ml-2 bg-gray-500 bg-opacity-45 border-t-4 border-r-4 border-dark-blue"
+              src={image}
+              alt="plant"
+            />
+          </Link>
           <div className="flex-flex-col lg:ml-4">
             <div className="text-sm">
               <input
