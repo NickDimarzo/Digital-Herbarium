@@ -50,7 +50,7 @@ export default function Page() {
       <NavBar />
       <div className=" h-screen flex justify-center text-white">
         <div className="flex-col h-max rounded-3xl justify-center xl:mt-16 m-8 ">
-          <div className="flex-col justify-center m-4 xl:m-8 text-sm  m:text-lg lg:text-2xl xl:text-4xl font-mono p-2 xl:p-5 ">
+          <div className="flex-col justify-center m-4 xl:m-8 text-sm  m:text-lg lg:text-2xl xl:text-2xl font-mono p-2 xl:p-5 ">
             {user ? (
               <div className="bg-white text-black p-4 rounded-2xl border-t-8 border-r-8 border-dark-blue shadow-2xl shadow-black">
                 <div className="p-4 flex-col justify-center">
