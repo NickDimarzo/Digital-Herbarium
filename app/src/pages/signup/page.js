@@ -48,7 +48,7 @@ export default function Page() {
     <main className="w-screen h-full flex-col justify-center">
       <div className="flex justify-center">
         <div className="custom-card xl:w-1/3">
-          <div className="flex-col justify-center m-8 font-mono bg-white p-5 rounded-3xl text-sm  m:text-lg lg:text-2xl xl:text-2xl">
+          <div className="flex-col justify-center m-8 font-mono bg-white p-5 rounded-3xl text-sm  m:text-lg lg:text-xl xl:text-2xl">
             {loading ? (
               <LoadingBlock />
             ) : user ? (
