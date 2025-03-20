@@ -8,7 +8,7 @@ import {
   addDoc,
 } from "firebase/firestore";
 import { storage } from "../_utils/firebase";
-import { ref, uploadBytes, listAll, getDownloadURL } from "firebase/storage";
+import { ref, uploadBytes, listAll, getDownloadURL, deleteObject } from "firebase/storage";
 import { v4 } from "uuid";
 
 // Create a new collection in the database for the user
@@ -51,6 +51,16 @@ export const addUserPlant = async (plant, userId) => {
   }
 };
 
+// delete a plant from firebase storage
+export const deletePlant = async (userId, plantId) => {
+  const storageRef = ref(storage, `images/${userId}/${plantId}`);
+  const listResult = await listAll(storageRef);
+
+  for (let item of listResult.items) {
+    await item.delete();
+  }
+};
+
 // add a plant image to firebase storage
 export const uploadImages = async (files, userId, plantId) => {
   if (files.length === 0) {
@@ -67,16 +77,6 @@ export const uploadImages = async (files, userId, plantId) => {
   alert("Images uploaded successfully!");
 };
 
-// delete a plant from firebase storage
-export const deletePlant = async (userId, plantId) => {
-  const storageRef = ref(storage, `images/${userId}/${plantId}`);
-  const listResult = await listAll(storageRef);
-
-  for (let item of listResult.items) {
-    await item.delete();
-  }
-};
-
 // fetch plant images from firebase storage
 export const fetchPlantImages = async (userId, plantId) => {
   const storageRef = ref(storage, `images/${userId}/${plantId}`);
@@ -89,4 +89,19 @@ export const fetchPlantImages = async (userId, plantId) => {
   }
 
   return urls;
+};
+
+
+// delete a plant image from firebase storage
+export const deletePlantImage = async (userId, plantId, imageUrl) => {
+  const storageRef = ref(storage, `images/${userId}/${plantId}`);
+  const listResult = await listAll(storageRef);
+
+  for (let item of listResult.items) {
+    const url = await getDownloadURL(item);
+    if (url === imageUrl) {
+      await deleteObject(item);
+      break;
+    }
+  }
 };
