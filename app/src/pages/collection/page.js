@@ -129,7 +129,7 @@ export default function Page() {
                           Family:
                           <input
                             type="text"
-                            className="bg-white border-b-2 border-dark-blue w-full"
+                            className="bg-white border-b-2 border-dark-blue w-full outline-none"
                             onChange={(event) =>
                               handleFilterChange(event, "family")
                             }
@@ -141,7 +141,7 @@ export default function Page() {
                           Genus:
                           <input
                             type="text"
-                            className="bg-white border-b-2 border-dark-blue w-full"
+                            className="bg-white border-b-2 border-dark-blue w-full outline-none"
                             onChange={(event) =>
                               handleFilterChange(event, "genus")
                             }
@@ -153,7 +153,7 @@ export default function Page() {
                           Species:
                           <input
                             type="text"
-                            className="bg-white border-b-2 border-dark-blue w-full"
+                            className="bg-white border-b-2 border-dark-blue w-full outline-none"
                             onChange={(event) =>
                               handleFilterChange(event, "species")
                             }
