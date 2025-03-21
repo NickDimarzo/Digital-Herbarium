@@ -74,7 +74,7 @@ export default function Page() {
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className=" text-black m-2 w-full border-b-2 border-dark-blue"
+                        className=" text-black m-2 w-full border-b-2 border-dark-blue outline-none"
                       />
                     </div>
                     <div className="flex flex-col justify-end my-4 w-full p-4">
@@ -83,7 +83,7 @@ export default function Page() {
                         type="password"
                         value={password}
                         onChange={handlePasswordChange}
-                        className=" text-black m-2 w-full border-b-2 border-dark-blue"
+                        className=" text-black m-2 w-full border-b-2 border-dark-blue outline-none"
                       />
                     </div>
                     <div className="flex justify-end text-sm lg:text-lg">
@@ -105,7 +105,7 @@ export default function Page() {
                         type="password"
                         value={confirmPassword}
                         onChange={handleConfirmPasswordChange}
-                        className=" text-black m-2 w-full border-b-2 border-dark-blue"
+                        className=" text-black m-2 w-full border-b-2 border-dark-blue outline-none"
                       />
                     </div>
                     <div className="flex justify-end text-sm lg:text-lg ">
