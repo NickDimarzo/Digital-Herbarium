@@ -1,6 +1,10 @@
-export default function FeatureCard({ header, img, text, screenShot }) {
+export default function FeatureCardReversed({ header, img, text, screenShot }) {
   return (
     <section className="flex justify-center my-20 p-10">
+      {/* right container */}
+      <div className="flex w-2/3 items-center bg-transparent rounded-2xl m-2">
+        <img className="rounded-2xl" src={screenShot} />
+      </div>
       {/* left container */}
       <div className="flex-col w-1/3 flex items-center bg-darker-blue m-2 text-white rounded-2xl ">
         <div className="flex items-center">
@@ -12,13 +16,6 @@ export default function FeatureCard({ header, img, text, screenShot }) {
         <div className="flex items-center justify-center p-4 m-4 bg-light-green rounded-2xl h-64 overflow-auto ">
           <p className=" text-xl xl:text-2xl">{text}</p>
         </div>
-      </div>
-      {/* right container */}
-      <div className="flex w-2/3 items-center bg-transparent rounded-2xl m-2">
-        <img
-          className="rounded-2xl"
-          src={screenShot}
-        />
       </div>
     </section>
   );
