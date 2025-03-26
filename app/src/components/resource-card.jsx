@@ -1,4 +1,3 @@
-import amazon from "../images/amazon-svgrepo-com.svg";
 import Link from "next/link";
 export default function ResourceCard({ desc, img, text, link }) {
   return (

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import FeatureCard from "./src/components/feature-card";
+import FeatureCardReversed from "./src/components/feature-card-reversed";
 
 export default function Page() {
   return (
@@ -33,24 +34,27 @@ export default function Page() {
         </div>
       </div>
       {/*Bottom Container*/}
-      <div className="flex flex-col xl:flex-row items-center sm:mx-20">
-        {/*Left Container*/}
+      <div className="flex flex-col items-center sm:mx-20">
+        {/*Top Container*/}
         <FeatureCard
           header="Discover"
           img="/assets/images/reading-book.png"
           text="Find the tools and resources you need to begin identifying plants and building your collection."
+          screenShot= "/assets/images/resources-snipet.png"
         />
-        {/*Center Container*/}
-        <FeatureCard
+        {/*Middle Container*/}
+        <FeatureCardReversed
           header="Identify"
           img="/assets/images/icon-plant.png"
           text="Collect, identify and capture your plant findings in the field or at home."
+          screenShot= "/assets/images/collection-snipet.png"
         />
-        {/*Right Container*/}
+        {/*Bottom Container*/}
         <FeatureCard
           header="Save"
           img="/assets/images/save-icon.png"
           text="Store your plant images and details of your findings in your personal digital herbarium."
+          screenShot= "/assets/images/plant-snipet.png"
         />
       </div>
     </div>
