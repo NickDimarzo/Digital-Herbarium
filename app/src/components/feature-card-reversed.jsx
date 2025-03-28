@@ -1,6 +1,6 @@
 export default function FeatureCardReversed({ header, img, text, screenShot }) {
   return (
-    <section className="flex justify-center my-20 p-10">
+    <section className="flex justify-center my-14 p-10 border-2 border-light-blue rounded-2xl bg-dark-blue">
       {/* right container */}
       <div className="flex w-2/3 items-center bg-transparent rounded-2xl m-2">
         <img className="rounded-2xl" src={screenShot} />
