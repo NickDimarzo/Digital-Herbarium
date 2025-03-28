@@ -39,7 +39,7 @@ export default function Page() {
         <FeatureCard
           header="Discover"
           img="/assets/images/reading-book.png"
-          text="Find the tools and resources you need to begin identifying plants and building your collection."
+          text="Find the tools and resources you need to begin identifying plants and building your collection. "
           screenShot= "/assets/images/resources-snipet.png"
         />
         {/*Middle Container*/}
