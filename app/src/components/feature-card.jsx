@@ -1,6 +1,6 @@
 export default function FeatureCard({ header, img, text, screenShot }) {
   return (
-    <section className="flex justify-center my-14 p-10 border-2 border-light-blue rounded-2xl bg-dark-blue">
+    <section className="flex w-full justify-center my-14 p-10 border-2 border-light-blue rounded-2xl bg-dark-blue">
       {/* left container */}
       <div className="flex-col w-1/3 flex items-center bg-darker-blue m-2 text-white rounded-2xl ">
         <div className="flex items-center">
