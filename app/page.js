@@ -11,7 +11,9 @@ export default function Page() {
         {/*Left Container*/}
         <div className="flex-col w-full sm:w-1/2 xl:w-1/3 flex bg-darker-blue justify-center items-center rounded-t-2xl xl:rounded-l-2xl xl:rounded-tr-none">
           <div className="flex items-center p-4 justify-center">
-            <h1 className="text-2xl xl:text-4xl text-white">Digital Herbarium</h1>
+            <h1 className="text-2xl xl:text-4xl text-white">
+              Digital Herbarium
+            </h1>
           </div>
           <div className="w-2/3 flex items-center ">
             <p className="p-4 text-xl xl:text-2xl w-full text-white">
@@ -39,22 +41,28 @@ export default function Page() {
         <FeatureCard
           header="Discover"
           img="/assets/images/reading-book.png"
-          text="Find the tools and resources you need to begin identifying plants and building your collection. "
-          screenShot= "/assets/images/resources-snipet.png"
+          text="Find the tools and resources you need to begin identifying plants and building your collection. 
+          lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus. lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus. 
+          lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus. lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus."
+          screenShot="/assets/images/resources-snipet.png"
         />
         {/*Middle Container*/}
         <FeatureCardReversed
           header="Identify"
           img="/assets/images/icon-plant.png"
-          text="Collect, identify and capture your plant findings in the field or at home."
-          screenShot= "/assets/images/collection-snipet.png"
+          text="Collect, identify and capture your plant findings in the field or at home.
+          lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus. lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus. 
+          lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus. lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus."
+          screenShot="/assets/images/collection-snipet.png"
         />
         {/*Bottom Container*/}
         <FeatureCard
           header="Save"
           img="/assets/images/save-icon.png"
-          text="Store your plant images and details of your findings in your personal digital herbarium."
-          screenShot= "/assets/images/plant-snipet.png"
+          text="Store your plant images and details of your findings in your personal digital herbarium.
+          lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus. lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus. 
+          lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus. lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus."
+          screenShot="/assets/images/plant-snipet.png"
         />
       </div>
     </div>
