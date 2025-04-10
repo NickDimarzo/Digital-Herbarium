@@ -135,7 +135,7 @@ export default function Page() {
                   advanced understanding of plant biology. Using this guide, you
                   WILL be able to identify down to genus, and species. A biology
                   dissecting kit, and magnifying glass is required to use this
-                  guide
+                  guide.
                 </p>
               </div>
             </div>
