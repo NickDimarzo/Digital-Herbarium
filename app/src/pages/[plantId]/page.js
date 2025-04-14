@@ -12,6 +12,7 @@ import { addUserPlant } from "../../_services/DbServices";
 import plantsData from "../../alberta-plants/new-herbarium.json";
 import { uploadImages } from "../../_services/DbServices";
 import { fetchPlantImages } from "../../_services/DbServices";
+import { deletePlantImage } from "../../_services/DbServices";
 import Image from "next/image";
 import {
   Menu,
@@ -173,6 +174,41 @@ export default function Page({ params }) {
       addUserPlant(plant, user.uid);
       console.log(plant);
     }
+  };
+
+  // handle deleting and image from the database
+  const handleDeleteImage = (imageUrl) => {
+    deletePlantImage(user.uid, plant.elCode, imageUrl).then(() => {
+      fetchPlantImages(user.uid, plant.elCode).then((images) => {
+        setUserImages(images);
+      });
+      switch (imageUrl) {
+        case primaryImage:
+            setPrimaryImage(null);
+            setPrimaryImageTitle("");
+            setPrimaryImageDate("");
+            setPrimaryImageDescription("");
+            break;
+        case highLightImagesOne:
+            setHighLightImagesOne(null);
+            setHighLightImagesOneTitle("");
+            setHighLightImagesOneDate("");
+            setHighLightImagesOneDescription("");
+            break;
+        case highLightImagesTwo:
+            setHighLightImagesTwo(null);
+            setHighLightImagesTwoTitle("");
+            setHighLightImagesTwoDate("");
+            setHighLightImagesTwoDescription("");
+            break;
+        case highLightImagesThree:
+            setHighLightImagesThree(null);
+            setHighLightImagesThreeTitle("");
+            setHighLightImagesThreeDate("");
+            setHighLightImagesThreeDescription("");
+            break;
+    }
+    });
   };
 
   // Fetch user plants
@@ -506,6 +542,20 @@ export default function Page({ params }) {
                                       {highLightImagesThreeTitle
                                         ? highLightImagesThreeTitle
                                         : "Highlight Image Three"}
+                                    </button>
+                                  )}
+                                </MenuItem>
+                                <MenuItem>
+                                  {({ focus }) => (
+                                    <button
+                                      onClick={() => handleDeleteImage(image)}
+                                      className={`${
+                                        focus
+                                          ? "bg-light-green text-white"
+                                          : "text-gray-900"
+                                      } group flex w-full items-center px-4 py-2 text-sm`}
+                                    >
+                                      Delete
                                     </button>
                                   )}
                                 </MenuItem>

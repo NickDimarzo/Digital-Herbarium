@@ -8,7 +8,7 @@ import {
   addDoc,
 } from "firebase/firestore";
 import { storage } from "../_utils/firebase";
-import { ref, uploadBytes, listAll, getDownloadURL } from "firebase/storage";
+import { ref, uploadBytes, listAll, getDownloadURL, deleteObject } from "firebase/storage";
 import { v4 } from "uuid";
 
 // Create a new collection in the database for the user
@@ -51,6 +51,16 @@ export const addUserPlant = async (plant, userId) => {
   }
 };
 
+// delete a plant from firebase storage
+export const deletePlant = async (userId, plantId) => {
+  const storageRef = ref(storage, `images/${userId}/${plantId}`);
+  const listResult = await listAll(storageRef);
+
+  for (let item of listResult.items) {
+    await item.delete();
+  }
+};
+
 // add a plant image to firebase storage
 export const uploadImages = async (files, userId, plantId) => {
   if (files.length === 0) {
@@ -67,26 +77,56 @@ export const uploadImages = async (files, userId, plantId) => {
   alert("Images uploaded successfully!");
 };
 
-// delete a plant from firebase storage
-export const deletePlant = async (userId, plantId) => {
-  const storageRef = ref(storage, `images/${userId}/${plantId}`);
-  const listResult = await listAll(storageRef);
+// fetch plant images from firebase storage
+export const fetchPlantImages = async (userId, plantId) => {
+  try {
+    const storageRef = ref(storage, `images/${userId}/${plantId}`);
+    const listResult = await listAll(storageRef);
+    const urls = [];
 
-  for (let item of listResult.items) {
-    await item.delete();
+    for (let item of listResult.items) {
+      try {
+        const url = await getDownloadURL(item);
+        urls.push(url);
+      } catch (error) {
+        if (error.code !== 'storage/object-not-found') {
+          console.error("Error fetching image URL:", error);
+        }
+        continue;
+      }
+    }
+
+    return urls;
+  } catch (error) {
+    console.error("Error fetching plant images:", error);
+    return [];
   }
 };
 
-// fetch plant images from firebase storage
-export const fetchPlantImages = async (userId, plantId) => {
-  const storageRef = ref(storage, `images/${userId}/${plantId}`);
-  const listResult = await listAll(storageRef);
-  const urls = [];
+// delete a plant image from firebase storage
+export const deletePlantImage = async (userId, plantId, imageUrl) => {
+  try {
+    const storageRef = ref(storage, `images/${userId}/${plantId}`);
+    const listResult = await listAll(storageRef);
 
-  for (let item of listResult.items) {
-    const url = await getDownloadURL(item);
-    urls.push(url);
+    for (let item of listResult.items) {
+      try {
+        const url = await getDownloadURL(item);
+        if (url === imageUrl) {
+          await deleteObject(item);
+          alert("Image deleted successfully");
+          return true;
+        }
+      } catch (error) {
+        console.error("Error getting download URL:", error);
+        continue;
+      }
+    }
+    
+    throw new Error("Image not found");
+  } catch (error) {
+    console.error("Error deleting image:", error);
+    alert("Failed to delete image: " + error.message);
+    return false;
   }
-
-  return urls;
 };
