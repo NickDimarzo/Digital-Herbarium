@@ -79,29 +79,54 @@ export const uploadImages = async (files, userId, plantId) => {
 
 // fetch plant images from firebase storage
 export const fetchPlantImages = async (userId, plantId) => {
-  const storageRef = ref(storage, `images/${userId}/${plantId}`);
-  const listResult = await listAll(storageRef);
-  const urls = [];
+  try {
+    const storageRef = ref(storage, `images/${userId}/${plantId}`);
+    const listResult = await listAll(storageRef);
+    const urls = [];
 
-  for (let item of listResult.items) {
-    const url = await getDownloadURL(item);
-    urls.push(url);
+    for (let item of listResult.items) {
+      try {
+        const url = await getDownloadURL(item);
+        urls.push(url);
+      } catch (error) {
+        if (error.code !== 'storage/object-not-found') {
+          console.error("Error fetching image URL:", error);
+        }
+        continue;
+      }
+    }
+
+    return urls;
+  } catch (error) {
+    console.error("Error fetching plant images:", error);
+    return [];
   }
-
-  return urls;
 };
-
 
 // delete a plant image from firebase storage
 export const deletePlantImage = async (userId, plantId, imageUrl) => {
-  const storageRef = ref(storage, `images/${userId}/${plantId}`);
-  const listResult = await listAll(storageRef);
+  try {
+    const storageRef = ref(storage, `images/${userId}/${plantId}`);
+    const listResult = await listAll(storageRef);
 
-  for (let item of listResult.items) {
-    const url = await getDownloadURL(item);
-    if (url === imageUrl) {
-      await deleteObject(item);
-      break;
+    for (let item of listResult.items) {
+      try {
+        const url = await getDownloadURL(item);
+        if (url === imageUrl) {
+          await deleteObject(item);
+          alert("Image deleted successfully");
+          return true;
+        }
+      } catch (error) {
+        console.error("Error getting download URL:", error);
+        continue;
+      }
     }
+    
+    throw new Error("Image not found");
+  } catch (error) {
+    console.error("Error deleting image:", error);
+    alert("Failed to delete image: " + error.message);
+    return false;
   }
 };

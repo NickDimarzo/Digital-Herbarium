@@ -182,6 +182,32 @@ export default function Page({ params }) {
       fetchPlantImages(user.uid, plant.elCode).then((images) => {
         setUserImages(images);
       });
+      switch (imageUrl) {
+        case primaryImage:
+            setPrimaryImage(null);
+            setPrimaryImageTitle("");
+            setPrimaryImageDate("");
+            setPrimaryImageDescription("");
+            break;
+        case highLightImagesOne:
+            setHighLightImagesOne(null);
+            setHighLightImagesOneTitle("");
+            setHighLightImagesOneDate("");
+            setHighLightImagesOneDescription("");
+            break;
+        case highLightImagesTwo:
+            setHighLightImagesTwo(null);
+            setHighLightImagesTwoTitle("");
+            setHighLightImagesTwoDate("");
+            setHighLightImagesTwoDescription("");
+            break;
+        case highLightImagesThree:
+            setHighLightImagesThree(null);
+            setHighLightImagesThreeTitle("");
+            setHighLightImagesThreeDate("");
+            setHighLightImagesThreeDescription("");
+            break;
+    }
     });
   };
 
