@@ -10,7 +10,7 @@ export default function FeatureCard({ header, img, text, screenShot }) {
           <img className="rounded-2xl my-2 w-1/2 h-max" src={img} />
         </div>
         <div className="flex flex-col items-center justify-center p-4 m-4 bg-light-green rounded-2xl overflow-auto ">
-          <ul className=" text-md xl:text-xl h-full justify-around items-center flex flex-col">
+          <ul className=" text-md xl:text-2xl h-full justify-around items-center flex flex-col">
             <li className="m-2">{text.lineOne}</li>
             <li className="m-2">{text.lineTwo}</li>
             <li className="m-2">{text.lineThree}</li>
