@@ -4,6 +4,7 @@ import Link from "next/link";
 import NavBar from "../../components/nav-bar";
 import Redirect from "../../components/redirect";
 import HighlightImage from "../../components/highlight-image";
+import PlantInfo from "../../components/plantId/plantInfo";
 import { useState } from "react";
 import { useUserAuth } from "../../_utils/auth-context";
 import { addUserPlant } from "../../_services/DbServices";
@@ -117,16 +118,7 @@ export default function Page({ params }) {
 
           {/* Plant and Collection Info */}
           <div className="flex flex-col lg:flex-row w-full">
-            <div className="w-full lg:w-1/2 lg:ml-8">
-              <div className="bg-white rounded-xl m-2 p-2 border-t-8 border-r-8 border-dark-blue">
-                <h1 className="xl:text-3xl text-xl mb-2">Plant Information</h1>
-                <p>Family: {plant?.family}</p>
-                <p>Genus: <span className="italic">{plant?.genus}</span></p>
-                <p>Species: <span className="italic">{plant?.species}</span></p>
-                <p>Common Name: {plant?.commonName}</p>
-                <p>Origin: {plant?.origin}</p>
-              </div>
-            </div>
+            <PlantInfo plant={plant} />
             <div className="w-full lg:w-1/2 lg:mr-10">
               <div className="bg-white rounded-xl m-2 p-2 border-t-8 border-r-8 border-dark-blue">
                 <h1 className="xl:text-3xl text-xl mb-2">Collection Information</h1>
