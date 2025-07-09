@@ -1,19 +1,11 @@
 "use client";
 
+// React/Next Imports
 import Link from "next/link";
-import NavBar from "../../components/nav-bar";
-import Redirect from "../../components/redirect";
-import HighlightImage from "../../components/highlight-image";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { useUserAuth } from "../../_utils/auth-context";
-import { useEffect } from "react";
-import { fetchUserPlants } from "../../_services/DbServices";
-import { addUserPlant } from "../../_services/DbServices";
-import plantsData from "../../alberta-plants/new-herbarium.json";
-import { uploadImages } from "../../_services/DbServices";
-import { fetchPlantImages } from "../../_services/DbServices";
-import { deletePlantImage } from "../../_services/DbServices";
-import Image from "next/image";
+
+// Third-party libraries
 import {
   Menu,
   MenuButton,
@@ -22,6 +14,23 @@ import {
   Transition,
 } from "@headlessui/react";
 import { EllipsisVerticalIcon } from "@heroicons/react/24/outline";
+
+// Components
+import NavBar from "../../components/nav-bar";
+import Redirect from "../../components/redirect";
+import HighlightImage from "../../components/highlight-image";
+import PlantInfo from "../../components/plantId/plantInfo";
+
+// Database
+import {
+  fetchUserPlants,
+  addUserPlant,
+  uploadImages,
+  fetchPlantImages,
+  deletePlantImage,
+} from "../../_services/DbServices";
+import plantsData from "../../alberta-plants/new-herbarium.json";
+
 
 export default function Page({ params }) {
   const { user, createUser, emailSignIn } = useUserAuth();
@@ -184,30 +193,30 @@ export default function Page({ params }) {
       });
       switch (imageUrl) {
         case primaryImage:
-            setPrimaryImage(null);
-            setPrimaryImageTitle("");
-            setPrimaryImageDate("");
-            setPrimaryImageDescription("");
-            break;
+          setPrimaryImage(null);
+          setPrimaryImageTitle("");
+          setPrimaryImageDate("");
+          setPrimaryImageDescription("");
+          break;
         case highLightImagesOne:
-            setHighLightImagesOne(null);
-            setHighLightImagesOneTitle("");
-            setHighLightImagesOneDate("");
-            setHighLightImagesOneDescription("");
-            break;
+          setHighLightImagesOne(null);
+          setHighLightImagesOneTitle("");
+          setHighLightImagesOneDate("");
+          setHighLightImagesOneDescription("");
+          break;
         case highLightImagesTwo:
-            setHighLightImagesTwo(null);
-            setHighLightImagesTwoTitle("");
-            setHighLightImagesTwoDate("");
-            setHighLightImagesTwoDescription("");
-            break;
+          setHighLightImagesTwo(null);
+          setHighLightImagesTwoTitle("");
+          setHighLightImagesTwoDate("");
+          setHighLightImagesTwoDescription("");
+          break;
         case highLightImagesThree:
-            setHighLightImagesThree(null);
-            setHighLightImagesThreeTitle("");
-            setHighLightImagesThreeDate("");
-            setHighLightImagesThreeDescription("");
-            break;
-    }
+          setHighLightImagesThree(null);
+          setHighLightImagesThreeTitle("");
+          setHighLightImagesThreeDate("");
+          setHighLightImagesThreeDescription("");
+          break;
+      }
     });
   };
 
@@ -280,34 +289,7 @@ export default function Page({ params }) {
           <div className="flex justify-center mt-10">
             <div className=" w-full sm:w-3/4 justify-center flex flex-col">
               <div className="flex flex-col lg:flex-row w-full ">
-                <div className="flex flex-col w-full h-full lg:w-1/2 lg:ml-8">
-                  <div className=" bg-white h-full rounded-xl m-2 p-2 flex flex-col justify-between border-t-8 border-r-8 border-dark-blue">
-                    <div className="flex mb-2">
-                      <h1 className="w-max xl:text-3xl text-xl border-dark-blue">
-                        Plant Information
-                      </h1>
-                    </div>
-                    <div>
-                      <p>Family: {plant.family}</p>
-                    </div>
-                    <div>
-                      <p>
-                        Genus: <span className="italic">{plant.genus}</span>
-                      </p>
-                    </div>
-                    <div>
-                      <p>
-                        Species: <span className="italic">{plant.species}</span>
-                      </p>
-                    </div>
-                    <div>
-                      <p>Common Name: {plant.commonName}</p>
-                    </div>
-                    <div>
-                      <p>Origin: {plant.origin} </p>
-                    </div>
-                  </div>
-                </div>
+                  <PlantInfo plant={plant}/>
                 <div className="flex flex-col w-full h-full lg:w-1/2 lg:mr-10">
                   <div className=" bg-white rounded-xl m-2 p-2 border-t-8 border-r-8 border-dark-blue">
                     <div className="flex mb-2">
