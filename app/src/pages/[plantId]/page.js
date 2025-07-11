@@ -2,7 +2,7 @@
 
 // React/Next Imports
 import Link from "next/link";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useUserAuth } from "../../_utils/auth-context";
 
 // Third-party libraries
@@ -16,10 +16,12 @@ import {
 import { EllipsisVerticalIcon } from "@heroicons/react/24/outline";
 
 // Components
-import NavBar from "../../components/nav-bar";
-import Redirect from "../../components/redirect";
-import HighlightImage from "../../components/highlight-image";
-import PlantInfo from "../../components/plantId/plantInfo";
+import NavBar from "../../components/NavBar";
+import Redirect from "../../components/Redirect";
+import PlantInfo from "../../components/plantId/PlantInfo";
+import CollectionInfo from "../../components/plantId/CollectionInfo";
+import HighlightImage from "../../components/plantId/HighlightImage";
+import PrimaryImage from "../../components/plantId/PrimaryImage";
 
 // Database
 import {
@@ -30,7 +32,6 @@ import {
   deletePlantImage,
 } from "../../_services/DbServices";
 import plantsData from "../../alberta-plants/new-herbarium.json";
-
 
 export default function Page({ params }) {
   const { user, createUser, emailSignIn } = useUserAuth();
@@ -282,107 +283,36 @@ export default function Page({ params }) {
   return (
     <>
       {user?.emailVerified ? (
-        <main className="flex-col justify-center font-mono xl:text-2xl text-lg ">
+        <body className="flex-col justify-center font-mono xl:text-2xl text-lg ">
           <header>
             <NavBar />
           </header>
-          <div className="flex justify-center mt-10">
-            <div className=" w-full sm:w-3/4 justify-center flex flex-col">
-              <div className="flex flex-col lg:flex-row w-full ">
-                  <PlantInfo plant={plant}/>
-                <div className="flex flex-col w-full h-full lg:w-1/2 lg:mr-10">
-                  <div className=" bg-white rounded-xl m-2 p-2 border-t-8 border-r-8 border-dark-blue">
-                    <div className="flex mb-2">
-                      <h1 className="w-max xl:text-3xl text-xl border-dark-blue">
-                        Collection Information
-                      </h1>
-                    </div>
-                    <div className="flex w-full my-2">
-                      <label className="w-1/2">Date of Collection:</label>
-                      <input
-                        type="date"
-                        value={dateOfCollection}
-                        onChange={(e) => setDateOfCollection(e.target.value)}
-                        className="ml-2 border-b-2 border-dark-blue w-full"
-                      />
-                    </div>
-                    <div className="flex w-full my-2 py-2">
-                      <label className="w-1/2">Location:</label>
-                      <input
-                        type="text"
-                        value={location}
-                        onChange={(e) => setLocation(e.target.value)}
-                        className="border-b-2 border-dark-blue w-full"
-                      />
-                    </div>
-                    <div className="flex w-full my-2">
-                      <label className="w-1/2" l>
-                        Habitat:
-                      </label>
-                      <input
-                        type="text"
-                        value={habitat}
-                        onChange={(e) => setHabitat(e.target.value)}
-                        className="border-b-2 border-dark-blue w-full"
-                      />
-                    </div>
-                    <div className="flex w-full my-2">
-                      <label className="w-1/2">Collector:</label>
-                      <input
-                        type="text"
-                        value={collector}
-                        onChange={(e) => setCollector(e.target.value)}
-                        className="border-b-2 border-dark-blue w-full"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="custom-card">
+          <main className="flex justify-center mt-10">
+            <div className=" w-full sm:w-3/4 justify-center flex flex-col mt-10">
+              <section className="flex flex-col lg:flex-row w-full ">
+                <PlantInfo plant={plant} />
+                <CollectionInfo
+                  dateOfCollection={dateOfCollection}
+                  setDateOfCollection={setDateOfCollection}
+                  location={location}
+                  setLocation={setLocation}
+                  habitat={habitat}
+                  setHabitat={setHabitat}
+                  collector={collector}
+                  setCollector={setCollector}
+                />
+              </section>
+              <section class="custom-card">
                 <div className="flex flex-col lg:flex-row justify-between items-center w-full lg:w-full">
                   {/* Primary Image (left side) */}
-                  <div className="w-full lg:w-2/3 lg:pl-8 m-2">
-                    {primaryImage ? (
-                      <div className="flex flex-col">
-                        <div className="relative w-full h-[400px] lg:h-[835px] mr-10">
-                          <img
-                            src={primaryImage}
-                            alt="Primary"
-                            className="absolute w-full h-full object-contain rounded-lg shadow-lg p-2 bg-gray-500 bg-opacity-45 border-t-4 border-r-4 border-dark-blue"
-                          />
-                        </div>
-                        <div className="text-sm">
-                          <input
-                            type="text"
-                            value={primaryImageTitle}
-                            placeholder="Primary Image Title"
-                            onChange={(e) =>
-                              setPrimaryImageTitle(e.target.value)
-                            }
-                            className="w-max font-semibold bg-transparent py-1 outline-none"
-                          />
-                        </div>
-                        <div className="text-xs">
-                          <input
-                            type="text"
-                            value={primaryImageDescription}
-                            placeholder="Primary Image Description"
-                            onChange={(e) =>
-                              setPrimaryImageDescription(e.target.value)
-                            }
-                            className="w-full py-1 outline-none"
-                          />
-                        </div>
-                        <div className="text-xs">
-                          <p>Date of Collection:{dateOfCollection}</p>
-                        </div>
-                      </div>
-                    ) : (
-                      <div className="flex items-center justify-center h-[800px] bg-gray-100 rounded-lg">
-                        <p className="text-gray-500">Select a primary image</p>
-                      </div>
-                    )}
-                  </div>
+                  <PrimaryImage
+                    primaryImage={primaryImage}
+                    primaryImageTitle={primaryImageTitle}
+                    setPrimaryImageTitle={setPrimaryImageTitle}
+                    primaryImageDescription={primaryImageDescription}
+                    setPrimaryImageDescription={setPrimaryImageDescription}
+                    dateOfCollection={dateOfCollection}
+                  />
                   {/* Highlight Images (Right Side) */}
                   <div className="w-full h-full lg:w-1/3 lg:mr-10 ">
                     <div className="flex flex-col justify-between h-[903px]">
@@ -413,9 +343,9 @@ export default function Page({ params }) {
                     </div>
                   </div>
                 </div>
-              </div>
+              </section>
               {/*PHOTO UPLOADS*/}
-              <div class="custom-card">
+              <section class="custom-card">
                 <div className=" bg-white rounded-xl m-2 p-2">
                   <div className="flex justify-center w-full p-2 m-2">
                     <h1 className="w-max xl:text-3xl text-xl"> My Photos</h1>
@@ -581,9 +511,9 @@ export default function Page({ params }) {
                     </div>
                   </div>
                 </div>
-              </div>
+              </section>
 
-              <div class="custom-card">
+              <section class="custom-card">
                 <div className=" bg-white rounded-xl m-2 p-2">
                   <form className="text-black flex-col">
                     <div className="flex justify-center">
@@ -607,14 +537,14 @@ export default function Page({ params }) {
                     </div>
                   </form>
                 </div>
-              </div>
+              </section>
             </div>
-          </div>
-        </main>
+          </main>
+        </body>
       ) : (
-        <main>
+        <body>
           <Redirect />
-        </main>
+        </body>
       )}
     </>
   );

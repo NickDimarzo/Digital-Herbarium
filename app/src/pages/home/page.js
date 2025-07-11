@@ -3,9 +3,9 @@
 import { useState } from "react";
 import { useUserAuth } from "../../_utils/auth-context";
 import Link from "next/link";
-import Card from "../../components/card";
-import NavBar from "../../components/nav-bar";
-import Redirect from "../../components/redirect";
+import Card from "../../components/Card";
+import NavBar from "../../components/NavBar";
+import Redirect from "../../components/Redirect";
 
 export default function Page() {
   const [email, setEmail] = useState("");
