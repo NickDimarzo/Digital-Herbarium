@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { useUserAuth } from "../../_utils/auth-context";
-import NavBar from "../../components/nav-bar";
-import ResourceCard from "../../components/resource-card";
+import NavBar from "../../components/NavBar";
+import ResourceCard from "../../components/ResourceCard";
 
 export default function Page() {
   return (
