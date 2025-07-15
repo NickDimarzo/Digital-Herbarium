@@ -22,6 +22,9 @@ import PlantInfo from "../../components/plantId/PlantInfo";
 import CollectionInfo from "../../components/plantId/CollectionInfo";
 import HighlightImage from "../../components/plantId/HighlightImage";
 import PrimaryImage from "../../components/plantId/PrimaryImage";
+import NoImageMessage from "../../components/plantId/NoImageMessage";
+import ImagesUpload from "../../components/plantId/ImagesUpload";
+import PlantNotes from "../../components/plantId/PlantNotes";
 
 // Database
 import {
@@ -477,66 +480,24 @@ export default function Page({ params }) {
                         </div>
                       ))
                     ) : (
-                      <div className="flex justify-center w-full col-span-3 m-2 p-2">
-                        <div className="flex flex-col items-center">
-                          <p>
-                            Click the Choose Files button below to get started
-                          </p>
-                          <p>Images will be displayed here</p>
-                          <p>once they have been uploaded!</p>
-                        </div>
-                      </div>
+                      <NoImageMessage />
                     )}
                   </div>
                 </div>
                 <div>
-                  <div className="flex-col justify-between bg-white rounded-xl m-2 mt-4 p-2 ">
-                    <div className="flex justify-center p-4 text-sm m:text-lg lg:text-xl xl:text-2xl ">
-                      <input
-                        type="file"
-                        className=" bg-white w-max"
-                        multiple
-                        onChange={(e) => {
-                          setImageUpload(Array.from(e.target.files));
-                        }}
-                      />
-                    </div>
-                    <div className="flex justify-center">
-                      <button
-                        className="bg-dark-green text-gray-50 px-10 font-mono py-2 m-2 h-max rounded-xl hover:bg-light-green shadow-2xl shadow-black transition duration-500 hover:scale-110 "
-                        onClick={uploadImage}
-                      >
-                        Upload
-                      </button>
-                    </div>
-                  </div>
+                  <ImagesUpload
+                    setImageUpload={setImageUpload}
+                    uploadImage={uploadImage}
+                  />
                 </div>
               </section>
 
               <section class="custom-card">
-                <div className=" bg-white rounded-xl m-2 p-2">
-                  <form className="text-black flex-col">
-                    <div className="flex justify-center">
-                      <h1 className="w-max xl:text-3xl text-xl">Notes</h1>
-                    </div>
-                    <div className="flex justify-center h-96 ">
-                      <textarea
-                        type="text"
-                        value={textAreaValue}
-                        onChange={handleTextAreaChange}
-                        className="text-black bg-gray-100 border-2 border-darker-blue rounded-xl p-2 w-full m-2 max-h-full"
-                      />
-                    </div>
-                    <div className="flex justify-center">
-                      <button
-                        className="bg-dark-green text-gray-50 px-10 font-mono py-2 m-2 h-max rounded-xl hover:bg-light-green shadow-2xl shadow-black transition duration-500 hover:scale-110 "
-                        onClick={handleSubmit}
-                      >
-                        Submit
-                      </button>
-                    </div>
-                  </form>
-                </div>
+                <PlantNotes
+                  textAreaValue={textAreaValue}
+                  handleTextAreaChange={handleTextAreaChange}
+                  handleSubmit={handleSubmit}
+                />
               </section>
             </div>
           </main>
