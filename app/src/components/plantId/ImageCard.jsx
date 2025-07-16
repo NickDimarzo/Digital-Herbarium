@@ -1,4 +1,15 @@
-import React from "react";
+// React/Next Imports
+import Link from "next/link";
+
+// 3rd party libraries
+import {
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuItems,
+  Transition,
+} from "@headlessui/react";
+import { EllipsisVerticalIcon } from "@heroicons/react/24/outline";
 
 export default function ImageCard({
   plant,

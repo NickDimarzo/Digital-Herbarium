@@ -1,19 +1,8 @@
 "use client";
 
 // React/Next Imports
-import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useUserAuth } from "../../_utils/auth-context";
-
-// Third-party libraries
-import {
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuItems,
-  Transition,
-} from "@headlessui/react";
-import { EllipsisVerticalIcon } from "@heroicons/react/24/outline";
 
 // Components
 import NavBar from "../../components/NavBar";
