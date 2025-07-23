@@ -1,15 +1,6 @@
 import React from "react";
 
-export default function CollectionInfo({
-  dateOfCollection,
-  setDateOfCollection,
-  location,
-  setLocation,
-  habitat,
-  setHabitat,
-  collector,
-  setCollector,
-}) {
+export default function CollectionInfo({ plant, updatePlantField }) {
   return (
     <div className="flex flex-col w-full h-full lg:w-1/2 lg:mr-10">
       <div className=" bg-white rounded-xl m-2 p-2 border-t-8 border-r-8 border-dark-blue">
@@ -22,8 +13,10 @@ export default function CollectionInfo({
           <label className="w-1/2">Date of Collection:</label>
           <input
             type="date"
-            value={dateOfCollection}
-            onChange={(e) => setDateOfCollection(e.target.value)}
+            value={plant.dateOfCollection}
+            onChange={(e) =>
+              updatePlantField("dateOfCollection", e.target.value)
+            }
             className="ml-2 border-b-2 border-dark-blue w-full"
           />
         </div>
@@ -31,8 +24,8 @@ export default function CollectionInfo({
           <label className="w-1/2">Location:</label>
           <input
             type="text"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
+            value={plant.location}
+            onChange={(e) => updatePlantField("location", e.target.value)}
             className="border-b-2 border-dark-blue w-full"
           />
         </div>
@@ -42,8 +35,8 @@ export default function CollectionInfo({
           </label>
           <input
             type="text"
-            value={habitat}
-            onChange={(e) => setHabitat(e.target.value)}
+            value={plant.habitat}
+            onChange={(e) => updatePlantField("habitat", e.target.value)}
             className="border-b-2 border-dark-blue w-full"
           />
         </div>
@@ -51,8 +44,8 @@ export default function CollectionInfo({
           <label className="w-1/2">Collector:</label>
           <input
             type="text"
-            value={collector}
-            onChange={(e) => setCollector(e.target.value)}
+            value={plant.collector}
+            onChange={(e) => updatePlantField("collector", e.target.value)}
             className="border-b-2 border-dark-blue w-full"
           />
         </div>

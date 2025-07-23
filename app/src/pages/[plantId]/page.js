@@ -30,13 +30,31 @@ export default function Page({ params }) {
   const { user, createUser, emailSignIn } = useUserAuth();
   const [userPlants, setUserPlants] = useState([]);
   const [systemPlants, setSystemPlants] = useState(plantsData);
-  const [plant, setPlant] = useState({});
+  const [plant, setPlant] = useState({
+    notes: "Add your notes here!",
+    dateOfCollection: "",
+    location: "",
+    habitat: "",
+    collector: "",
+    primaryImage: null,
+    primaryImageTitle: "",
+    primaryImageDate: "",
+    primaryImageDescription: "",
+    highLightImagesOne: null,
+    highLightImagesOneTitle: "",
+    highLightImagesOneDate: "",
+    highLightImagesOneDescription: "",
+    highLightImagesTwo: null,
+    highLightImagesTwoTitle: "",
+    highLightImagesTwoDate: "",
+    highLightImagesTwoDescription: "",
+    highLightImagesThree: null,
+    highLightImagesThreeTitle: "",
+    highLightImagesThreeDate: "",
+    highLightImagesThreeDescription: "",
+  });
+  const [textAreaValue, setTextAreaValue] = useState("")
   const [notes, setNotes] = useState("Add your notes here!");
-  const [textAreaValue, setTextAreaValue] = useState("");
-  const [dateOfCollection, setDateOfCollection] = useState("");
-  const [location, setLocation] = useState("");
-  const [habitat, setHabitat] = useState("");
-  const [collector, setCollector] = useState("");
   const [userImages, setUserImages] = useState([]);
   const [imageUpload, setImageUpload] = useState([]);
 
@@ -46,7 +64,7 @@ export default function Page({ params }) {
   const [primaryImageTitle, setPrimaryImageTitle] = useState(
     plant.primaryImageTitle
   );
-  const [primaryImageDate, setPrimaryImageDate] = useState(dateOfCollection);
+  const [primaryImageDate, setPrimaryImageDate] = useState(plant.dateOfCollection);
   const [primaryImageDescription, setPrimaryImageDescription] = useState(
     plant.primaryImageDescription
   );
@@ -58,7 +76,7 @@ export default function Page({ params }) {
     plant.highLightImagesOneTitle
   );
   const [highLightImagesOneDate, setHighLightImagesOneDate] =
-    useState(dateOfCollection);
+    useState(plant.dateOfCollection);
   const [highLightImagesOneDescription, setHighLightImagesOneDescription] =
     useState(plant.highLightImagesOneDescription);
   // HighlightImageTwo
@@ -69,7 +87,7 @@ export default function Page({ params }) {
     plant.highLightImagesTwoTitle
   );
   const [highLightImagesTwoDate, setHighLightImagesTwoDate] =
-    useState(dateOfCollection);
+    useState(plant.dateOfCollection);
   const [highLightImagesTwoDescription, setHighLightImagesTwoDescription] =
     useState(plant.highLightImagesTwoDescription);
   // HighlightImageThree
@@ -80,9 +98,14 @@ export default function Page({ params }) {
     plant.highLightImagesThreeTitle
   );
   const [highLightImagesThreeDate, setHighLightImagesThreeDate] =
-    useState(dateOfCollection);
+    useState(plant.dateOfCollection);
   const [highLightImagesThreeDescription, setHighLightImagesThreeDescription] =
     useState(plant.highLightImagesThreeDescription);
+
+  // Generic plant field updater  
+  const updatePlantField = (field, value) => {
+    setPlant((prev) => ({ ...prev, [field]: value }));
+  };
 
   // Upload images to firebase storage
   const uploadImage = () => {
@@ -92,10 +115,6 @@ export default function Page({ params }) {
           setUserImages(images);
         });
       });
-      plant.dateOfCollection = dateOfCollection;
-      plant.location = location;
-      plant.habitat = habitat;
-      plant.collector = collector;
       plant.notes = textAreaValue;
       plant.primaryImage = primaryImage;
       plant.primaryImageTitle = primaryImageTitle;
@@ -153,10 +172,6 @@ export default function Page({ params }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (user) {
-      plant.dateOfCollection = dateOfCollection;
-      plant.location = location;
-      plant.habitat = habitat;
-      plant.collector = collector;
       plant.notes = textAreaValue;
       plant.primaryImage = primaryImage;
       plant.primaryImageTitle = primaryImageTitle;
@@ -229,10 +244,6 @@ export default function Page({ params }) {
       if (plant) {
         setPlant(plant);
         setTextAreaValue(plant.notes);
-        setDateOfCollection(plant.dateOfCollection);
-        setLocation(plant.location);
-        setHabitat(plant.habitat);
-        setCollector(plant.collector);
         setPrimaryImage(plant.primaryImage);
         setPrimaryImageTitle(plant.primaryImageTitle);
         setPrimaryImageDate(plant.dateOfCollection);
@@ -285,14 +296,8 @@ export default function Page({ params }) {
               <section className="flex flex-col lg:flex-row w-full ">
                 <PlantInfo plant={plant} />
                 <CollectionInfo
-                  dateOfCollection={dateOfCollection}
-                  setDateOfCollection={setDateOfCollection}
-                  location={location}
-                  setLocation={setLocation}
-                  habitat={habitat}
-                  setHabitat={setHabitat}
-                  collector={collector}
-                  setCollector={setCollector}
+                  plant={plant}
+                  updatePlantField={updatePlantField}
                 />
               </section>
               <section class="custom-card">
@@ -304,7 +309,7 @@ export default function Page({ params }) {
                     setPrimaryImageTitle={setPrimaryImageTitle}
                     primaryImageDescription={primaryImageDescription}
                     setPrimaryImageDescription={setPrimaryImageDescription}
-                    dateOfCollection={dateOfCollection}
+                    dateOfCollection={plant.dateOfCollection}
                   />
                   {/* Highlight Images (Right Side) */}
                   <div className="w-full h-full lg:w-1/3 lg:mr-10 ">
@@ -347,12 +352,18 @@ export default function Page({ params }) {
                     {userImages && userImages.length > 0 ? (
                       userImages.map((image) => (
                         <ImageCard
-                          plant={plant} 
+                          plant={plant}
                           image={image}
                           handleSelectPrimaryImage={handleSelectPrimaryImage}
-                          handleSelectHighlightImageOne={handleSelectHighlightImageOne}
-                          handleSelectHighlightImageTwo={handleSelectHighlightImageTwo}
-                          handleSelectHighlightImageThree={handleSelectHighlightImageThree}
+                          handleSelectHighlightImageOne={
+                            handleSelectHighlightImageOne
+                          }
+                          handleSelectHighlightImageTwo={
+                            handleSelectHighlightImageTwo
+                          }
+                          handleSelectHighlightImageThree={
+                            handleSelectHighlightImageThree
+                          }
                           handleDeleteImage={handleDeleteImage}
                           primaryImageTitle={primaryImageTitle}
                           highLightImagesOneTitle={highLightImagesOneTitle}
