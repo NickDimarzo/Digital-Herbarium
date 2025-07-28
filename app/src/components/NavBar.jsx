@@ -2,36 +2,63 @@
 
 import Link from "next/link";
 import { useUserAuth } from "../_utils/auth-context";
+import { useState } from "react";
 
 export default function NavBar() {
   const { user, gitHubSignIn, firebaseSignOut } = useUserAuth();
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-dark-blue border-4 border-dark-blue shadow-dark-blue xl:text-2xl text-sm">
       <div className="flex justify-between">
         <div className="flex justify-center">
-        <div className="bg-dark-green text-gray-50 font-mono m-2 sm:px-4 rounded-lg hover:bg-light-green transition duration-500 hover:scale-110 ">
-          <button className="flex justify-center p-2 items-center">
-            <Link href="/src/pages/home">Home</Link>
-          </button>
+          <div className="bg-dark-green text-gray-50 font-mono m-2 sm:px-4 rounded-lg hover:bg-light-green transition duration-500 hover:scale-110 ">
+            <button className="flex justify-center p-2 items-center">
+              <Link href="/src/pages/home">Home</Link>
+            </button>
+          </div>
         </div>
-        {/* <div className="bg-dark-green text-gray-50 font-mono w-max m-2 sm:px-4 rounded-lg hover:bg-light-green transition duration-500 hover:scale-110">
-          <button className="flex justify-center p-2">
-            <Link href="/src/pages/collection">My Collection</Link>
-          </button>
-        </div> */}
-        </div>
-        <div className="flex justify-center">
-          <div className="bg-dark-green text-gray-50 font-mono w-max my-2 px-4 rounded-lg">
+        <div className="flex justify-center relative">
+          <div
+            className="bg-dark-green text-gray-50 font-mono w-max my-2 px-4 rounded-lg cursor-pointer flex items-center"
+            onClick={() => setDropdownOpen(!dropdownOpen)}
+          >
             <p className="flex items-center h-full">
               {user ? `${user.email}` : "Sign In"}
             </p>
+            <svg
+              className="ml-2 w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
           </div>
-          <div className="bg-dark-green text-gray-50 font-mono w-max m-2 px-4 rounded-lg hover:bg-light-green transition duration-500 hover:scale-110">
-            <button onClick={firebaseSignOut} className="flex items-center h-full">
-              Sign Out
-            </button>
-          </div>
+          {dropdownOpen && (
+            <div className="absolute right-0 top-12 mt-2 w-full bg-light-green rounded-lg shadow-lg z-10 text-white">
+              <ul className="py-2">
+                <li>
+                  <Link href="/src/pages/home" className="block px-4 py-2 hover:bg-dark-green rounded">
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/src/pages/collection" className="block px-4 py-2 hover:bg-dark-green rounded">
+                    My Collection
+                  </Link>
+                </li>
+                <li>
+                  <button
+                    onClick={firebaseSignOut}
+                    className="w-full text-left px-4 py-2 hover:bg-dark-green rounded"
+                  >
+                    Sign Out
+                  </button>
+                </li>
+              </ul>
+            </div>
+          )}
         </div>
       </div>
     </nav>
