@@ -7,7 +7,7 @@ import { useUserAuth } from "../../_utils/auth-context";
 // Components
 import NavBar from "../../components/NavBar";
 import Redirect from "../../components/Redirect";
-import PlantInfo from "../../components/plantId/PlantInfo";
+import PlantInfo from "../../components/plantId/PlantInfo"; // TEST
 import CollectionInfo from "../../components/plantId/CollectionInfo";
 import HighlightImage from "../../components/plantId/HighlightImage";
 import PrimaryImage from "../../components/plantId/PrimaryImage";
