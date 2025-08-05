@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { useUserAuth } from "./_utils/auth-context";
 import Link from "next/link";
-import Card from "./components/Card";
 import NavBar from "./components/NavBar";
 
 export default function Page() {
