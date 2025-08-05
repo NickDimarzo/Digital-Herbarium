@@ -12,9 +12,9 @@ export default function NavBar() {
     <nav className="navbar navbar-expand-lg navbar-light bg-dark-blue border-4 border-dark-blue shadow-dark-blue xl:text-2xl text-sm">
       <div className="flex justify-between">
         <div className="flex justify-center">
-          <div className="bg-dark-green text-gray-50 font-mono m-2 sm:px-4 rounded-lg hover:bg-light-green transition duration-500 hover:scale-110 ">
+          <div className=" text-gray-50 font-mono m-2 sm:px-4 rounded-lg ">
             <button className="flex justify-center p-2 items-center">
-              <Link href="/src/pages/home">Home</Link>
+              <Link href="/src/pages/home">Digital Herbarium</Link>
             </button>
           </div>
         </div>
