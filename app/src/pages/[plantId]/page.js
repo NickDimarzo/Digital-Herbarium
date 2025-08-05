@@ -282,7 +282,7 @@ export default function Page({ params }) {
   // Fetch images
   useEffect(() => {
     fetchImages();
-  }, [user, plant, userPlants, userImages, fetchImages]);
+  }, [user, plant, userPlants, userImages]);
 
   return (
     <>
@@ -352,6 +352,7 @@ export default function Page({ params }) {
                     {userImages && userImages.length > 0 ? (
                       userImages.map((image) => (
                         <ImageCard
+                          key={image}
                           plant={plant}
                           image={image}
                           handleSelectPrimaryImage={handleSelectPrimaryImage}
