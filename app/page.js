@@ -1,6 +1,6 @@
 import Link from "next/link";
-import FeatureCard from "./src/components/feature-card";
-import FeatureCardReversed from "./src/components/feature-card-reversed";
+import FeatureCard from "./src/components/FeatureCard";
+import FeatureCardReversed from "./src/components/FeatureCardReversed";
 import pageText from "/public/assets/json/landing-page-text.json";
 
 export default function Page() {

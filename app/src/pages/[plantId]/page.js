@@ -1,39 +1,60 @@
 "use client";
 
-import Link from "next/link";
-import NavBar from "../../components/nav-bar";
-import Redirect from "../../components/redirect";
-import HighlightImage from "../../components/highlight-image";
-import { useState } from "react";
+// React/Next Imports
+import { useState, useEffect } from "react";
 import { useUserAuth } from "../../_utils/auth-context";
-import { useEffect } from "react";
-import { fetchUserPlants } from "../../_services/DbServices";
-import { addUserPlant } from "../../_services/DbServices";
-import plantsData from "../../alberta-plants/new-herbarium.json";
-import { uploadImages } from "../../_services/DbServices";
-import { fetchPlantImages } from "../../_services/DbServices";
-import { deletePlantImage } from "../../_services/DbServices";
-import Image from "next/image";
+
+// Components
+import NavBar from "../../components/NavBar";
+import Redirect from "../../components/Redirect";
+import PlantInfo from "../../components/plantId/PlantInfo";
+import CollectionInfo from "../../components/plantId/CollectionInfo";
+import HighlightImage from "../../components/plantId/HighlightImage";
+import PrimaryImage from "../../components/plantId/PrimaryImage";
+import NoImageMessage from "../../components/plantId/NoImageMessage";
+import ImagesUpload from "../../components/plantId/ImagesUpload";
+import PlantNotes from "../../components/plantId/PlantNotes";
+import ImageCard from "../../components/plantId/ImageCard";
+
+// Database
 import {
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuItems,
-  Transition,
-} from "@headlessui/react";
-import { EllipsisVerticalIcon } from "@heroicons/react/24/outline";
+  fetchUserPlants,
+  addUserPlant,
+  uploadImages,
+  fetchPlantImages,
+  deletePlantImage,
+} from "../../_services/DbServices";
+import plantsData from "../../alberta-plants/new-herbarium.json";
 
 export default function Page({ params }) {
   const { user, createUser, emailSignIn } = useUserAuth();
   const [userPlants, setUserPlants] = useState([]);
   const [systemPlants, setSystemPlants] = useState(plantsData);
-  const [plant, setPlant] = useState({});
+  const [plant, setPlant] = useState({
+    notes: "Add your notes here!",
+    dateOfCollection: "",
+    location: "",
+    habitat: "",
+    collector: "",
+    primaryImage: null,
+    primaryImageTitle: "",
+    primaryImageDate: "",
+    primaryImageDescription: "",
+    highLightImagesOne: null,
+    highLightImagesOneTitle: "",
+    highLightImagesOneDate: "",
+    highLightImagesOneDescription: "",
+    highLightImagesTwo: null,
+    highLightImagesTwoTitle: "",
+    highLightImagesTwoDate: "",
+    highLightImagesTwoDescription: "",
+    highLightImagesThree: null,
+    highLightImagesThreeTitle: "",
+    highLightImagesThreeDate: "",
+    highLightImagesThreeDescription: "",
+  });
+  const [textAreaValue, setTextAreaValue] = useState("")
   const [notes, setNotes] = useState("Add your notes here!");
-  const [textAreaValue, setTextAreaValue] = useState("");
-  const [dateOfCollection, setDateOfCollection] = useState("");
-  const [location, setLocation] = useState("");
-  const [habitat, setHabitat] = useState("");
-  const [collector, setCollector] = useState("");
   const [userImages, setUserImages] = useState([]);
   const [imageUpload, setImageUpload] = useState([]);
 
@@ -43,7 +64,7 @@ export default function Page({ params }) {
   const [primaryImageTitle, setPrimaryImageTitle] = useState(
     plant.primaryImageTitle
   );
-  const [primaryImageDate, setPrimaryImageDate] = useState(dateOfCollection);
+  const [primaryImageDate, setPrimaryImageDate] = useState(plant.dateOfCollection);
   const [primaryImageDescription, setPrimaryImageDescription] = useState(
     plant.primaryImageDescription
   );
@@ -55,7 +76,7 @@ export default function Page({ params }) {
     plant.highLightImagesOneTitle
   );
   const [highLightImagesOneDate, setHighLightImagesOneDate] =
-    useState(dateOfCollection);
+    useState(plant.dateOfCollection);
   const [highLightImagesOneDescription, setHighLightImagesOneDescription] =
     useState(plant.highLightImagesOneDescription);
   // HighlightImageTwo
@@ -66,7 +87,7 @@ export default function Page({ params }) {
     plant.highLightImagesTwoTitle
   );
   const [highLightImagesTwoDate, setHighLightImagesTwoDate] =
-    useState(dateOfCollection);
+    useState(plant.dateOfCollection);
   const [highLightImagesTwoDescription, setHighLightImagesTwoDescription] =
     useState(plant.highLightImagesTwoDescription);
   // HighlightImageThree
@@ -77,9 +98,14 @@ export default function Page({ params }) {
     plant.highLightImagesThreeTitle
   );
   const [highLightImagesThreeDate, setHighLightImagesThreeDate] =
-    useState(dateOfCollection);
+    useState(plant.dateOfCollection);
   const [highLightImagesThreeDescription, setHighLightImagesThreeDescription] =
     useState(plant.highLightImagesThreeDescription);
+
+  // Generic plant field updater  
+  const updatePlantField = (field, value) => {
+    setPlant((prev) => ({ ...prev, [field]: value }));
+  };
 
   // Upload images to firebase storage
   const uploadImage = () => {
@@ -89,10 +115,6 @@ export default function Page({ params }) {
           setUserImages(images);
         });
       });
-      plant.dateOfCollection = dateOfCollection;
-      plant.location = location;
-      plant.habitat = habitat;
-      plant.collector = collector;
       plant.notes = textAreaValue;
       plant.primaryImage = primaryImage;
       plant.primaryImageTitle = primaryImageTitle;
@@ -150,10 +172,6 @@ export default function Page({ params }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (user) {
-      plant.dateOfCollection = dateOfCollection;
-      plant.location = location;
-      plant.habitat = habitat;
-      plant.collector = collector;
       plant.notes = textAreaValue;
       plant.primaryImage = primaryImage;
       plant.primaryImageTitle = primaryImageTitle;
@@ -184,30 +202,30 @@ export default function Page({ params }) {
       });
       switch (imageUrl) {
         case primaryImage:
-            setPrimaryImage(null);
-            setPrimaryImageTitle("");
-            setPrimaryImageDate("");
-            setPrimaryImageDescription("");
-            break;
+          setPrimaryImage(null);
+          setPrimaryImageTitle("");
+          setPrimaryImageDate("");
+          setPrimaryImageDescription("");
+          break;
         case highLightImagesOne:
-            setHighLightImagesOne(null);
-            setHighLightImagesOneTitle("");
-            setHighLightImagesOneDate("");
-            setHighLightImagesOneDescription("");
-            break;
+          setHighLightImagesOne(null);
+          setHighLightImagesOneTitle("");
+          setHighLightImagesOneDate("");
+          setHighLightImagesOneDescription("");
+          break;
         case highLightImagesTwo:
-            setHighLightImagesTwo(null);
-            setHighLightImagesTwoTitle("");
-            setHighLightImagesTwoDate("");
-            setHighLightImagesTwoDescription("");
-            break;
+          setHighLightImagesTwo(null);
+          setHighLightImagesTwoTitle("");
+          setHighLightImagesTwoDate("");
+          setHighLightImagesTwoDescription("");
+          break;
         case highLightImagesThree:
-            setHighLightImagesThree(null);
-            setHighLightImagesThreeTitle("");
-            setHighLightImagesThreeDate("");
-            setHighLightImagesThreeDescription("");
-            break;
-    }
+          setHighLightImagesThree(null);
+          setHighLightImagesThreeTitle("");
+          setHighLightImagesThreeDate("");
+          setHighLightImagesThreeDescription("");
+          break;
+      }
     });
   };
 
@@ -226,10 +244,6 @@ export default function Page({ params }) {
       if (plant) {
         setPlant(plant);
         setTextAreaValue(plant.notes);
-        setDateOfCollection(plant.dateOfCollection);
-        setLocation(plant.location);
-        setHabitat(plant.habitat);
-        setCollector(plant.collector);
         setPrimaryImage(plant.primaryImage);
         setPrimaryImageTitle(plant.primaryImageTitle);
         setPrimaryImageDate(plant.dateOfCollection);
@@ -273,134 +287,30 @@ export default function Page({ params }) {
   return (
     <>
       {user?.emailVerified ? (
-        <main className="flex-col justify-center font-mono xl:text-2xl text-lg ">
+        <body className="flex-col justify-center font-mono xl:text-2xl text-lg ">
           <header>
             <NavBar />
           </header>
-          <div className="flex justify-center mt-10">
-            <div className=" w-full sm:w-3/4 justify-center flex flex-col">
-              <div className="flex flex-col lg:flex-row w-full ">
-                <div className="flex flex-col w-full h-full lg:w-1/2 lg:ml-8">
-                  <div className=" bg-white h-full rounded-xl m-2 p-2 flex flex-col justify-between border-t-8 border-r-8 border-dark-blue">
-                    <div className="flex mb-2">
-                      <h1 className="w-max xl:text-3xl text-xl border-dark-blue">
-                        Plant Information
-                      </h1>
-                    </div>
-                    <div>
-                      <p>Family: {plant.family}</p>
-                    </div>
-                    <div>
-                      <p>
-                        Genus: <span className="italic">{plant.genus}</span>
-                      </p>
-                    </div>
-                    <div>
-                      <p>
-                        Species: <span className="italic">{plant.species}</span>
-                      </p>
-                    </div>
-                    <div>
-                      <p>Common Name: {plant.commonName}</p>
-                    </div>
-                    <div>
-                      <p>Origin: {plant.origin} </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex flex-col w-full h-full lg:w-1/2 lg:mr-10">
-                  <div className=" bg-white rounded-xl m-2 p-2 border-t-8 border-r-8 border-dark-blue">
-                    <div className="flex mb-2">
-                      <h1 className="w-max xl:text-3xl text-xl border-dark-blue">
-                        Collection Information
-                      </h1>
-                    </div>
-                    <div className="flex w-full my-2">
-                      <label className="w-1/2">Date of Collection:</label>
-                      <input
-                        type="date"
-                        value={dateOfCollection}
-                        onChange={(e) => setDateOfCollection(e.target.value)}
-                        className="ml-2 border-b-2 border-dark-blue w-full"
-                      />
-                    </div>
-                    <div className="flex w-full my-2 py-2">
-                      <label className="w-1/2">Location:</label>
-                      <input
-                        type="text"
-                        value={location}
-                        onChange={(e) => setLocation(e.target.value)}
-                        className="border-b-2 border-dark-blue w-full"
-                      />
-                    </div>
-                    <div className="flex w-full my-2">
-                      <label className="w-1/2" l>
-                        Habitat:
-                      </label>
-                      <input
-                        type="text"
-                        value={habitat}
-                        onChange={(e) => setHabitat(e.target.value)}
-                        className="border-b-2 border-dark-blue w-full"
-                      />
-                    </div>
-                    <div className="flex w-full my-2">
-                      <label className="w-1/2">Collector:</label>
-                      <input
-                        type="text"
-                        value={collector}
-                        onChange={(e) => setCollector(e.target.value)}
-                        className="border-b-2 border-dark-blue w-full"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="custom-card">
+          <main className="flex justify-center mt-10">
+            <div className=" w-full sm:w-3/4 justify-center flex flex-col mt-10">
+              <section className="flex flex-col lg:flex-row w-full ">
+                <PlantInfo plant={plant} />
+                <CollectionInfo
+                  plant={plant}
+                  updatePlantField={updatePlantField}
+                />
+              </section>
+              <section class="custom-card">
                 <div className="flex flex-col lg:flex-row justify-between items-center w-full lg:w-full">
                   {/* Primary Image (left side) */}
-                  <div className="w-full lg:w-2/3 lg:pl-8 m-2">
-                    {primaryImage ? (
-                      <div className="flex flex-col">
-                        <div className="relative w-full h-[400px] lg:h-[835px] mr-10">
-                          <img
-                            src={primaryImage}
-                            alt="Primary"
-                            className="absolute w-full h-full object-contain rounded-lg shadow-lg p-2 bg-gray-500 bg-opacity-45 border-t-4 border-r-4 border-dark-blue"
-                          />
-                        </div>
-                        <div className="text-sm">
-                          <input
-                            type="text"
-                            value={primaryImageTitle}
-                            placeholder="Primary Image Title"
-                            onChange={(e) =>
-                              setPrimaryImageTitle(e.target.value)
-                            }
-                            className="w-max font-semibold bg-transparent py-1 outline-none"
-                          />
-                        </div>
-                        <div className="text-xs">
-                          <input
-                            type="text"
-                            value={primaryImageDescription}
-                            placeholder="Primary Image Description"
-                            onChange={(e) =>
-                              setPrimaryImageDescription(e.target.value)
-                            }
-                            className="w-full py-1 outline-none"
-                          />
-                        </div>
-                        <div className="text-xs">
-                          <p>Date of Collection:{dateOfCollection}</p>
-                        </div>
-                      </div>
-                    ) : (
-                      <div className="flex items-center justify-center h-[800px] bg-gray-100 rounded-lg">
-                        <p className="text-gray-500">Select a primary image</p>
-                      </div>
-                    )}
-                  </div>
+                  <PrimaryImage
+                    primaryImage={primaryImage}
+                    primaryImageTitle={primaryImageTitle}
+                    setPrimaryImageTitle={setPrimaryImageTitle}
+                    primaryImageDescription={primaryImageDescription}
+                    setPrimaryImageDescription={setPrimaryImageDescription}
+                    dateOfCollection={plant.dateOfCollection}
+                  />
                   {/* Highlight Images (Right Side) */}
                   <div className="w-full h-full lg:w-1/3 lg:mr-10 ">
                     <div className="flex flex-col justify-between h-[903px]">
@@ -431,9 +341,9 @@ export default function Page({ params }) {
                     </div>
                   </div>
                 </div>
-              </div>
+              </section>
               {/*PHOTO UPLOADS*/}
-              <div class="custom-card">
+              <section class="custom-card">
                 <div className=" bg-white rounded-xl m-2 p-2">
                   <div className="flex justify-center w-full p-2 m-2">
                     <h1 className="w-max xl:text-3xl text-xl"> My Photos</h1>
@@ -441,198 +351,52 @@ export default function Page({ params }) {
                   <div className="sm:grid sm:grid-flow-row sm:grid-cols-3 justify-center gap-4">
                     {userImages && userImages.length > 0 ? (
                       userImages.map((image) => (
-                        <div
-                          key={plant.id}
-                          className="flex-col p-2 justify-center relative"
-                        >
-                          <Link
-                            href={image}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <img
-                              className="border-2 border-dark-blue rounded-xl shadow-2xl shadow-black object-cover w-full h-64"
-                              src={image}
-                              alt="plant"
-                            />
-                          </Link>
-                          <Menu as="div" className="absolute top-4 right-4">
-                            <MenuButton className="bg-white p-2 rounded-full hover:bg-gray-100 shadow-lg">
-                              <EllipsisVerticalIcon className="h-5 w-5 text-gray-600" />
-                            </MenuButton>
-                            <Transition
-                              enter="transition duration-100 ease-out"
-                              enterFrom="transform scale-95 opacity-0"
-                              enterTo="transform scale-100 opacity-100"
-                              leave="transition duration-75 ease-out"
-                              leaveFrom="transform scale-100 opacity-100"
-                              leaveTo="transform scale-95 opacity-0"
-                            >
-                              <MenuItems className="absolute right-0 mt-2 w-64 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                <MenuItem>
-                                  {({ focus }) => (
-                                    <button
-                                      onClick={() =>
-                                        handleSelectPrimaryImage(image)
-                                      }
-                                      className={`${
-                                        focus
-                                          ? "bg-light-green text-white"
-                                          : "text-gray-900"
-                                      } group flex w-full items-center px-4 py-2 text-sm`}
-                                    >
-                                      Set as{" "}
-                                      {primaryImageTitle
-                                        ? primaryImageTitle
-                                        : "Primary Image"}
-                                    </button>
-                                  )}
-                                </MenuItem>
-                                <MenuItem>
-                                  {({ focus }) => (
-                                    <button
-                                      onClick={() =>
-                                        handleSelectHighlightImageOne(image)
-                                      }
-                                      className={`${
-                                        focus
-                                          ? "bg-light-green text-white"
-                                          : "text-gray-900"
-                                      } group flex w-full items-center px-4 py-2 text-sm`}
-                                    >
-                                      Set as{" "}
-                                      {highLightImagesOneTitle
-                                        ? highLightImagesOneTitle
-                                        : "Highlight Image One"}
-                                    </button>
-                                  )}
-                                </MenuItem>
-                                <MenuItem>
-                                  {({ focus }) => (
-                                    <button
-                                      onClick={() =>
-                                        handleSelectHighlightImageTwo(image)
-                                      }
-                                      className={`${
-                                        focus
-                                          ? "bg-light-green text-white"
-                                          : "text-gray-900"
-                                      } group flex w-full items-center px-4 py-2 text-sm`}
-                                    >
-                                      Set as{" "}
-                                      {highLightImagesTwoTitle
-                                        ? highLightImagesTwoTitle
-                                        : "Highlight Image Two"}
-                                    </button>
-                                  )}
-                                </MenuItem>
-                                <MenuItem>
-                                  {({ focus }) => (
-                                    <button
-                                      onClick={() =>
-                                        handleSelectHighlightImageThree(image)
-                                      }
-                                      className={`${
-                                        focus
-                                          ? "bg-light-green text-white"
-                                          : "text-gray-900"
-                                      } group flex w-full items-center px-4 py-2 text-sm`}
-                                    >
-                                      Set as{" "}
-                                      {highLightImagesThreeTitle
-                                        ? highLightImagesThreeTitle
-                                        : "Highlight Image Three"}
-                                    </button>
-                                  )}
-                                </MenuItem>
-                                <MenuItem>
-                                  {({ focus }) => (
-                                    <button
-                                      onClick={() => handleDeleteImage(image)}
-                                      className={`${
-                                        focus
-                                          ? "bg-light-green text-white"
-                                          : "text-gray-900"
-                                      } group flex w-full items-center px-4 py-2 text-sm`}
-                                    >
-                                      Delete
-                                    </button>
-                                  )}
-                                </MenuItem>
-                              </MenuItems>
-                            </Transition>
-                          </Menu>
-                        </div>
+                        <ImageCard
+                          plant={plant}
+                          image={image}
+                          handleSelectPrimaryImage={handleSelectPrimaryImage}
+                          handleSelectHighlightImageOne={
+                            handleSelectHighlightImageOne
+                          }
+                          handleSelectHighlightImageTwo={
+                            handleSelectHighlightImageTwo
+                          }
+                          handleSelectHighlightImageThree={
+                            handleSelectHighlightImageThree
+                          }
+                          handleDeleteImage={handleDeleteImage}
+                          primaryImageTitle={primaryImageTitle}
+                          highLightImagesOneTitle={highLightImagesOneTitle}
+                          highLightImagesTwoTitle={highLightImagesTwoTitle}
+                          highLightImagesThreeTitle={highLightImagesThreeTitle}
+                        />
                       ))
                     ) : (
-                      <div className="flex justify-center w-full col-span-3 m-2 p-2">
-                        <div className="flex flex-col items-center">
-                          <p>
-                            Click the Choose Files button below to get started
-                          </p>
-                          <p>Images will be displayed here</p>
-                          <p>once they have been uploaded!</p>
-                        </div>
-                      </div>
+                      <NoImageMessage />
                     )}
                   </div>
                 </div>
                 <div>
-                  <div className="flex-col justify-between bg-white rounded-xl m-2 mt-4 p-2 ">
-                    <div className="flex justify-center p-4 text-sm m:text-lg lg:text-xl xl:text-2xl ">
-                      <input
-                        type="file"
-                        className=" bg-white w-max"
-                        multiple
-                        onChange={(e) => {
-                          setImageUpload(Array.from(e.target.files));
-                        }}
-                      />
-                    </div>
-                    <div className="flex justify-center">
-                      <button
-                        className="bg-dark-green text-gray-50 px-10 font-mono py-2 m-2 h-max rounded-xl hover:bg-light-green shadow-2xl shadow-black transition duration-500 hover:scale-110 "
-                        onClick={uploadImage}
-                      >
-                        Upload
-                      </button>
-                    </div>
-                  </div>
+                  <ImagesUpload
+                    setImageUpload={setImageUpload}
+                    uploadImage={uploadImage}
+                  />
                 </div>
-              </div>
-
-              <div class="custom-card">
-                <div className=" bg-white rounded-xl m-2 p-2">
-                  <form className="text-black flex-col">
-                    <div className="flex justify-center">
-                      <h1 className="w-max xl:text-3xl text-xl">Notes</h1>
-                    </div>
-                    <div className="flex justify-center h-96 ">
-                      <textarea
-                        type="text"
-                        value={textAreaValue}
-                        onChange={handleTextAreaChange}
-                        className="text-black bg-gray-100 border-2 border-darker-blue rounded-xl p-2 w-full m-2 max-h-full"
-                      />
-                    </div>
-                    <div className="flex justify-center">
-                      <button
-                        className="bg-dark-green text-gray-50 px-10 font-mono py-2 m-2 h-max rounded-xl hover:bg-light-green shadow-2xl shadow-black transition duration-500 hover:scale-110 "
-                        onClick={handleSubmit}
-                      >
-                        Submit
-                      </button>
-                    </div>
-                  </form>
-                </div>
-              </div>
+              </section>
+              <section class="custom-card">
+                <PlantNotes
+                  textAreaValue={textAreaValue}
+                  handleTextAreaChange={handleTextAreaChange}
+                  handleSubmit={handleSubmit}
+                />
+              </section>
             </div>
-          </div>
-        </main>
+          </main>
+        </body>
       ) : (
-        <main>
+        <body>
           <Redirect />
-        </main>
+        </body>
       )}
     </>
   );

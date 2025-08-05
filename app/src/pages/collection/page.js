@@ -3,8 +3,8 @@
 import { useState, useEffect } from "react";
 import { fetchUserPlants } from "../../_services/DbServices";
 import { useUserAuth } from "../../_utils/auth-context";
-import NavBar from "../../components/nav-bar";
-import Redirect from "../../components/redirect";
+import NavBar from "../../components/NavBar";
+import Redirect from "../../components/Redirect";
 import Link from "next/link";
 import plantsData from "../../alberta-plants/new-herbarium.json";
 
