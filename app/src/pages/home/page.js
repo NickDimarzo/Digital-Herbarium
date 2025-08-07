@@ -5,7 +5,8 @@ import { useUserAuth } from "../../_utils/auth-context";
 import Link from "next/link";
 import Card from "../../components/Card";
 import NavBar from "../../components/NavBar";
-import Redirect from "../../components/Redirect";
+// import Redirect from "../../components/Redirect";
+import LoginRedirect from "../../components/LoginRedirect";
 
 export default function Page() {
   const [email, setEmail] = useState("");
@@ -77,7 +78,7 @@ export default function Page() {
                 </div>
               </div>
             ) : (
-              <Redirect />
+              <LoginRedirect />
             )}
           </div>
         </div>
