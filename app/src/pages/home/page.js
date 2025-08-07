@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { useUserAuth } from "../../_utils/auth-context";
 import Link from "next/link";
-import Card from "../../components/Card";
+// import Card from "../../components/Card";
+import NavigationCard from "../../components/NavigationCard";
 import NavBar from "../../components/NavBar";
 // import Redirect from "../../components/Redirect";
 import LoginRedirect from "../../components/LoginRedirect";
@@ -37,7 +38,7 @@ export default function Page() {
                 <div>
                   <div className=" flex flex-col sm:flex-row">
                     <div className="flex m:w-1/2">
-                      <Card
+                      <NavigationCard
                         title="My Collection"
                         route="collection"
                         description="Add new plants and view your collection here."
@@ -46,7 +47,7 @@ export default function Page() {
                       />
                     </div>
                     <div className="flex m:w-1/2">
-                      <Card
+                      <NavigationCard
                         title="Resources"
                         route="resources"
                         description="Find resources to help you identify your plants here."
@@ -57,7 +58,7 @@ export default function Page() {
                   </div>
                   {/* <div className="flex flex-col sm:flex-row ">
                     <div className="flex m:w-1/2">
-                      <Card
+                      <NavigationCard
                         title="Share"
                         route="/src"
                         description="Share your plants with other users here."
@@ -66,7 +67,7 @@ export default function Page() {
                       />
                     </div>
                     <div className="flex m:w-1/2">
-                      <Card
+                      <NavigationCard
                         title="Discover"
                         route="/src"
                         description="Plan your next excursion here."
