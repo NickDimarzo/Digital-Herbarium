@@ -8,7 +8,8 @@ import { useUserAuth } from "../../_utils/auth-context";
 import NavBar from "../../components/NavBar";
 // import Redirect from "../../components/Redirect";
 import LoginRedirect from "../../components/LoginRedirect";
-import PlantInfo from "../../components/plantId/PlantInfo"; // TEST
+// import PlantInfo from "../../components/plantId/PlantInfo"; // TEST
+import PlantDescription from "../../components/plantId/PlantDescription";
 import CollectionInfo from "../../components/plantId/CollectionInfo";
 import HighlightImage from "../../components/plantId/HighlightImage";
 import PrimaryImage from "../../components/plantId/PrimaryImage";
@@ -295,7 +296,7 @@ export default function Page({ params }) {
           <main className="flex justify-center mt-10">
             <div className=" w-full sm:w-3/4 justify-center flex flex-col mt-10">
               <section className="flex flex-col lg:flex-row w-full ">
-                <PlantInfo plant={plant} />
+                <PlantDescription plant={plant} />
                 <CollectionInfo
                   plant={plant}
                   updatePlantField={updatePlantField}
