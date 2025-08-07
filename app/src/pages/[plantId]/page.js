@@ -6,7 +6,8 @@ import { useUserAuth } from "../../_utils/auth-context";
 
 // Components
 import NavBar from "../../components/NavBar";
-import Redirect from "../../components/Redirect";
+// import Redirect from "../../components/Redirect";
+import LoginRedirect from "../../components/LoginRedirect";
 import PlantInfo from "../../components/plantId/PlantInfo"; // TEST
 import CollectionInfo from "../../components/plantId/CollectionInfo";
 import HighlightImage from "../../components/plantId/HighlightImage";
@@ -396,7 +397,7 @@ export default function Page({ params }) {
         </body>
       ) : (
         <body>
-          <Redirect />
+          <LoginRedirect />
         </body>
       )}
     </>
