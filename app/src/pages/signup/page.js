@@ -5,7 +5,8 @@ import LoadingBlock from "./components/loading-block";
 import NewUserBlock from "./components/newUser-block";
 
 export default function Page() {
-  const [userName, setUserName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -68,6 +69,24 @@ export default function Page() {
                 </div> */}
                 <div className="flex-col justify-center m-4 w-full">
                   <form onSubmit={handleSubmit}>
+                    <div className="flex flex-col justify-end my-4 w-full p-4">
+                      <label className="w-full">First Name:</label>
+                      <input
+                        type="email"
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
+                        className=" text-black m-2 w-full border-b-2 border-dark-blue outline-none"
+                      />
+                    </div>
+                    <div className="flex flex-col justify-end my-4 w-full p-4">
+                      <label className="w-full">Last Name:</label>
+                      <input
+                        type="email"
+                        value={lastName}
+                        onChange={(e) => setLastName(e.target.value)}
+                        className=" text-black m-2 w-full border-b-2 border-dark-blue outline-none"
+                      />
+                    </div>
                     <div className="flex flex-col justify-end my-4 w-full p-4">
                       <label className="w-full">Email:</label>
                       <input
