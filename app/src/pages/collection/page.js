@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 import { fetchUserPlants } from "../../_services/DbServices";
 import { useUserAuth } from "../../_utils/auth-context";
 import NavBar from "../../components/NavBar";
-import Redirect from "../../components/Redirect";
+// import Redirect from "../../components/Redirect";
+import LoginRedirect from "../../components/LoginRedirect";
 import Link from "next/link";
 import plantsData from "../../alberta-plants/new-herbarium.json";
 
@@ -201,7 +202,7 @@ export default function Page() {
         </main>
       ) : (
         <main>
-          <Redirect />
+          <LoginRedirect />
         </main>
       )}
     </>
