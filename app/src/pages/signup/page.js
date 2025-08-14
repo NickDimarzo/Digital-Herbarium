@@ -45,9 +45,9 @@ export default function Page() {
   };
 
   return (
-    <main className="w-screen h-full flex-col justify-center">
+    <main className=" h-full flex-col justify-center">
       <div className="flex justify-center">
-        <div className="custom-card xl:w-1/3">
+        <div className="custom-card" style={{ width: "410px" }}>
           <div className="flex-col justify-center m-8 font-mono bg-white p-5 rounded-3xl">
             {loading ? (
               <LoadingBlock />
@@ -87,7 +87,7 @@ export default function Page() {
                         className=" text-black w-full border-b-2 border-dark-blue outline-none"
                       />
                     </div>
-                    <div className="flex text-sm lg:text-lg">
+                    <div className="flex text-sm">
                       <small
                         style={{
                           color:
@@ -109,7 +109,7 @@ export default function Page() {
                         className=" text-black w-full border-b-2 border-dark-blue outline-none"
                       />
                     </div>
-                    <div className="flex text-sm lg:text-lg ">
+                    <div className="flex text-sm ">
                       <small
                         style={{
                           color:
