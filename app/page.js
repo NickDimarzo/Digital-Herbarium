@@ -54,46 +54,11 @@ export default function Page() {
         />
       </div>
       <footer className="bg-dark-blue w-full py-4 mt-8 text-white">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+        <div className=" mx-auto px-4 flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
           <div className="text-center sm:text-left">
             <p className="text-lg font-semibold">Digital Herbarium</p>
             <p className="text-sm text-gray-300">© 2025 All rights reserved.</p>
           </div>
-          {/* <div className="flex space-x-6">
-            <Link href="/about" className="text-gray-300 hover:text-white">
-              About
-            </Link>
-            <Link href="/contact" className="text-gray-300 hover:text-white">
-              Contact
-            </Link>
-            <Link href="/privacy" className="text-gray-300 hover:text-white">
-              Privacy
-            </Link>
-          </div> */}
-          {/* <div className="flex space-x-4">
-            <Link
-              href="https://github.com/NickDimarzo"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src="/assets/images/github.jfif"
-                alt="GitHub"
-                className="h-6 w-6"
-              />
-            </Link>
-            <Link
-              href="https://www.linkedin.com/in/nick-dimarzo/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src="/assets/icons/linkedin.svg"
-                alt="LinkedIn"
-                className="h-6 w-6"
-              />
-            </Link>
-          </div> */}
         </div>
       </footer>
     </div>
