@@ -14,7 +14,7 @@ export default function NavBar() {
         <div className="flex justify-center">
           <div className=" text-gray-50 font-mono m-2 sm:px-4 rounded-lg ">
             <button className="flex justify-center p-2 items-center">
-              <Link href="/src/pages/home">Digital Herbarium</Link>
+              <Link href="/">Digital Herbarium</Link>
             </button>
           </div>
         </div>
@@ -39,12 +39,12 @@ export default function NavBar() {
             </svg>
           </div>
           {dropdownOpen && (
-            <div className="absolute left-2 top-10 mt-2 w-full bg-dark-blue rounded-lg shadow-lg z-10 text-white text-sm">
+            <div className="absolute left-2 top-10 mt-2 w-full bg-dark-blue rounded-lg shadow-lg z-10 text-white text-sm ">
               <ul className="py-2">
                 <li>
                   <Link
                     href="/src/pages/home"
-                    className="block px-4 py-2 hover:bg-dark-green rounded"
+                    className="block px-4 py-2 hover:bg-dark-green"
                   >
                     Home
                   </Link>
@@ -52,7 +52,7 @@ export default function NavBar() {
                 <li>
                   <Link
                     href="/src/pages/collection"
-                    className="block px-4 py-2 hover:bg-dark-green rounded"
+                    className="block px-4 py-2 hover:bg-dark-green"
                   >
                     My Collection
                   </Link>
@@ -60,7 +60,7 @@ export default function NavBar() {
                 <li>
                   <Link
                     href="/src/pages/resources"
-                    className="block px-4 py-2 hover:bg-dark-green rounded"
+                    className="block px-4 py-2 hover:bg-dark-green"
                   >
                     Resources
                   </Link>
@@ -68,7 +68,7 @@ export default function NavBar() {
                 <li>
                   <button
                     onClick={firebaseSignOut}
-                    className="w-full text-left px-4 py-2 hover:bg-dark-green rounded"
+                    className="w-full text-left px-4 py-2 hover:bg-dark-green"
                   >
                     Sign Out
                   </button>
