@@ -63,7 +63,7 @@ export default function Page() {
                     <div className="flex flex-col justify-end w-full mt-4">
                       <label className="w-full">Full name:</label>
                       <input
-                        type="email"
+                        type="text"
                         value={fullName}
                         onChange={(e) => setFullName(e.target.value)}
                         className=" text-black w-full border-b-2 border-dark-blue outline-none"
