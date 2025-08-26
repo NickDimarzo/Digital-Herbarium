@@ -5,7 +5,7 @@ import LoadingBlock from "./components/loading-block";
 import NewUserBlock from "./components/newUser-block";
 
 export default function Page() {
-  const [userName, setUserName] = useState("");
+  const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -45,10 +45,10 @@ export default function Page() {
   };
 
   return (
-    <main className="w-screen h-full flex-col justify-center">
+    <main className=" h-full flex-col justify-center">
       <div className="flex justify-center">
-        <div className="custom-card xl:w-1/3">
-          <div className="flex-col justify-center m-8 font-mono bg-white p-5 rounded-3xl text-sm  m:text-lg lg:text-xl xl:text-2xl">
+        <div className="custom-card" style={{ width: "410px" }}>
+          <div className="flex-col justify-center m-8 font-mono bg-white p-5 rounded-3xl">
             {loading ? (
               <LoadingBlock />
             ) : user ? (
@@ -56,37 +56,38 @@ export default function Page() {
             ) : (
               <div className="flex flex-col items-center">
                 <div className="flex justify-center items-center">
-                  <h1>Welcome to account</h1>
+                  <h1>Create Account</h1>
                 </div>
-                <div className="flex justify-center items-center">
-                  <h1>Sign up</h1>
-                </div>
-                {/* <div className="flex justify-center w-2/3">
-                  <p className="py-4">
-                    Please fill out the form below to create an account
-                  </p>
-                </div> */}
                 <div className="flex-col justify-center m-4 w-full">
                   <form onSubmit={handleSubmit}>
-                    <div className="flex flex-col justify-end my-4 w-full p-4">
+                    <div className="flex flex-col justify-end w-full mt-4">
+                      <label className="w-full">Full name:</label>
+                      <input
+                        type="text"
+                        value={fullName}
+                        onChange={(e) => setFullName(e.target.value)}
+                        className=" text-black w-full border-b-2 border-dark-blue outline-none"
+                      />
+                    </div>
+                    <div className="flex flex-col justify-end w-full mt-4">
                       <label className="w-full">Email:</label>
                       <input
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className=" text-black m-2 w-full border-b-2 border-dark-blue outline-none"
+                        className=" text-black w-full border-b-2 border-dark-blue outline-none"
                       />
                     </div>
-                    <div className="flex flex-col justify-end my-4 w-full p-4">
+                    <div className="flex flex-col justify-end w-full mt-4">
                       <label className="w-full">Password:</label>
                       <input
                         type="password"
                         value={password}
                         onChange={handlePasswordChange}
-                        className=" text-black m-2 w-full border-b-2 border-dark-blue outline-none"
+                        className=" text-black w-full border-b-2 border-dark-blue outline-none"
                       />
                     </div>
-                    <div className="flex justify-end text-sm lg:text-lg">
+                    <div className="flex text-sm">
                       <small
                         style={{
                           color:
@@ -94,21 +95,21 @@ export default function Page() {
                               ? "green"
                               : "red",
                         }}
-                        className="w-1/2 flex justify-end"
+                        className="flex"
                       >
                         {passwordMessage}
                       </small>
                     </div>
-                    <div className="flex flex-col justify-end my-4 w-full p-4">
+                    <div className="flex flex-col justify-end w-full mt-4">
                       <label className="w-full">Confirm Password:</label>
                       <input
                         type="password"
                         value={confirmPassword}
                         onChange={handleConfirmPasswordChange}
-                        className=" text-black m-2 w-full border-b-2 border-dark-blue outline-none"
+                        className=" text-black w-full border-b-2 border-dark-blue outline-none"
                       />
                     </div>
-                    <div className="flex justify-end text-sm lg:text-lg ">
+                    <div className="flex text-sm ">
                       <small
                         style={{
                           color:

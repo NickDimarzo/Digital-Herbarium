@@ -14,7 +14,9 @@ import { v4 } from "uuid";
 // Create a new collection in the database for the user
 export const createUserPlantsCollection = async (userId) => {
   try {
-    await addDoc(collection(db, "users", userId), {});
+    await addDoc(collection(db, "users", userId), {
+      name: "test user name"
+    });
   } catch (error) {
     console.error("Error adding user", error);
   }
